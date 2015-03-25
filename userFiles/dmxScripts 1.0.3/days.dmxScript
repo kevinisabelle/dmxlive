@@ -1,0 +1,205 @@
+//Song Name:Days Don't Exist Anymore * GUIT
+//BPM:140
+//Time Signature:4/4
+//Audio file path=..\waveArr\Days-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+$[amp]=DerbyX_30
+$[swarm]=Swarm4_40
+
+$riffIntro
+1:0:0	|front:drum	|Fade:c=fire_fire,d=100_20,t=1:0:0
+2:0:0	|front:drum	|Fade:c=orange_fire,d=10_0,t=0:0:1/2
+2:0:1/2	|front:drum	|Fade:c=orange_fire,d=20_0,t=0:0:1/2
+2:1:0	|front:drum	|Fade:c=orange_fire,d=30_0,t=0:0:1/2
+2:1:1/2	|front:drum	|Fade:c=orange_fire,d=40_0,t=0:0:1/2
+2:2:0	|front:drum	|Fade:c=orange_fire,d=55_0,t=0:0:1/2
+2:2:1/2	|front:drum	|Fade:c=orange_fire,d=70_0,t=0:0:1/2
+2:3:0	|front:drum	|Fade:c=orange_fire,d=80_0,t=0:0:1/2
+2:3:1/2	|front:drum	|Fade:c=orange_fire,d=100_0,t=0:0:1/2
+end$
+
+$intro
+1:0:0	|$riffIntro	|4,2:0:0
+9:0:0	|drum	|Pulse:c=fire_yellow,u=2,t=3:0:0
+9:0:0	|front	|Pulse:c=yellow_fire,u=2,t=3:0:0
+12:0:0	|$passeIntro(yellow)
+12:1:0	|front:drum	|Fade:c=white_white,d=100_0,t=0:1:0
+12:2:0	|$passeIntro(yellow)
+12:3:0	|front:drum	|Fade:c=white_white,d=100_0,t=0:1:0
+end$
+
+$pattern1
+1:0:0	|front:drum	|Pulse:c=red_red,d=10_100,t=2:3:1/2,u=2
+4:0:0	|$passeIntro(red)
+4:1:0	|front:drum	|Fade:c=white_red,d=100_0,t=0:1:0
+4:2:0	|$passeIntro(red)
+4:3:0	|front:drum	|Fade:c=white_red,d=100_0,t=0:1:0
+
+1:0:0	|amp		|Dim:c=1_0_0_0_0_1
+2:0:0	|amp		|Dim:c=0_1_0_0_1_0
+2:2:0	|amp		|Dim:c=0_0_1_1_0_0
+
+3:0:0	|amp		|Dim:c=1_0_0_0_0_1
+3:2:0	|amp		|Dim:c=1_1_0_0_1_1
+4:0:0	|amp		|Dim:c=0_1_0_0_1_0
+4:2:0	|amp		|Dim:c=0_0_1_1_0_0
+end$
+
+$riffDisto
+1:0:0	|$pattern1	|2,4:0:0
+end$
+
+$verse
+1:0:0	|amp		|Dim:c=0
+1:0:0	|front:drum	|Pulse:c=magenta_magenta,d=100_20,u=2,t=7:3:0
+
+9:0:0	|front:drum	|Pulse:c=red_magenta,d=100_50,u=1,t=1:3:0
+
+11:0:0	|front:drum	|Fade:c=white_red,d=100_10,t=0:0:0.5
+11:0:1/2	|front:drum	|Fade:c=white_red,d=100_10,t=0:0:0.5
+11:3:0	|front:drum	|Fade:c=white_red,d=100_10,t=0:0:0.5
+11:3:1/2	|front:drum	|Fade:c=white_red,d=100_10,t=0:0:0.5
+
+12:2:0	|front:drum	|Fade:c=white_red,d=100_10,t=0:1:0
+
+13:0:0	|front:drum	|Fade:c=red_red,d=100_20,u=1,t=2:0:0
+15:0:0	|front:drum	|Fade:c=magenta_magenta,d=100_20,u=1,t=1:0:0
+16:0:0	|front:drum	|Fade:c=magenta_red,d=100_0,t=0:4:0
+
+16:2:0	|amp			|Dim:c=0_0_0_0_1_1
+16:2:1/2	|amp			|Dim:c=0_0_1_1_0_0
+16:3:0	|amp			|Dim:c=1_1_0_0_0_0
+16:3:1/2	|amp			|Dim:c=1_1_1_1_1_1
+
+end$
+
+$chorusPattern1
+1:0:0	|amp		|Dim:c=0
+1:0:0	|drum	|Fade:c=fire_black,d=100_10,t=0:2:0
+1:2:0	|drum	|Fade:c=fire_black,d=100_10,t=0:2:0
+2:0:0	|drum	|Dim:c=fire_black
+2:0:1/2	|drum	|Fade:c=black_fire_black_black,t=0:1:0
+2:1:1/2	|drum	|Dim:c=fire_black
+2:2:0	|drum	|Fade:c=black_fire_black_black,t=0:1:0
+2:2:3/4	|drum	|Dim:c=0
+2:3:0	|drum	|Fade:c=fire_black,t=0:1:0
+
+1:0:0	|front	|Fade:c=red_red,d=100_5,t=1:0:0
+2:0:0	|front	|Dim:c=0
+2:0:1/2	|front	|Fade:c=red_black,t=0:1:0
+2:1:1/2	|front	|Dim:c=0
+2:2:0	|front	|Fade:c=red_black,t=0:1:0
+2:2:3/4	|front	|Dim:c=0
+2:3:0	|front	|Fade:c=red_black,t=0:1:0
+
+//3:0:0	|front	|Fade:c=fire_fire,d=100_5,t=1:0:0
+end$
+
+$riffDerbyChorus
+1:0:0	|amp		|Dim:c=0_0_0_0_0_1
+1:0:1/6	|amp		|Dim:c=0_0_0_0_1_1
+1:0:2/6	|amp		|Dim:c=0_0_0_1_1_1
+1:0:3/6	|amp		|Dim:c=0_0_1_1_1_1
+1:0:4/6	|amp		|Dim:c=0_1_1_1_1_1
+1:0:5/6	|amp		|Dim:c=1_1_1_1_1_1
+1:1:0	|amp		|Dim:c=1_1_1_1_1_0
+1:1:1/6	|amp		|Dim:c=1_1_1_1_0_0
+1:1:2/6	|amp		|Dim:c=1_1_1_0_0_0
+1:1:3/6	|amp		|Dim:c=1_1_0_0_0_0
+1:1:4/6	|amp		|Dim:c=1_0_0_0_0_0
+1:1:5/6	|amp		|Dim:c=0_0_0_0_0_0
+end$
+
+$chorusPattern2
+1:0:0	|amp		|Dim:c=0
+1:0:0	|front:drum	|Pulse:c=orange_fire,d=100_10,t=7:3:0,u=2
+end$
+
+$chorus
+1:0:0	|$chorusPattern1	|4,2:0:0
+9:0:0	|$riffDerbyChorus	|16,0:2:0
+9:0:0	|$chorusPattern2
+end$
+
+$bridgePattern1
+1:0:0	|front	|Fade:c=red_red,d=100_5,t=0:1:1/2
+1:0:0	|drum	|Riff:c=red_white,d=20_100,u=32,r=1111 1111 0000 1010 1000 0000 0000 1100 1010 0010 1000 1010 1000
+2:2:0	|drum	|Fade:c=white_red,d=100_50,t=0:2:0
+end$
+
+$derbyRiffBridge
+1:0:0	|amp		|Dim:c=1_1_1_1_1_1
+1:1:0	|amp		|Dim:c=0_0_0_0_0_0
+1:1:2/4	|amp		|Dim:c=0_0_0_0_0_1
+1:1:3/4	|amp		|Dim:c=1_0_0_0_0_0
+1:2:0	|amp		|Dim:c=0_1_0_0_1_0
+1:3:1/2	|amp		|Dim:c=0_0_0_1_0_0
+2:0:0/4	|amp		|Dim:c=1_0_0_0_0_0
+2:0:1/4	|amp		|Dim:c=0_1_0_0_0_0
+2:0:3/4	|amp		|Dim:c=0_0_0_0_1_0
+2:1:1/4	|amp		|Dim:c=0_0_0_1_0_0
+2:1:2/4	|amp		|Dim:c=0_1_0_0_0_0
+2:1:3/4	|amp		|Dim:c=0_0_1_0_0_0
+2:2:0/4	|amp		|Dim:c=1_1_1_1_1_1
+2:3:3/4	|amp		|Dim:c=0
+end$
+
+$bridgePattern2
+1:0:0	|$derbyRiffBridge
+1:0:0	|front:drum	|Fade:c=orange_fire,d=100_10,t=0:1:1/2
+1:1:1/2	|drum	|Riff:c=red_white,d=20_100,u=32,r=1010 1000 0000 0000 1000 1010 0010 1100 1010 1100
+1:1:1/2	|front	|Riff:c=red_red,u=32,r=1010 1000 0000 0000 1000 1010 0010 1100 1010 1100
+2:2:0	|drum	|Fade:c=white_red,d=100_50,t=0:2:0
+end$
+
+$bridge
+1:0:0	|front	|Dim:c=0
+1:0:0	|drum	|Dim:c=0
+1:0:0	|swarm	|Dim:c=red,s=20
+
+3:0:0	|swarm	|Dim:c=0,s=50
+3:0:0	|$bridgePattern1	|4,2:0:0
+11:0:0	|$bridgePattern2	|4,2:0:0
+
+19:0:0	|$riffIntro
+
+21:0:0	|front:drum	|Fade:c=magenta_red,d=100_0,t=1:0:0
+
+22:0:0	|front:drum	|Fade:c=orange_fire,d=10_0,t=0:0:1/2
+22:0:1/2	|front:drum	|Fade:c=orange_fire,d=20_0,t=0:0:1/2
+22:1:0	|front:drum	|Fade:c=orange_fire,d=30_0,t=0:0:1/2
+22:1:1/2	|front:drum	|Fade:c=orange_fire,d=40_0,t=0:0:1/2
+
+22:2:0	|amp			|Dim:c=0_0_0_0_1_1
+22:2:1/2	|amp			|Dim:c=0_0_1_1_0_0
+22:3:0	|amp			|Dim:c=1_1_0_0_0_0
+22:3:1/2	|amp			|Dim:c=1_1_1_1_1_1
+end$
+
+$passeIntro
+1:0:0	|drum	|Dim:c=%1_black_black
+1:0:1/4	|drum	|Dim:c=black_%1_black
+1:0:2/4	|drum	|Dim:c=black_black_%1
+1:0:3/4	|drum	|Dim:c=black_%1_black
+end$
+
+1:0:0	|front:drum:amp:swarm	|Dim:c=0,d=10,s=50
+3:0:0	|front:drum	|Fade:c=yellow_yellow,d=0_100,t=4:0:0
+
+6:2:0	|$passeIntro(yellow)	|2,0:1:0
+7:0:0	|$intro
+19:0:0 	|$riffDisto
+27:0:0	|$verse
+43:0:0	|$chorus
+59:0:0	|$riffDisto
+67:0:0	|$verse
+83:0:0	|$chorus
+99:0:0	|$bridge
+121:0:0	|$chorus
+137:0:0	|$bridgePattern1
+139:0:0	|$bridgePattern1
+141:0:0	|front:drum	|Fade:c=magenta_magenta,d=100_0,t=3:0:0
+145:0:0	|front	|Fade:c=green_green,d=0_100,t=1:0:0

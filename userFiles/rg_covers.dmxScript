@@ -1,0 +1,39 @@
+//Song Name:Covers - Scenes prédéfinies
+//BPM:120
+//Time Signature:4/4
+//Audio file path=
+//Samples file path=
+//Metronome=ON,Beep.wav,Beep.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+$[swarm]=Swarm4_40
+$[amp]=DerbyX_30
+
+$_prayer1
+1:0:0	|drum	|Dim:blue_red,100%
+1:0:0	|front	|Dim:red,100%
+end $prayer1
+
+$_black
+1:0:0	|drum:front	|Fade:white_black,100%_100%,1_0_0
+end $_black
+
+$_white
+1:0:0	|drum:front	|Fade:black_white,100%_100%,1_0_0
+end $_white
+
+$_bluegreen
+1:0:0	|drum	|Fade:blue_green,100%_100%,1_0_0
+1:0:0	|front	|Fade:green_blue,100%_100%,1_0_0
+end $_bluegreen
+
+$_red
+1:0:0	|swarm	|Dim:black,100%,0%
+1:0:0	|drum	|Fade:blue_magenta,100%_100%,1_0_0
+1:0:0	|front	|Fade:green_red,100%_100%,1_0_0
+end $_red
+
+$_swarmAll
+1:0:0	|drum:front	|Dim:black,100%,80%
+1:0:0	|swarm	|Dim:red_blue_green_yellow,100%,80%
+end $_swarmAll

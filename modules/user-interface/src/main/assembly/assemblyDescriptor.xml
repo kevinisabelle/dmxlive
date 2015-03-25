@@ -1,0 +1,35 @@
+
+<assembly>
+	<id>DmxLive</id>
+	<includeBaseDirectory>false</includeBaseDirectory>
+	<formats>
+		<format>dir</format>
+		<!--<format>zip</format>-->
+	</formats>
+	<fileSets>
+		<fileSet>
+			<directory>${basedir}/src/main/assembly/bin</directory>
+			<outputDirectory>.</outputDirectory>
+		</fileSet>  
+		<fileSet>
+			<directory>${basedir}/src/main/assembly/wav</directory>
+			<outputDirectory>wav</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>${basedir}/src/main/assembly/conf</directory>
+			<outputDirectory>conf</outputDirectory>
+		</fileSet>
+		<fileSet>
+			<directory>${basedir}/src/main/assembly/dll</directory>
+			<outputDirectory>lib</outputDirectory>
+		</fileSet>  
+	</fileSets>
+	<dependencySets>
+		<dependencySet>
+			<outputDirectory>lib</outputDirectory>
+			<outputFileNameMapping>${artifact.artifactId}-${artifact.version}.${artifact.extension}</outputFileNameMapping>
+			<unpack>false</unpack>
+			<scope>runtime</scope>
+		</dependencySet>
+	</dependencySets>
+</assembly>

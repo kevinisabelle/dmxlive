@@ -1,0 +1,12 @@
+//Song Name:Test Script - No Songs
+//BPM:160
+//Time Signature:4/4
+//Audio file path=
+//Samples file path=
+//Metronome=OFF,Beep.wav,Beep.wav
+//1:0:0	|Swarm4_40	|Blink:c=blue_red,s=55,u=8,o=0.25,t=2:0:0,r=1101010111000101
+//1:0:0	|Swarm4_40	|Dim:c=0,s=50
+//1:0:0	|DerbyX_30	|Riff:c=yellow_magenta_aqua,m=audio,o=0.25,u=8,t=2:0:0,r=1101001012101222101021211
+//1:0:0	|Par64_3	|Pulse:c=white_red,u=4,t=2:0:0,o=0.25
+
+1:0:0	|LEDBar_11:Par64_3	|Pulse:c=red_blue,t=4:0:0,u=4

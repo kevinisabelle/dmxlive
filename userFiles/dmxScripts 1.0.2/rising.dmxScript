@@ -1,0 +1,94 @@
+//Song Name:Rising Again
+//BPM:80
+//Time Signature:6/8
+//Audio file path=waveArr\Rising-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+
+$intro
+1:0:0	|drum:front	|Fade:black_blue,100%_100%,1_0_0
+end $intro
+
+$verse1
+1:0:0	|drum:front	|Fade:blue_orange,100%_100%,2_0_0
+end $verse1
+
+$postVerse
+1:0:0	|drum:front	|Pulse:orange_orange,100%_50%,5_0_0,0.333
+6:3:0	|drum:front	|Fade:white_red,100%_100%,0_3_0
+end $postVerse
+
+$preChorus
+1:0:0	|drum:front	|Pulse:red_orange,100%_100%,5_3_0,0.330
+end $preChorus
+
+$chorus
+1:0:0	|drum:front	|Fade:white_red,100%_100%,1_0_0
+2:0:0	|drum:front	|Fade:red_orange,100%_100%,1_0_0
+3:0:0	|drum:front	|Fade:orange_bluegreen,100%_100%,1_0_0
+4:0:0	|drum:front	|Fade:bluegreen_green,100%_100%,1_0_0
+5:0:0	|drum:front	|Fade:green_orange,100%_100%,1_0_0
+6:0:0	|drum:front	|Fade:orange_red,100%_100%,1_0_0
+end $chorus
+
+$verse2
+1:0:0	|drum:front	|Pulse:green_bluegreen,100%_50%,12_0_0,0.333
+end $verse2
+
+$bridge1
+1:0:0	|drum:front	|Fade:green_red,100%_100%,2_0_0
+end $bridge1
+
+$bridge2
+
+end $bridge2
+
+$bridge3
+
+end $bridge3
+
+$solo1
+1:0:0	|drum:front	|Pulse:green_blue,100%_50%,14_0_0,0.333
+end $solo1
+
+$solo2
+1:0:0	|drum:front	|Pulse:red_magenta,100%_50%,14_0_0,0.333
+end $solo2
+
+$finale
+1:0:0	|drum:front	|Fade:green_red,100%_100%,2_0_0
+end $finale
+
+$outtro
+1:0:0	|front:drum	|Fade:red_green,100%_100%,4_0_0
+7:0:0	|front		|Fade:green_blue,100%_100%,4_0_0
+13:0:0	|front		|Fade:blue_magenta,100%_100%,4_0_0
+13:0:0	|drum		|Fade:green_blue,100%_100%,4_0_0
+19:0:0	|front		|Fade:magenta_black,100%_100%,2_0_0
+19:0:0	|drum		|Fade:blue_black,100%_100%,2_0_0
+end $outtro
+
+1:0:0	|front:drum	|Dim:black,100%
+3:0:0	|$intro		|1
+9:0:0	|$verse1		|1
+21:0:0	|$postVerse	|1
+27:0:0	|$preChorus	|1
+33:0:0	|$chorus		|1
+39:0:0	|front:drum	|Dim:orange,100%
+45:0:0	|$verse2		|1
+57:0:0	|$postVerse	|1
+63:0:0	|$chorus		|1
+69:0:0	|front:drum	|Dim:red,100%
+71:0:0	|$chorus		|1
+77:0:0	|$bridge1		|1
+91:0:0	|$bridge2		|1
+111:0:0	|$solo1		|1
+127:0:0	|$solo2		|1
+143:0:0	|$chorus		|1
+149:0:0	|front:drum	|Dim:red,100%
+151:0:0	|$chorus		|1
+157:0:0	|front:drum	|Dim:red,100%
+159:0:0	|$finale		|1
+183:0:0	|$outtro		|1

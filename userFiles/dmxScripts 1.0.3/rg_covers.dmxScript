@@ -1,0 +1,84 @@
+//Song Name:Covers - Scenes prédéfinies
+//BPM:120
+//Time Signature:4/4
+//Audio file path=
+//Samples file path=
+//Metronome=ON,Beep.wav,Beep.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+$[amp]=DerbyX_30
+$[swarm]=Swarm4_40
+
+$_prayer
+1:0:0	|drum	|Dim:c=fire
+1:0:0	|front	|Dim:c=fire
+1:0:0	|amp		|Dim:c=magenta
+1:0:0	|swarm	|Dim:c=red_blue_green_yellow,s=99
+end$
+
+$_black
+1:0:0	|drum:front:swarm:amp	|Dim:c=0,d=0,s=50
+end$
+
+$_white
+1:0:0	|drum:front	|Fade:c=black_white,d=100_100,t=1:0:0
+1:0:0	|amp			|Dim:c=white,d=100
+1:0:0	|swarm		|Dim:c=red_blue_green_yellow,s=60
+end$
+
+$_blue
+1:0:0	|drum	|Dim:c=blue
+1:0:0	|front	|Dim:c=blue
+1:0:0	|amp		|Dim:c=bluegreen
+1:0:0	|swarm	|Dim:c=blue,s=70
+end$
+
+$_red
+1:0:0	|drum	|Dim:c=red
+1:0:0	|front	|Dim:c=red
+1:0:0	|amp		|Dim:c=red
+1:0:0	|swarm	|Dim:c=red,s=70
+end$
+
+$_green
+1:0:0	|drum	|Dim:c=green
+1:0:0	|front	|Dim:c=green
+1:0:0	|amp		|Dim:c=green
+1:0:0	|swarm	|Dim:c=green,s=70
+end$
+
+$_fire
+1:0:0	|drum	|Dim:c=fire
+1:0:0	|front	|Dim:c=fire
+end$
+
+$_magenta
+1:0:0	|drum	|Dim:c=magenta
+1:0:0	|front	|Dim:c=magenta
+end$
+
+$_swarmOnHot
+1:0:0	|swarm	|Dim:c=red_yellow,s=95
+end$
+
+$_swarmOnCold
+1:0:0	|swarm	|Dim:c=blue_green,s=95
+end$
+
+$_ampHot
+1:0:0	|amp		|Dim:c=yellow_red_green_green_red_yellow
+end$
+
+$_ampCold
+1:0:0	|amp		|Dim:c=bluegreen_green_blue_blue_green_bluegreen
+end$
+
+$_frontOff
+1:0:0	|front	|Dim:c=0
+end$
+
+$_drumOff
+1:0:0	|drum	|Dim:c=0
+end$
+
+1:0:0	|$_prayer

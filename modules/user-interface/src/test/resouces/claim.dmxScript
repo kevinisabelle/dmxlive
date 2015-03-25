@@ -1,0 +1,116 @@
+//Song Name:Claim Reality
+//BPM:96
+//Time Signature:4/4
+//Audio file path=C:/kevin/audio/projects/RememberingGames/01/Extracts/Mix64/Wave/03 - Claim Reality - Mix 64.wav
+
+$alterne
+1:0:0	|Par64_3		|Dim:red,100%
+1:0:0	|LEDBar_11	|Dim:yellow_red,100%
+1:0:1/2	|LEDBar_11	|Dim:red_yellow,100%
+1:1:0	|Par64_3		|Dim:yellow,100%
+1:1:0	|LEDBar_11	|Dim:yellow_red,100%
+1:1:1/2	|LEDBar_11	|Dim:red_yellow,100%
+1:2:0	|Par64_3		|Dim:red,100%
+1:2:0	|LEDBar_11	|Dim:yellow_red,100%
+1:2:1/2	|LEDBar_11	|Dim:red_yellow,100%
+1:3:0	|Par64_3		|Dim:yellow,100%
+1:3:0	|LEDBar_11	|Dim:yellow_red,100%
+1:3:1/2	|LEDBar_11	|Dim:red_yellow,100%
+end $alterne
+
+$intro
+1:0:0	|Par64_3:LEDBar_11		|Dim:black,0%
+5:0:0	|LEDBar_11	|Dim:red,100%
+6:0:0	|LEDBar_11	|Dim:red_orange,100%
+7:0:0	|LEDBar_11	|Dim:orange_red,100%
+8:0:0	|Par64_3		|Fade:red_yellow,10%_100%,1_0_0
+end $intro
+
+$intro2
+1:0:0	|Par64_3:LEDBar_11	|Strobe:white,100%,100%
+end $intro2
+
+$verse
+1:0:0	|$alterne			|1
+2:0:0	|$alterne			|1
+3:0:0	|Par64_3:LEDBar_11	|Strobe:white,100%,100%
+5:0:0	|$alterne			|1
+6:0:0	|$alterne			|1
+7:0:0	|Par64_3:LEDBar_11	|Strobe:white,100%,100%
+//7:0:0	|$passe1			|1
+//8:0:0	|Par64_3:LEDBar_11	|Dim:blue,100%
+end $verse
+
+$prechorus
+1:0:0	|LEDBar_11		|Dim:green_blue,100%
+1:0:0	|Par64_3			|Dim:blue,100%
+1:3:0	|LEDBar_11		|Dim:red,100%
+1:3:0	|Par64_3			|Dim:red,100%
+2:0:0	|LEDBar_11		|Dim:green_blue,100%
+2:0:0	|Par64_3			|Dim:blue,100%
+2:3:0	|LEDBar_11		|Dim:red,100%
+2:3:0	|Par64_3			|Dim:red,100%
+3:0:0	|LEDBar_11:Par64_3	|Dim:blue,100%
+3:0:1/4	|LEDBar_11:Par64_3	|Dim:green,100%
+3:0:3/4	|LEDBar_11:Par64_3	|Dim:blue,100%
+3:1:0	|LEDBar_11:Par64_3	|Dim:green,100%
+3:2:0	|LEDBar_11:Par64_3	|Dim:blue,100%
+3:2:1/4	|LEDBar_11:Par64_3	|Dim:green,100%
+3:2:3/4	|LEDBar_11:Par64_3	|Dim:blue,100%
+3:3:0	|LEDBar_11:Par64_3	|Dim:green,100%
+4:0:0	|LEDBar_11:Par64_3	|Dim:blue,100%
+4:0:1/4	|LEDBar_11:Par64_3	|Dim:green,100%
+4:0:3/4	|LEDBar_11:Par64_3	|Dim:blue,100%
+4:1:0	|LEDBar_11:Par64_3	|Dim:green,100%
+4:2:0	|LEDBar_11:Par64_3	|Strobe:green,100%,95%
+end $prechorus
+
+$prechorusMontee
+1:0:0	|LEDBar_11:Par64_3	|Dim:green,10%
+1:1:0	|LEDBar_11:Par64_3	|Dim:green,25%
+1:2:0	|LEDBar_11:Par64_3	|Dim:yellow,50%
+1:3:0	|LEDBar_11:Par64_3	|Dim:white,100%
+end $prechorusMontee
+
+$chorus
+1:0:0	|LEDBar_11		|Dim:orange_red_yellow,100%
+1:0:0	|Par64_3			|Dim:yellow,100%
+end $chorus
+
+$bridgeClean
+1:0:0	|LEDBar_11		|Dim:blue_magenta,100%
+1:0:0	|Par64_3			|Dim:blue,100%
+end $bridgeClean
+
+$bridgeSolo1
+1:0:0	|LEDBar_11		|Dim:red_magenta,100%
+1:0:0	|Par64_3			|Dim:magenta,100%
+end $bridgeSolo1
+
+$bridgeSolo2
+1:0:0	|LEDBar_11		|Dim:red_orange,100%
+1:0:0	|Par64_3			|Dim:red,100%
+end $bridgeSolo2
+
+// Program to play
+1:0:0	|$intro			|1
+9:0:0	|$intro2			|1
+13:0:0	|$verse			|1
+21:0:0	|$prechorus		|1
+25:0:0	|$prechorus		|1
+29:0:0	|$prechorusMontee	|1
+30:0:0	|$chorus			|1
+38:0:0	|$intro2			|1
+42:0:0	|$verse			|1
+50:0:0	|$prechorus		|1
+54:0:0	|$prechorus		|1
+58:0:0	|$prechorusMontee	|1
+59:0:0	|$chorus			|1
+67:0:0	|$bridgeClean		|1
+75:0:0	|$bridgeSolo1		|1
+79:0:0	|$bridgeSolo2		|1
+87:0:0	|$bridgeSolo1		|1
+91:0:0	|$bridgeSolo1		|1
+95:0:0	|$prechorusMontee	|1
+96:0:0	|$chorus			|1
+104:0:0	|$intro2			|1

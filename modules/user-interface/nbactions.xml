@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Assembly</actionName>
+            <displayName>Assembly</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+                <goal>assembly:assembly</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>run</actionName>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                
+                <exec.args>-Djava.library.path=lib -classpath %classpath com.kevinisabelle.dmxLive.DmxLive</exec.args>
+                <exec.executable>C:\Program Files (x86)\Java\jdk1.7.0_60\bin\java</exec.executable>
+                <exec.workingdir>.\target\DmxLive-1.0.3-DmxLive</exec.workingdir>
+            </properties>
+        </action>
+        <action>
+            <actionName>debug</actionName>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>-Xdebug -Xrunjdwp:transport=dt_socket,server=n,address=${jpda.address} -Djava.library.path=lib -classpath %classpath com.kevinisabelle.dmxLive.DmxLive</exec.args>
+                <exec.executable>C:\Program Files (x86)\Java\jdk1.7.0_60\bin\java</exec.executable>
+                <jpda.listen>true</jpda.listen>
+                <exec.workingdir>.\target\DmxLive-1.0.3-DmxLive</exec.workingdir>
+            </properties>
+        </action>
+        <action>
+            <actionName>profile</actionName>
+            <goals>
+                <goal>process-classes</goal>
+                <goal>org.codehaus.mojo:exec-maven-plugin:1.2.1:exec</goal>
+            </goals>
+            <properties>
+                <exec.args>${profiler.args} -Djava.library.path=lib -classpath %classpath com.kevinisabelle.dmxLive.DmxLive</exec.args>
+                <exec.executable>${profiler.java}</exec.executable>
+                <exec.workingdir>.\target\DmxLive-1.0.3-DmxLive</exec.workingdir>
+            </properties>
+        </action>
+        <action>
+            <actionName>test</actionName>
+            <goals>
+                <goal>test</goal>
+            </goals>
+            <properties>
+                <Env.JAVA_HOME>C:\Program Files (x86)\Java\jdk1.7.0_60</Env.JAVA_HOME>
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>test.single</actionName>
+            <goals>
+                <goal>test-compile</goal>
+                <goal>surefire:test</goal>
+            </goals>
+            <properties>
+                <java.library.path>./src/test/resouces/dll</java.library.path>
+                <test>${packageClassName}</test>
+                
+                
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-Sonar</actionName>
+            <displayName>Sonar</displayName>
+            <goals>
+                <goal>sonar:sonar</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>sonar</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>

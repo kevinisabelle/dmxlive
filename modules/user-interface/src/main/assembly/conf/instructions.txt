@@ -1,0 +1,76 @@
+--------- Sections -----------
+
+Creating sections:
+$<section name>
+[relative to section instructions set goes here]
+end $
+
+Referencing sections:
+1:0:0|$<section name>[(param1,param2)|<numberOfTime>,<section time>]
+
+----------- Fixtures -----------
+
+Calling a fixture is done like that:
+1:0:0|<fixturename>_<dmx channel> |<command name>:<params, comma separated>
+
+-- Par64 --
+
+- Dim
+	1) color
+	2) dimmer %
+- Strobe
+	1) color
+	2) dimmer %
+	3) speed %
+- Fade
+	1) color1_color2 (Ex: yellow_green)
+	2) dimmer %1_dimmer %2 (Ex: 0%_100%)
+	3) time to execute (Format: <measure>_<beat>_<subbeat>)
+- Mode
+	1) color
+	2) dimmer %
+	3) speed %
+	4) mode name: pulse, fadein, fadeout, cycle, cycle2
+- Blink
+	1) colors
+	2) dimmers %
+	3) time to execute (Format: <measure>_<beat>_<subbeat>)
+	4) blink speed (8 = eight, 4 = quarter, 2 = half, 1 = whole, 0.5 = two measures.
+	5) time on (1 = 100%, 0.5 = 50% etc.. of one beat)
+- Pulse
+	1) colors
+	2) dimmers %
+	3) time to execute (Format: <measure>_<beat>_<subbeat>)
+	4) pulse speed (8 = eight, 4 = quarter, 2 = half, 1 = whole, 0.5 = two measures.
+- Riff - Plays a series of dimmer colors using predefined "riff" of lighting.
+	1) colors
+	2) dimmers %
+	4) speed of each index (8 = eight, 4 = quarter, 2 = half, 1 = whole, 0.5 = two measures)
+	3) suites of indexes (colors and dimmer selected at the same time)
+		ex: red_blue,100%_80%,8,101011110011010
+		ex with 3 colors: red_blue_green,100%_100%_80%,8,1010111122110210
+-- LEDBar --
+
+- Dim
+	1) colors (_ separated, max 3 different)
+	2) dimmer %
+- Strobe
+	1) color
+	2) dimmer %
+	3) speed %
+- Fade
+	1) color1_color2_color3_color21_color22_color23 (Ex: yellow_green)
+	2) dimmer %1_dimmer %2 (Ex: 0%_100%)
+	3) time to execute (Format: <measure>_<beat>_<subbeat>
+- Mode
+	1) color (doesn't have any effect but is needed)
+	2) dimmer %
+	3) speed % (speed not implemented)
+	4) mode name: grad, mixed, mode1, mode2, mode3, mode4, mode5, mode6, mode7
+- Blink
+   See Par64 blink function. Same parameters.
+- Pulse
+   See Par64 pulse function. Same parameters.
+- Riff
+   See Par64 riff function. Same parameters.
+	

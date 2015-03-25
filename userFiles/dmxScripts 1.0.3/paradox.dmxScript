@@ -1,0 +1,207 @@
+//Song Name:Paradox * ...3 T
+//BPM:160
+//Time Signature:4/4
+//Audio file path=..\waveArr\Paradox-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+$[amp]=DerbyX_30
+$[swarm]=Swarm4_40
+
+$passe
+//1:0:0	|front	|Riff:c=red_white,u=16,r=1010 1110 1011 1100
+//1:0:0	|drum:amp	|Riff:c=blue_white,u=16,r=1010 1110 1011 1100
+
+1:0:0	|front	|Dim:c=0
+1:0:0	|amp		|Dim:c=0
+1:0:0	|drum	|Dim:c=red
+1:0:1/2	|drum		|Dim:c=black
+1:0:1/2	|amp		|Dim:c=red
+1:1:0	|amp	|Dim:c=0
+1:1:0	|front	|Dim:c=red
+1:2:0	|front		|Dim:c=black
+1:2:0	|amp		|Dim:c=red
+1:2:1/2	|amp	|Dim:c=0
+1:2:1/2	|front	|Fade:c=white_white,d=100_0,t=0:1:1/2
+
+
+end$
+
+$riffDerbyIntro
+1:0:0	|amp		|Dim:c=1_0_0_0_0_1
+1:1:0	|amp		|Dim:c=0_1_0_0_0_0
+1:1:1/2	|amp		|Dim:c=0_0_0_0_1_0
+1:2:0	|amp		|Dim:c=0_0_1_0_0_0
+1:2:1/2	|amp		|Dim:c=0_0_0_1_0_0
+1:3:0	|amp		|Dim:c=0_1_1_1_1_0
+
+2:1:0	|amp		|Dim:c=0_1_0_0_0_0
+2:1:1/2	|amp		|Dim:c=0_0_0_0_1_0
+2:2:0	|amp		|Dim:c=0_0_1_1_0_0
+
+3:0:0	|amp		|Dim:c=1_0_0_0_0_0
+3:1:1/2	|amp		|Dim:c=0_0_0_1_0_0
+3:2:1/2	|amp		|Dim:c=0_0_1_0_0_0
+3:3:0	|amp		|Dim:c=0_1_0_0_1_0
+
+4:0:1/2	|amp		|Dim:c=1_0_0_0_0_0
+4:1:0	|amp		|Dim:c=0_1_0_0_0_0
+4:1:1/2	|amp		|Dim:c=0_0_1_0_0_0
+4:2:0	|amp		|Dim:c=0_0_0_1_0_0
+4:2:1/2	|amp		|Dim:c=0_0_0_0_1_0
+4:3:0	|amp		|Dim:c=0_0_1_0_0_0
+4:3:1/2	|amp		|Dim:c=0_1_0_0_0_0
+
+5:0:0	|amp		|Dim:c=1_0_1_1_0_1
+5:1:1/2	|amp		|Dim:c=0_1_0_0_1_0
+
+5:3:0	|amp		|Dim:c=0_0_1_1_0_0
+6:0:0	|amp		|Dim:c=1_0_0_0_0_1
+
+6:2:0	|amp		|Dim:c=1_1_0_0_1_1
+7:0:0	|amp		|Dim:c=0_1_0_0_1_0
+7:1:1/2	|amp		|Dim:c=0_0_1_1_0_0
+7:3:0	|amp		|Dim:c=1_1_0_0_1_1
+end$
+
+$intro
+1:0:0	|$riffDerbyIntro
+1:0:0	|front	|Blink:c=red_orange,t=2:0:0,u=2,o=1
+1:0:0	|drum	|Blink:c=orange_red,t=2:0:0,u=2,o=1
+3:0:0	|front:drum	|Fade:c=white_white,d=100_0,t=0:2:0
+3:2:0	|front	|Blink:c=red_orange,t=1:2:0,u=2,o=1
+3:2:0	|drum	|Blink:c=orange_red,t=1:2:0,u=2,o=1
+
+5:0:0	|front:drum	|Fade:c=white_white,d=100_0,t=0:2:0
+5:2:0	|front	|Blink:c=red_orange,t=1:2:0,u=2,o=1
+5:2:0	|drum	|Blink:c=orange_red,t=1:2:0,u=2,o=1
+
+7:0:0	|front:drum	|Fade:c=white_white,d=100_0,t=0:2:0
+7:2:0	|front	|Blink:c=red_orange,t=0:1:0,u=2,o=1
+7:2:0	|drum	|Blink:c=orange_red,t=0:1:0,u=2,o=1
+//1:0:0	|drum	|Blink:c=red_orange,t=7:0:0,u=2,o=1
+8:0:0	|$passe
+end$
+
+$derbyVerse
+1:0:0	|amp		|Dim:c=%1_0_0_0_0_%1
+1:1:1/2	|amp		|Dim:c=0_0_%1_%1_0_0
+1:2:1/2	|amp		|Dim:c=0_%1_0_0_%1_0
+1:3:0	|amp		|Dim:c=%1_0_0_0_0_%1
+2:0:0	|amp		|Dim:c=0
+
+3:0:0	|amp		|Dim:c=%1_0_0_0_0_%1
+3:1:1/2	|amp		|Dim:c=0_0_%1_%1_0_0
+3:2:1/2	|amp		|Dim:c=0_%1_0_0_%1_0
+3:3:0	|amp		|Dim:c=%1_0_0_0_0_%1
+4:0:0	|amp		|Dim:c=0
+end$
+
+$verse
+1:0:0	|amp		|Dim:c=0
+1:0:0	|front:drum	|Fade:c=magenta_magenta,d=0_100,t=0:3:0
+5:0:0	|front:drum	|Fade:c=magenta_blue
+
+9:0:0	|$derbyVerse(3)
+9:0:0	|front:drum	|Fade:c=white_white,d=100_0
+10:0:0	|front:drum	|Fade:c=0_magenta
+11:0:0	|front:drum	|Fade:c=white_white,d=100_0
+12:0:0	|front:drum	|Fade:c=0_magenta
+
+13:0:0	|$derbyVerse(1)
+13:0:0	|front:drum	|Fade:c=white_white,d=100_0
+14:0:0	|front:drum	|Fade:c=0_blue
+15:0:0	|front:drum	|Fade:c=white_white,d=100_0
+16:0:0	|front:drum	|Fade:c=0_blue
+
+17:0:0	|front:drum	|Pulse:c=yellow_yellow,d=100_30,u=1,t=4:0:0
+
+21:0:0	|$derbyVerse(1)
+21:0:0	|front:drum	|Fade:c=white_white,d=100_0
+22:0:0	|front:drum	|Fade:c=0_blue
+23:0:0	|front:drum	|Fade:c=white_white,d=100_0
+24:0:0	|front:drum	|Fade:c=0_blue
+25:0:0	|front:drum	|Pulse:c=yellow_yellow,d=100_30,u=1,t=4:0:0
+29:0:0	|front:drum	|Pulse:c=orange_orange,d=100_30,u=1,t=1:0:0
+30:0:0	|$passe
+
+end$
+
+$punchChorus
+1:0:0	|drum:front	|Fade:c=%1_%1,d=100_20,t=0:1:1/2
+1:1:1/2	|drum:front	|Fade:c=%1_%1,d=100_20,t=0:2:1/2
+end$
+
+$punchChorus2
+1:0:0	|drum:front	|Fade:c=%1_%1,d=100_20,t=0:1:1/2
+1:1:1/2	|drum:front	|Fade:c=%1_%1,d=100_20,t=0:1:1/2
+1:2:1/2	|drum:front	|Fade:c=%2_%2,d=100_20,t=0:0:1/2
+1:3:0	|drum:front	|Fade:c=%2_%2,d=100_10,t=0:1:0
+end$
+
+$chorus
+1:0:0	|$punchChorus(white)
+2:0:0	|$punchChorus(yellow)
+3:0:0	|$punchChorus(orange)
+4:0:0	|$punchChorus2(white,red)
+5:0:0	|$punchChorus(white)
+6:0:0	|$punchChorus(yellow)
+7:0:0	|$punchChorus(orange)
+8:0:0	|$punchChorus(white)
+9:0:0	|drum:front	|Pulse:c=yellow_yellow,d=100_50,t=1:0:0,u=2
+10:0:0	|$passe
+end$
+
+$derbyBridge
+1:0:0	|amp		|Dim:c=1_1_0_0_0_0
+1:0:1/2	|amp		|Dim:c=0_0_1_1_0_0
+1:1:0	|amp		|Dim:c=0_0_0_0_1_1
+1:1:1/2	|amp		|Dim:c=0_0_1_1_0_0
+
+1:2:1/2	|amp		|Dim:c=0_1_0_0_1_0
+
+1:3:1/2	|amp		|Dim:c=1_1_1_1_1_1
+
+2:0:1/2	|amp		|Dim:c=1_0_0_0_0_0
+2:1:0	|amp		|Dim:c=0_1_0_0_0_0
+2:1:1/2	|amp		|Dim:c=0_0_1_0_0_0
+2:2:0	|amp		|Dim:c=0_0_0_1_0_0
+2:2:1/2	|amp		|Dim:c=0_0_0_0_1_0
+2:3:0	|amp		|Dim:c=0_0_0_0_0_1
+2:3:1/2	|amp		|Dim:c=0_0_0_0_1_0
+end$
+
+$bridge
+1:0:0	|$derbyBridge	|8,2:0:0
+1:0:0	|drum:front	|Blink:c=white_red,t=8:0:0,u=4,o=0.2
+9:0:0	|drum:front	|Pulse:c=red_red,d=100_20,t=8:0:0,u=2,o=0.2
+end$
+
+$solo
+1:0:0	|$verse
+1:0:0	|amp		|Dim:c=0
+1:0:0	|swarm	|Dim:c=red_blue,s=90
+
+17:0:0	|swarm	|Dim:c=red_yellow,s=90
+21:0:0	|swarm	|Dim:c=red_blue,s=90
+25:0:0	|swarm	|Dim:c=red_yellow,s=100
+end$
+
+1:0:0	|front:drum:amp:swarm	|Dim:c=black,s=50
+2:3:0	|front:drum	|Fade:c=white_white,d=100_0,t=0:1:0
+3:0:0	|$intro
+11:0:0	|$verse
+41:0:0	|$chorus
+51:0:0	|$intro
+59:0:0	|$verse
+89:0:0	|$chorus
+99:0:0	|$bridge
+115:0:0	|$intro
+123:0:0	|$chorus
+133:0:0	|$solo
+163:0:0	|swarm	|Dim:c=0,s=50
+163:0:0	|$chorus
+173:0:0	|drum:amp	|Dim:c=red
+173:0:0	|front	|Fade:c=red_blue,t=3:0:0
+//178:0:0	|amp:front:drum |Dim:c=0

@@ -1,0 +1,84 @@
+//Song Name:Under Your Own Sacrifice
+//BPM:125
+//Time Signature:4/4
+//Audio file path=waveArr\Under-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+
+$intro
+1:0:0	|drum	|Dim:navy,100%
+1:0:0	|front	|Fade:navy_bluegreen,100%_100%,4_0_0
+5:0:0	|front	|Fade:green_navy,100%_100%,4_0_0
+9:0:0	|front	|Fade:navy_magenta,100%_100%,1_0_0
+9:0:0	|drum	|Dim:purple,100%
+15:0:0	|drum:front	|Fade:magenta_blue,100%_100%,1_0_0
+16:0:0	|drum:front	|Fade:magenta_blue,100%_100%,0_3_0
+16:3:0	|drum:front	|Dim:white,100%
+end $intro
+
+$mainRiff
+1:0:0	|drum	|Dim:aqua,100%
+1:0:0	|front	|Blink:white_blue,100%_100%,4_0_0,1,0.25
+end $mainRiff
+
+$finVerse
+1:0:0	|drum:front	|Fade:green_red,100%_100%,2_0_0
+3:0:0	|drum:front	|Fade:orange_red,100%_100%,1_0_0
+4:0:0	|drum:front	|Fade:orange_red,100%_100%,1_0_0
+end $finVerse
+
+$verse
+1:0:0	|drum		|Dim:magenta,100%
+1:0:0	|front		|Blink:magenta_blue,100%_100%,6_0_0,1,0.25
+7:0:0	|drum:front	|Fade:green_red,100%_100%,2_0_0
+9:0:0	|drum		|Blink:yellow_red,100%_100%,6_0_0,1,0.25
+9:0:0	|front		|Blink:yellow_orange,100%_100%,6_0_0,1,0.25
+15:0:0	|$finVerse	|1
+end $verse
+
+$chorus
+1:0:0	|drum:front	|Dim:white,100%
+2:2:0	|drum:front	|Fade:white_green,100%_100%,0_2_0
+4:2:0	|drum:front	|Fade:green_yellow,100%_100%,0_2_0
+6:2:0	|drum:front	|Fade:yellow_red,100%_100%,0_2_0
+9:0:0	|drum:front	|Fade:magenta_blue,100%_100%,1_0_0
+10:0:0	|drum:front	|Fade:magenta_blue,100%_100%,0_2_0
+10:2:0	|drum:front	|Fade:white_white,100%_20%,0_2_0
+end $chorus
+
+$bridge
+1:0:0	|drum		|Dim:purple,100%
+1:0:0	|front		|Dim:green,100%
+5:0:0	|front		|Blink:red_purple,100%_100%,8_0_0,2,0.2
+13:0:0	|drum		|Mode:purple,100%,90%,mode6
+13:0:0	|front		|Blink:white_magenta,100%_100%,8_0_0,2,0.2
+21:0:0	|$finVerse	|1
+end $bridge
+
+$finale
+1:0:0	|drum	|Dim:navy,100%
+1:0:0	|front	|Fade:navy_bluegreen,100%_100%,2_0_0
+3:0:0	|front	|Fade:green_navy,100%_100%,2_0_0
+3:0:0	|drum	|Fade:navy_green,100%_100%,2_0_0
+5:0:0	|front	|Fade:green_navy,100%_100%,2_0_0
+5:0:0	|drum	|Fade:navy_green,100%_100%,2_0_0
+7:0:0	|front	|Fade:green_navy,100%_100%,2_0_0
+7:0:0	|drum	|Fade:navy_green,100%_100%,2_0_0
+9:0:0	|drum:front	|Fade:magenta_blue,100%_100%,1_0_0
+10:0:0	|drum:front	|Fade:magenta_blue,100%_100%,1_0_0
+11:0:0	|drum:front	|Fade:orange_orange,100%_5%,4_0_0
+end $finale
+
+1:0:0	|front:drum	|Dim:white,5%
+3:0:0	|$intro		|1
+19:0:0	|$mainRiff	|1
+23:0:0	|$verse		|1
+41:0:0	|$chorus		|1
+51:0:0	|$mainRiff	|1
+55:0:0	|$verse		|1
+73:0:0	|$chorus		|1
+83:0:0	|$bridge		|1
+107:0:0	|$chorus		|1
+117:0:0	|$finale		|1

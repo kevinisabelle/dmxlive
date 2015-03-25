@@ -1,0 +1,28 @@
+$verse
+1:0:0|Par64|Yellow|On_95%|
+4:0:0|Par64|White|Strobe_100%|
+4:0:0|LEDBar|White|Strobe_100%|
+8:0:0|LEDBar|Yellow:Black:Red|On_100%|
+9:0:16|Par64|Red:Blue|Fade_100%:50%_2:0:0|
+12:0:0|LEDBar|Yellow:Red:Yellow|On_100%|
+14:0:0|LEDBar||StobeOn|
+15:0:8|$passe|
+15:0:0|LEDBar||StrobeOff|
+17:0:0|LEDBar||Mode_5|
+20:0:0|LEDBar|White|On_100%|
+22:0:0|LEDBar
+end $verse
+
+$passe
+1:0:0|LEDBar|Yellow:Red|Riff:0_1,2_2,6_1,8_2|
+1:0:0|Par64|Yellow:Red|Riff:0_1,2_2,6_1,8_2|
+end $passe
+
+$chorus
+1:0:0|Par64|Red|On_50%|
+end $chorus
+
+play $verse
+play $chorus
+play $verse
+play $chorus

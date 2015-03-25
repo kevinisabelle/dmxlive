@@ -1,0 +1,165 @@
+//Song Name:Eye Contact * 4/4 BC HS HB HS...
+//BPM:150
+//Time Signature:4/4
+//Audio file path=..\waveArr\Eye-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+$[amp]=DerbyX_30
+$[swarm]=Swarm4_40
+
+$intro
+1:0:0	|drum	|Fade:c=blue_blue_blue_red,t=2:0:0
+1:0:0	|front	|Pulse:c=blue_blue,d=100_30,t=8:0:0,u=2
+1:0:0	|amp		|Dim:c=0_0_0_0_1_1
+
+3:0:0	|drum	|Fade:c=blue_blue_blue_red,t=2:0:0
+3:0:0	|amp		|Dim:c=0_0_1_1_0_0
+
+5:0:0	|drum	|Fade:c=blue_blue_blue_red,t=2:0:0
+5:0:0	|amp		|Dim:c=1_1_0_0_0_0
+7:0:0	|drum	|Fade:c=blue_blue_blue_red,t=2:0:0
+7:0:0	|amp		|Dim:c=1_1_1_1_1_1
+
+9:0:0	|amp		|Strobe:c=blue,s=95
+9:0:0	|front	|Pulse:c=red_red,d=100_30,t=2:0:0,u=2
+9:0:0	|drum	|Fade:c=blue_red,d=100_100,t=1:0:0,u=2
+end$
+
+$riffDrumVerse
+1:0:0	|drum	|Fade:c=red_red_blue_red_blue_red,t=0:1:0
+1:1:0	|drum	|Fade:c=red_blue_red_blue_red_red,t=0:1:0
+1:2:0	|drum	|Fade:c=blue_red_red_red_blue_red,t=0:1:0
+1:3:0	|drum	|Fade:c=red_blue_red_red_red_blue,t=0:1:0
+end$
+
+$riffAmpVerse
+1:0:0	|amp		|Dim:c=0_0_0_0_0_blue
+1:1:0	|amp		|Dim:c=blue_0_0_0_0_0
+1:2:0	|amp		|Dim:c=0_0_0_0_blue_0
+1:3:0	|amp		|Dim:c=0_blue_0_0_0_0
+2:0:0	|amp		|Dim:c=0_0_0_blue_0_0
+2:1:0	|amp		|Dim:c=0_0_blue_0_0_0
+2:2:0	|amp		|Dim:c=0_0_blue_blue_0_0
+2:3:0	|amp		|Dim:c=0_blue_0_0_blue_0
+end$
+
+$verse
+1:0:0	|amp		|Dim:c=0
+1:0:0	|front	|Dim:c=magenta
+1:0:0	|drum	|Dim:c=magenta
+9:0:0	|$riffDrumVerse	|8,1:0:0
+9:0:0	|$riffAmpVerse		|4,2:0:0
+9:0:0	|front	|Dim:c=red
+end$
+
+$prechorus
+1:0:0	|amp		|Dim:c=blue
+2:0:0	|amp		|Dim:c=0
+1:0:0	|drum	|Fade:c=blue_red,t=2:0:0
+1:0:0	|front	|Fade:c=blue_red,t=2:0:0
+end$
+
+$chorus
+1:0:0	|drum	|Fade:c=white_blue,d=100_50,t=1:0:0
+1:0:0	|front	|Fade:c=white_red,d=100_50,t=1:0:0
+
+2:0:0	|drum	|Fade:c=red_blue,t=0:2:0
+2:0:0	|front	|Fade:c=red_blue,t=0:2:0
+2:2:0	|drum	|Fade:c=blue_red,t=0:2:0
+2:2:0	|front	|Fade:c=blue_red,t=0:2:0
+
+3:0:0	|drum	|Dim:c=magenta
+3:0:0	|front	|Dim:c=magenta
+4:0:0	|drum	|Fade:c=magenta_blue,t=0:2:0
+4:0:0	|front	|Fade:c=red_blue,t=0:2:0
+4:2:0	|drum	|Fade:c=blue_red,t=0:2:0
+4:2:0	|front	|Fade:c=blue_red,t=0:2:0
+end$
+
+$riffAmpIntro2
+1:0:0	|amp		|Dim:c=0_0_0_0_0_blue
+1:0:1/2	|amp		|Dim:c=blue_0_0_0_0_0
+1:1:0	|amp		|Dim:c=0_blue_0_0_0_0
+1:1:1/2	|amp		|Dim:c=0_0_0_0_blue_0
+1:2:0	|amp		|Dim:c=0_0_blue_0_0_0
+1:2:1/2	|amp		|Dim:c=0_0_0_0_0_blue
+1:3:0	|amp		|Dim:c=0_0_0_blue_0_0
+1:3:1/2	|amp		|Dim:c=0_blue_0_0_0_0
+end$
+
+$intro2
+1:0:0	|drum	|Fade:c=red_red_red_red,t=2:0:0
+1:0:0	|front	|Pulse:c=blue_blue,d=100_30,t=8:0:0,u=2
+1:0:0	|$riffAmpIntro2	|8,1:0:0
+end$
+
+$finIntro2
+1:0:0	|amp		|Strobe:c=blue,s=95
+1:0:0	|front	|Pulse:c=red_red,d=100_30,t=2:0:0,u=2
+1:0:0	|drum	|Fade:c=blue_red,d=100_100,t=1:0:0,u=2
+end$
+
+$bridge0
+1:0:0	|amp		|Dim:c=0
+1:0:0	|drum	|Fade:c=white_black,t=0:2:0
+1:0:0	|front	|Fade:c=white_black,t=0:2:0
+3:0:0	|drum	|Fade:c=white_black,t=0:2:0
+3:0:0	|front	|Fade:c=white_black,t=0:2:0
+4:0:1/2	|drum:front	|Strobe:c=white,s=90
+end$
+
+$bridge1
+1:0:0	|drum:front	|Blink:c=white_blue,u=4,t=4:0:0,o=0.2
+end$
+
+$bridge2
+1:0:0	|drum:front	|Fade:c=magenta_blue,t=3:0:0
+end$
+
+$bridge3
+1:0:0	|drum:front	|Fade:c=red_red,d=100_20,t=1:0:0
+2:0:0	|drum:front	|Fade:c=magenta_red,t=0:2:0
+3:0:0	|drum:front	|Fade:c=red_magenta,t=0:2:0
+4:0:0	|drum:front	|Fade:c=magenta_red,t=0:2:0
+5:0:0	|drum:front	|Fade:c=red_magenta,t=0:2:0
+end$
+
+$derbySoloBass
+1:0:0	|amp		|Dim:c=0_blue_0_0_0_0
+1:1:0	|amp		|Dim:c=0_0_0_0_blue_0
+end$
+
+$soloBass
+1:0:0	|front	|Dim:c=0
+1:0:0	|drum	|Strobe:c=blue,s=99,t=8:0:0
+1:0:0	|$derbySoloBass	|8,0:2:0
+5:0:0	|$riffAmpIntro2	|4,1:0:0
+end$
+
+1:0:0	|amp:swarm	|Dim:c=0,s=50
+1:0:0	|drum	|Dim:c=black
+1:0:0	|front	|Dim:c=black
+3:0:0	|$intro
+13:0:0	|$verse
+29:0:0	|$prechorus
+31:0:0	|$chorus	|4,4:0:0
+47:0:0	|$intro2
+55:0:0	|$finIntro2
+57:0:0	|$verse
+73:0:0	|$prechorus
+75:0:0	|$chorus	|4,4:0:0
+91:0:0	|$bridge0
+95:0:0	|$bridge1
+99:0:0	|$bridge2
+102:0:0	|$bridge1
+106:0:0	|$bridge2
+109:0:0	|$bridge3
+114:0:0	|$soloBass
+122:0:0	|$prechorus
+124:0:0	|$chorus	|4,4:0:0
+140:0:0	|$intro2
+148:0:0	|amp:swarm	|Dim:c=0,s=50
+148:0:0	|drum:front	|Fade:c=white_black,t=2:0:0
+152:0:0	|front	|Fade:c=orange_orange,d=0_50,t=1:0:0

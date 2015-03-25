@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.kevinisabelle</groupId>
+	<artifactId>DmxLive-Parent</artifactId>
+	<version>2.0.0</version>
+	<packaging>pom</packaging>
+	<name>DmxLive (Root)</name>
+	<modules>
+		<module>modules/client-library</module>
+		<module>modules/commons-core</module>
+		<module>modules/user-interface</module>
+		<module>modules/fixture-Lumi-LED-PAR64</module>
+		<module>modules/fixture-Lumi-LED-MKII</module>
+		<module>modules/fixture-Chauvet-FX-DerbyX</module>
+		<module>modules/fixture-Chauvet-FX-Swarm4</module>
+		<module>modules/driver-opendmx</module>
+	</modules>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>

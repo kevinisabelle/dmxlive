@@ -1,0 +1,143 @@
+//Song Name:Days Don't Exist Anymore
+//BPM:140
+//Time Signature:4/4
+//Audio file path=waveArr\Days-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+
+$intro
+1:0:0	|front:drum	|Fade:yellow_orange,20%_100%,1_0_0
+2:0:0	|front:drum	|Fade:orange_red,10%_100%,1_0_0
+3:0:0	|front:drum	|Fade:yellow_orange,20%_100%,1_0_0
+4:0:0	|front:drum	|Fade:orange_red,10%_100%,1_0_0
+end $intro
+
+$pattern1
+1:0:0	|front	|Dim:red,100%
+1:0:0	|drum	|Dim:green_orange,100%
+2:0:0	|front	|Dim:orange,100%
+2:0:0	|drum	|Dim:red,100%
+2:2:0	|front	|Dim:red,100%
+2:2:0	|drum	|Dim:orange,100%
+end $pattern1
+
+$riffDisto
+1:0:0	|$pattern1	|1
+3:0:0	|$pattern1	|1
+5:0:0	|$pattern1	|1
+7:0:0	|$pattern1	|1
+end $riffDisto
+
+$verse
+1:0:0	|front	|Fade:yellow_orange,20%_100%,3_0_0
+1:0:0	|drum	|Fade:orange_red,10%_100%,3_0_0
+
+5:0:0	|front	|Fade:orange_orange,20%_100%,3_0_0
+5:0:0	|drum	|Fade:orange_red,10%_100%,3_0_0
+
+9:0:0	|front	|Fade:orange_blue,100%_100%,3_0_0
+9:0:0	|drum	|Fade:red_orange,100%_100%,3_0_0
+
+13:0:0	|front	|Fade:orange_blue,100%_100%,3_0_0
+13:0:0	|drum	|Fade:red_orange,100%_100%,3_0_0
+
+16:2:0	|front:drum	|Fade:orange_red,100%_100%,0_2_0
+end $verse
+
+$chorusPattern1
+1:0:0	|drum	|Dim:white,100%
+2:0:0	|drum	|Dim:red,100%
+2:0:1/2	|drum	|Dim:white,100%
+2:1:1/2	|drum	|Dim:red,100%
+2:2:0	|drum	|Dim:white,100%
+2:2:3/4	|drum	|Dim:red,100%
+2:3:0	|drum:front	|Fade:white_black,100%_100%,0_1_0
+
+1:0:0	|front	|Dim:white,100%
+2:0:0	|front	|Dim:white,100%
+2:0:1/2	|front	|Dim:red,100%
+2:1:1/2	|front	|Dim:white,100%
+2:2:0	|front	|Dim:red,100%
+2:2:3/4	|front	|Dim:white,100%
+
+end $chorusPattern1
+
+$chorusPattern2
+1:0:0	|drum	|Dim:orange,100%
+2:0:0	|drum	|Dim:red,100%
+2:0:1/2	|drum	|Dim:orange,100%
+2:1:1/2	|drum	|Dim:red,100%
+2:2:0	|drum	|Dim:orange,100%
+2:2:3/4	|drum	|Dim:red,100%
+2:3:0	|drum:front	|Fade:orange_black,100%_100%,0_1_0
+
+1:0:0	|front	|Dim:orange,100%
+2:0:0	|front	|Dim:orange,100%
+2:0:1/2	|front	|Dim:red,100%
+2:1:1/2	|front	|Dim:orange,100%
+2:2:0	|front	|Dim:red,100%
+2:2:3/4	|front	|Dim:orange,100%
+
+end $chorusPattern2
+
+$chorus
+1:0:0	|$chorusPattern1	|1
+3:0:0	|$chorusPattern1	|1
+5:0:0	|$chorusPattern1	|1
+7:0:0	|$chorusPattern1	|1
+
+9:0:0	|$chorusPattern2	|1
+11:0:0	|$chorusPattern2	|1
+13:0:0	|$chorusPattern2	|1
+15:0:0	|$chorusPattern2	|1
+end $chorus
+
+$bridgePattern1
+1:0:0	|front	|Fade:orange_red,100%_100%,0_1_1/2
+1:0:0	|drum	|Riff:red_white,20%_100%,32,1111 1111 0000 1010 1000 0000 0000 1100 1010 0010 1000 1010 1000
+2:2:0	|drum	|Fade:white_red,100%_50%,0_2_0
+end $bridgePattern1
+
+$bridgePattern2
+1:0:0	|front:drum	|Fade:white_red,100%_100%,0_1_1/2
+1:1:1/2	|drum	|Riff:red_white,20%_100%,     32, 1010 1000 0000 0000 1000 1010 0010 1100 1010 1100
+1:1:1/2	|front	|Riff:orange_yellow,100%_100%,32, 1010 1000 0000 0000 1000 1010 0010 1100 1010 1100
+2:2:0	|drum	|Fade:white_red,100%_50%,0_2_0
+end $bridgePattern2
+
+$bridge
+1:0:0	|front:drum	|Dim:orange,5%
+3:0:0	|$bridgePattern1	|1
+5:0:0	|$bridgePattern1	|1
+7:0:0	|$bridgePattern1	|1
+9:0:0	|$bridgePattern1	|1
+
+11:0:0	|$bridgePattern2	|1
+13:0:0	|$bridgePattern2	|1
+15:0:0	|$bridgePattern2	|1
+17:0:0	|$bridgePattern2	|1
+end $bridge
+
+1:0:0	|front:drum	|Dim:white,10%
+3:0:0	|front:drum	|Fade:white_orange,20%_100%,4_0_0
+7:0:0	|$intro	|1
+11:0:0	|$intro	|1
+15:0:0	|$intro	|1
+19:0:0 	|$riffDisto |1
+27:0:0	|$verse	|1
+43:0:0	|$chorus	|1
+59:0:0	|$riffDisto	|1
+67:0:0	|$verse	|1
+83:0:0	|$chorus	|1
+99:0:0	|$bridge	|1
+117:0:0	|front:drum	|Fade:yellow_orange,20%_100%,1_0_0
+118:0:0	|front:drum	|Fade:orange_red,10%_100%,1_0_0
+119:0:0	|front:drum	|Fade:yellow_orange,20%_100%,1_0_0
+120:0:0	|front:drum	|Fade:orange_blue,10%_100%,0_2_0
+120:2:0	|front:drum	|Fade:blue_red,100%_100%,0_2_0
+121:0:0	|$chorus	|1
+137:0:0	|$bridgePattern1	|1
+139:0:0	|$bridgePattern1	|1
+141:0:0	|front:drum	|Fade:magenta_orange,100%_20%,4_0_0
