@@ -1,0 +1,80 @@
+//Song Name:Paradox
+//BPM:160
+//Time Signature:4/4
+//Audio file path=..\..\..\..\..\Users\kevin\Desktop\DmxLive 1.0.2\userFiles\waveArr\Paradox-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+$[amp]=DerbyX_30
+$[swarm]=Swarm4_40
+
+$passe
+1:0:0	|front	|Riff:c=red_white,u=16,r=1010 1110 1011 1100
+1:0:0	|drum:amp	|Riff:c=blue_white,u=16,r=1010 1110 1011 1100
+end $
+
+$intro
+1:0:0	|front:amp	|Blink:c=green_yellow,t=7:0:0,u=2,o=1
+1:0:0	|drum	|Blink:c=red_orange,t=7:0:0,u=2,o=1
+8:0:0	|$passe
+end $
+
+$verse
+1:0:0	|front	|Fade:c=red_orange,t=2:0:0
+1:0:0	|drum	|Fade:c=blue_yellow,t=2:0:0
+5:0:0	|front	|Fade:c=orange_magenta,t=2:0:0
+5:0:0	|drum	|Fade:c=yellow_red,t=2:0:0
+
+9:0:0	|front	|Fade:c=red_orange,t=2:0:0
+9:0:0	|drum	|Fade:c=blue_yellow,t=2:0:0
+13:0:0	|front	|Fade:c=orange_magenta,t=2:0:0
+13:0:0	|drum	|Fade:c=yellow_red,t=2:0:0
+
+17:0:0	|front:amp	|Blink:c=magenta_blue,t=4:0:0,u=4,o=0.25
+17:0:0	|drum	|Blink:c=white_blue,t=4:0:0,u=4,o=0.25
+
+21:0:0	|front	|Pulse:c=blue_magenta,t=4:0:0,u=0.25
+21:0:0	|drum	|Fade:c=yellow_red,t=2:0:0
+
+25:0:0	|front:amp	|Blink:c=magenta_blue,t=4:0:0,u=4,o=0.25
+25:0:0	|drum	|Blink:c=white_blue,t=4:0:0,u=4,o=0.25
+
+29:0:0	|front	|Pulse:c=blue_magenta,t=1:0:0,u=0.25
+29:0:0	|drum	|Fade:c=yellow_red,t=1:0:0
+
+30:0:0	|$passe
+
+end $
+
+$chorus
+1:0:0	|drum:front:amp	|Blink:c=white_yellow,t=9:0:0,u=4,o=0.25
+10:0:0	|$passe
+end $chorus
+
+$bridge
+1:0:0	|drum:front:amp	|Blink:c=white_red,t=8:0:0,u=4,o=0.2
+end $
+
+$solo
+1:0:0	|$verse
+1:0:0	|amp		|Dim:c=0
+1:0:0	|swarm	|Dim:c=yellow_red,s=90
+end $
+
+1:0:0	|front:drum:amp:swarm	|Dim:c=black,s=50
+2:3:0	|front:drum	|Dim:c=white
+3:0:0	|$intro
+11:0:0	|$verse
+41:0:0	|$chorus
+51:0:0	|$intro
+59:0:0	|$verse
+89:0:0	|$chorus
+99:0:0	|$bridge
+115:0:0	|$intro
+123:0:0	|$chorus
+133:0:0	|$solo
+163:0:0	|swarm	|Dim:c=0,s=50
+163:0:0	|$chorus
+173:0:0	|drum:amp	|Dim:c=red
+173:0:0	|front	|Fade:c=green_blue,t=3:0:0
