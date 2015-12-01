@@ -4,7 +4,6 @@
  */
 package com.kevinisabelle.dmxlive.core.scripting;
 
-import com.kevinisabelle.dmxlive.core.model.CommandParameters;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 import com.kevinisabelle.dmxlive.api.output.dmx.Color;
 import static junit.framework.TestCase.assertEquals;

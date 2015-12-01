@@ -1,4 +1,4 @@
-package com.kevinisabelle.dmxlive.core.output;
+package com.kevinisabelle.dmxlive.core.engine.factory;
 
 import com.kevinisabelle.dmxlive.api.output.AbstractFixture;
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.kevinisabelle.dmxlive.core.model;
+package com.kevinisabelle.dmxlive.core.scripting;
 
 import com.kevinisabelle.dmxlive.api.output.dmx.Color;
 import com.kevinisabelle.dmxlive.music.TimeInfo;

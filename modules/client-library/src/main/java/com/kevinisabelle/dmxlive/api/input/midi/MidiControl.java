@@ -1,4 +1,4 @@
-package com.kevinisabelle.dmxlive.api.control.midi;
+package com.kevinisabelle.dmxlive.api.input.midi;
 
 import javax.sound.midi.MidiEvent;
 

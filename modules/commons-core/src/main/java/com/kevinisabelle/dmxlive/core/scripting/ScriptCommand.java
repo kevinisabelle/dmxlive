@@ -2,7 +2,7 @@ package com.kevinisabelle.dmxlive.core.scripting;
 
 import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxValue;
 
-import com.kevinisabelle.dmxlive.core.output.FixtureFactory;
+import com.kevinisabelle.dmxlive.core.engine.factory.FixtureFactory;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 import com.kevinisabelle.dmxlive.music.TimeSignature;
 

@@ -6,6 +6,8 @@
 
 package com.kevinisabelle.dmxlive.core.model;
 
+import com.kevinisabelle.dmxlive.core.scripting.CommandParameters;
+
 /**
  *
  * @author kisabelle
