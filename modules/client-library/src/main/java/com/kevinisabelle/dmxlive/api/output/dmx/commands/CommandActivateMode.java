@@ -6,4 +6,8 @@ package com.kevinisabelle.dmxlive.api.output.dmx.commands;
  */
 public abstract class CommandActivateMode extends AbstractDMXCommand {
 
+    public CommandActivateMode(String scriptItem) {
+        super(scriptItem);
+    }
+
 }

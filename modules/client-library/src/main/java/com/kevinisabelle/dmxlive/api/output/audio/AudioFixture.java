@@ -1,5 +1,7 @@
-package com.kevinisabelle.dmxlive.api.output.dmx;
+package com.kevinisabelle.dmxlive.api.output.audio;
 
+import com.kevinisabelle.dmxlive.api.driver.AudioDriver;
+import com.kevinisabelle.dmxlive.api.output.dmx.*;
 import com.kevinisabelle.dmxlive.api.driver.DmxDriver;
 import com.kevinisabelle.dmxlive.api.output.Fixture;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
@@ -13,7 +15,7 @@ import com.kevinisabelle.dmxlive.api.output.dmx.commands.AbstractDMXCommand;
  *
  * @author kevin
  */
-public abstract class DMXFixture extends Fixture<DmxDriver> {
+public abstract class AudioFixture extends Fixture<AudioDriver> {
 
   private int channel;
 
@@ -33,12 +35,11 @@ public abstract class DMXFixture extends Fixture<DmxDriver> {
 
   public static final String OP_POSITION = "Position";
 
-  public DMXFixture(DmxDriver output) {
+  public AudioFixture(AudioDriver output) {
     super(output);
   }
 
-  public abstract List<TimedDmxEvent> convertToDmx(TimeInfo startTime, TimeSignature signature, int bpm, String params);
-
+  
   public abstract List<AbstractDMXCommand> getSupportedCommmands();
 
   /**

@@ -6,15 +6,14 @@
 
 package com.kevinisabelle.dmxlive.api.output.dmx.commands;
 
-import java.util.List;
-
-import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
-import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxValue;
-
 /**
  *
  * @author kisabelle
  */
 public abstract class CommandBlink extends AbstractDMXCommand {
+
+    public CommandBlink(String scriptItem) {
+        super(scriptItem);
+    }
 
 }

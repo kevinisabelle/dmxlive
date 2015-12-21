@@ -46,7 +46,7 @@ public class TimeHelper {
     double measureBeats = timeInfo.getMeasure() * signature.getNumberOfBeats();
 
     double totalBeats = beatFraction + leftOverBeats + measureBeats;
-    double beatsInQuaters = totalBeats * (4.0 / Double.valueOf(signature.getBeatUnit()));
+    double beatsInQuaters = totalBeats * (4.0 / (double) signature.getBeatUnit());
 
     return beatsInQuaters;
 
@@ -64,7 +64,7 @@ public class TimeHelper {
   public static long getMilliseconds(TimeInfo timeInfo, TimeSignature signature, int bpm) {
 
     double quarters = getTimeInQuarters(timeInfo, signature);
-    return Double.valueOf(quarters * Double.valueOf(getQuarterMilliseconds(bpm))).longValue();
+    return Double.valueOf(quarters * getQuarterMilliseconds(bpm)).longValue();
 
   }
 

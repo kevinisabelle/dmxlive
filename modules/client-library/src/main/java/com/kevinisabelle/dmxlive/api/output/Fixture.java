@@ -7,11 +7,11 @@ import com.kevinisabelle.dmxlive.api.Driver;
  * @author Kevin
  * @param <T> the type of output this fixture is using.
  */
-public abstract class AbstractFixture<T extends Driver> {
+public abstract class Fixture<T extends Driver> {
     
     protected T output;
     
-    public AbstractFixture(T output){
+    public Fixture(T output){
         this.output = output;
     }
     

@@ -1,15 +1,14 @@
 package com.kevinisabelle.dmxlive.api.output.dmx;
 
-public class TimedDmxValue implements Comparable<TimedDmxValue> {
+import com.kevinisabelle.dmxlive.api.output.TimedEvent;
 
-  private long millis;
+public class TimedDmxEvent extends TimedEvent {
 
   private int channel;
-
   private int value;
 
-  public TimedDmxValue(long millis, int channel, int value) {
-    this.millis = millis;
+  public TimedDmxEvent(long millis, int channel, int value) {
+    super(millis);
     this.value = value;
     this.channel = channel;
   }
@@ -42,28 +41,8 @@ public class TimedDmxValue implements Comparable<TimedDmxValue> {
     this.value = value;
   }
 
-  /**
-   * @return the millis
-   */
-  public long getMillis() {
-    return millis;
-  }
-
-  /**
-   * @param millis the millis to set
-   */
-  public void setMillis(long millis) {
-    this.millis = millis;
-  }
-
   @Override
   public String toString() {
-    return millis + ": " + channel + "->" + value;
+    return "DMX: " + millis + ": " + channel + "->" + value;
   }
-
-  @Override
-  public int compareTo(TimedDmxValue o) {
-    return Long.valueOf(millis).compareTo(o.getMillis());
-  }
-
 }

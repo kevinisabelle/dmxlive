@@ -1,18 +1,21 @@
 package com.kevinisabelle.dmxlive.api.output.dmx.commands;
 
+import com.kevinisabelle.dmxlive.api.output.Command;
 import java.util.List;
 
 import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
-import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxValue;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 
 /**
  *
  * @author kisabelle
  */
-public abstract class AbstractDMXCommand {
+public abstract class AbstractDMXCommand extends Command {
 
-  protected TimeInfo startOffset;
+    public AbstractDMXCommand(String scriptItem) {
+        super(scriptItem);
+    }
 
-  public abstract List<TimedDmxValue> computeCommand(DMXFixture fixture);
+    public abstract List<TimedDmxEvent> computeCommand(DMXFixture fixture);
 }
