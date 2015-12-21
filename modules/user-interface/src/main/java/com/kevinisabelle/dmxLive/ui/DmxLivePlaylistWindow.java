@@ -3,7 +3,6 @@ package com.kevinisabelle.dmxLive.ui;
 import com.kevinisabelle.dmxlive.core.Constants;
 import com.kevinisabelle.dmxLive.DmxLive;
 import com.kevinisabelle.dmxLive.helper.ExportsManager;
-import com.kevinisabelle.dmxLive.helper.UIHelper;
 
 import com.kevinisabelle.dmxLive.ui.components.AppButtonsPanel;
 import com.kevinisabelle.dmxLive.ui.components.SongDisplay;

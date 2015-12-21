@@ -1,4 +1,4 @@
-package com.kevinisabelle.dmxLive.helper;
+package com.kevinisabelle.dmxLive.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;

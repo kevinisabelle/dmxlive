@@ -1,6 +1,7 @@
 package com.kevinisabelle.dmxLive.ui.components;
 
-import com.kevinisabelle.dmxlive.core.fixture.Color;
+
+import com.kevinisabelle.dmxlive.api.output.dmx.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.TextArea;

@@ -2,13 +2,13 @@ package com.kevinisabelle.dmxLive.ui;
 
 import com.kevinisabelle.dmxlive.core.Constants;
 import com.kevinisabelle.dmxLive.DmxLive;
-import com.kevinisabelle.dmxLive.helper.UIHelper;
 import com.kevinisabelle.dmxlive.core.scripting.Script;
-import com.kevinisabelle.dmxlive.core.music.Song;
-import com.kevinisabelle.dmxlive.core.music.TimeInfo;
-import com.kevinisabelle.dmxlive.core.music.TimeSignature;
-import com.kevinisabelle.dmxlive.dmxengine.processes.DmxRunnableObserver;
+
 import com.kevinisabelle.dmxLive.ui.components.AppButtonsPanel;
+import com.kevinisabelle.dmxlive.core.engine.processes.DmxRunnableObserver;
+import com.kevinisabelle.dmxlive.core.scripting.Song;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
+import com.kevinisabelle.dmxlive.music.TimeSignature;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -500,12 +500,12 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 			updateSongFromInterface();
 
 			logMessage("Saving into file: " + currentSong.getFilename(), 0);
-			currentSong.save(new File(currentSong.getFilename()));
+			//currentSong.save(new File(currentSong.getFilename()));
 			lastSaveDate = new Date();
 
 			updateFilelabel("Saved");
 
-		} catch (FileNotFoundException e) {
+		} catch (Exception e) {
 			logger.error("Cannot save file: " + e.getMessage(), e);
 			JOptionPane.showMessageDialog(this, "ERROR SAVING FILE: " + e.toString());
 		}

@@ -5,7 +5,6 @@ import com.kevinisabelle.dmxlive.core.Constants;
 
 import com.kevinisabelle.dmxLive.ui.components.ConfigurationWindow;
 import com.kevinisabelle.dmxLive.ui.DmxLiveEditorWindow;
-import com.kevinisabelle.dmxLive.ui.DmxLiveFunctionsTesterWindow;
 import com.kevinisabelle.dmxLive.ui.DmxLivePlaylistWindow;
 import com.kevinisabelle.dmxLive.ui.components.HelpDialog;
 import com.kevinisabelle.dmxlive.api.driver.DmxDriver;
@@ -113,8 +112,6 @@ public class DmxLive {
 
 		if (windowToShow.equals("editor")) {
 			showEditorWindow();
-		} else if (windowToShow.equals("tester")) {
-			showTesterWindow();
 		} else if (windowToShow.equals("playlist")) {
 			showPlaylistWindow();
 		}
@@ -156,17 +153,6 @@ public class DmxLive {
 
 		frame.setSize(1300, 690);
 		frame.setResizable(false);
-		frame.setVisible(true);
-
-		currentFrame = frame;
-		centerCurrentFrame(currentFrame);
-	}
-
-	private static void showTesterWindow() {
-
-		DmxLiveFunctionsTesterWindow frame = new DmxLiveFunctionsTesterWindow();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.pack();
 		frame.setVisible(true);
 
 		currentFrame = frame;

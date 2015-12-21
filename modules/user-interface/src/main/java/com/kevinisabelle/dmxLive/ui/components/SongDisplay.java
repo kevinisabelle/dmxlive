@@ -6,9 +6,9 @@ package com.kevinisabelle.dmxLive.ui.components;
 
 import com.kevinisabelle.dmxlive.core.Constants;
 import com.kevinisabelle.dmxLive.DmxLive;
+import com.kevinisabelle.dmxlive.core.engine.processes.DmxRunnableObserver;
 import com.kevinisabelle.dmxlive.core.scripting.Script;
-import com.kevinisabelle.dmxlive.core.music.Song;
-import com.kevinisabelle.dmxlive.dmxengine.processes.DmxRunnableObserver;
+import com.kevinisabelle.dmxlive.core.scripting.Song;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;

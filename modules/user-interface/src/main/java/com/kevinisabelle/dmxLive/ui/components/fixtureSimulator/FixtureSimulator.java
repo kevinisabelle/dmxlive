@@ -4,9 +4,10 @@
  */
 package com.kevinisabelle.dmxLive.ui.components.fixtureSimulator;
 
+import com.kevinisabelle.dmxlive.api.output.Fixture;
 import com.kevinisabelle.dmxlive.core.scripting.Script;
 import com.kevinisabelle.dmxlive.core.scripting.ScriptCommand;
-import com.kevinisabelle.dmxlive.client.library.Fixture;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
