@@ -1,6 +1,7 @@
 package com.kevinisabelle.dmxlive.api.output;
 
 import com.kevinisabelle.dmxlive.api.Driver;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -8,7 +9,7 @@ import java.util.List;
  * @author Kevin
  * @param <T> the type of output this fixture is using.
  */
-public abstract class Fixture<T extends Driver> {
+public abstract class Fixture<T extends Driver, C extends Command> {
     
     protected T output;
     
@@ -18,5 +19,7 @@ public abstract class Fixture<T extends Driver> {
     
     public abstract String getName();
     
-    public abstract List<TimedEvent> processCommandToTimedEvents(Command command);
+    public abstract List<TimedEvent> processCommandToTimedEvents(C command);
+    
+    public abstract List<C> getSupportedCommands();
 }

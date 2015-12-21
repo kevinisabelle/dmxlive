@@ -13,9 +13,9 @@ import com.kevinisabelle.dmxlive.api.output.dmx.commands.AbstractDMXCommand;
  *
  * @author kevin
  */
-public abstract class DMXFixture extends Fixture<DmxDriver> {
+public abstract class DMXFixture extends Fixture<DmxDriver, AbstractDMXCommand> {
 
-  private int channel;
+  protected int channel;
 
   public static final String OP_DIM = "Dim";
 
@@ -55,5 +55,7 @@ public abstract class DMXFixture extends Fixture<DmxDriver> {
     this.channel = channel;
   }
 
-  protected abstract void sendDMX(int channel, int value);
+  protected void sendDMX(int channel, int value){
+      this.output.transmit(channel, value);
+  }
 }

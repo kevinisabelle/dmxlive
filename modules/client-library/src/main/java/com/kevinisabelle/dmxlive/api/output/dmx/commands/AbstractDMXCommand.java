@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
 import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
-import com.kevinisabelle.dmxlive.music.TimeInfo;
 
 /**
  *

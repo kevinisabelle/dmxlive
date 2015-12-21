@@ -1,4 +1,4 @@
-package com.kevinisabelle.dmxlive.api.output.text.commands;
+package com.kevinisabelle.dmxlive.api.output.video.commands;
 
 import com.kevinisabelle.dmxlive.api.output.TimedEvent;
 import java.util.List;
@@ -7,15 +7,16 @@ import java.util.List;
  *
  * @author kisabelle
  */
-public class CommandDisplayText extends AbstractTextCommand {
+public class CommandPlayback extends AbstractVideoCommand {
 
-    public CommandDisplayText(String scriptItem) {
+    public CommandPlayback(String scriptItem) {
         super(scriptItem);
+        
     }
 
     @Override
     protected void fromScript(String scriptItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override

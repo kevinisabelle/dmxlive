@@ -1,15 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.kevinisabelle.dmxlive.api.output.video;
+
+import com.kevinisabelle.dmxlive.api.driver.VideoDriver;
+import com.kevinisabelle.dmxlive.api.output.Fixture;
+import com.kevinisabelle.dmxlive.api.output.video.commands.AbstractVideoCommand;
 
 /**
  *
  * @author kevin
  */
-public interface VideoFixture {
+public abstract class  VideoFixture extends Fixture<VideoDriver, AbstractVideoCommand>{
+
+    public VideoFixture(VideoDriver output) {
+        super(output);
+    }
 	
 }

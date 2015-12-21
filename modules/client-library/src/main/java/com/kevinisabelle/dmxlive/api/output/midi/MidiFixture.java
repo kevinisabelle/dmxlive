@@ -14,7 +14,7 @@ import javax.sound.midi.MidiEvent;
  *
  * @author kevin
  */
-public abstract class MidiFixture extends Fixture<MidiDriver> {
+public abstract class MidiFixture extends Fixture<MidiDriver, AbstractMidiCommand> {
 
   private int channel;
 
@@ -29,8 +29,6 @@ public abstract class MidiFixture extends Fixture<MidiDriver> {
   }
 
   public abstract List<MidiEvent> convertToMidiEvents(TimeInfo startTime, TimeSignature signature, int bpm, String params);
-
-  public abstract List<AbstractMidiCommand> getSupportedCommmands();
 
   /**
    * @return the channel

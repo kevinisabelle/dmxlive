@@ -8,9 +8,9 @@ import javax.sound.midi.MidiEvent;
  *
  * @author Kevin
  */
-public abstract class MidiControl extends ControlFixture<MidiDriver> {
+public abstract class MidiControlFixture extends ControlFixture<MidiDriver> {
 
-    public MidiControl(MidiDriver input) {
+    public MidiControlFixture(MidiDriver input) {
         super(input);
     }
 

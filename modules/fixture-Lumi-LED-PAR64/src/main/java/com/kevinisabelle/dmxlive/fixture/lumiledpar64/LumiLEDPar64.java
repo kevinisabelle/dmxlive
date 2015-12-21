@@ -1,14 +1,7 @@
 package com.kevinisabelle.dmxlive.fixture.lumiledpar64;
 
 
-import com.kevinisabelle.dmxlive.client.api.DMXFixtureDriver;
-import com.kevinisabelle.dmxlive.client.api.dmxfunctions.DmxFunction;
-import com.kevinisabelle.dmxlive.core.music.TimeInfo;
-import com.kevinisabelle.dmxlive.core.music.TimeSignature;
-import com.kevinisabelle.dmxlive.core.dmx.TimedDmxValue;
-import com.kevinisabelle.dmxlive.core.fixture.AbstractFixture;
-import com.kevinisabelle.dmxlive.core.fixture.Color;
-import com.kevinisabelle.dmxlive.core.music.TimeHelper;
+import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
 import com.kevinisabelle.dmxlive.core.scripting.CommandParameters;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,8 +11,8 @@ import java.util.List;
  *
  * @author kevin
  */
-@DMXFixtureDriver
-public class LumiLEDPar64 extends AbstractFixture {
+
+public class LumiLEDPar64 extends DMXFixture {
 
 	public static final int DIMMER = 0;
 	public static final int RED = 1;

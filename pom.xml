@@ -10,10 +10,10 @@
 		<module>./modules/client-library</module>
 		<module>modules/commons-core</module>
 		<module>modules/user-interface</module>
-		<!--<module>modules/fixture-Lumi-LED-PAR64</module>
+		<module>modules/fixture-Lumi-LED-PAR64</module>
 		<module>modules/fixture-Lumi-LED-MKII</module>
 		<module>modules/fixture-Chauvet-FX-DerbyX</module>
-		<module>modules/fixture-Chauvet-FX-Swarm4</module>-->
+		<module>modules/fixture-Chauvet-FX-Swarm4</module>
 		<module>modules/driver-opendmx</module>
 	</modules>
 	<properties>
