@@ -1,18 +1,5 @@
 package com.kevinisabelle.dmxlive.fixture.chauvetderbyx;
 
-import com.kevinisabelle.dmxlive.client.api.dmxfunctions.DmxFunction;
-import com.kevinisabelle.dmxlive.core.music.TimeSignature;
-import com.kevinisabelle.dmxlive.core.dmx.TimedDmxValue;
-import com.kevinisabelle.dmxlive.core.fixture.AbstractFixture;
-import static com.kevinisabelle.dmxlive.core.fixture.AbstractFixture.OP_BLINK;
-import static com.kevinisabelle.dmxlive.core.fixture.AbstractFixture.OP_DIM;
-import static com.kevinisabelle.dmxlive.core.fixture.AbstractFixture.OP_MODE;
-import static com.kevinisabelle.dmxlive.core.fixture.AbstractFixture.OP_RIFF;
-import static com.kevinisabelle.dmxlive.core.fixture.AbstractFixture.OP_STROBE;
-import com.kevinisabelle.dmxlive.core.fixture.Color;
-import com.kevinisabelle.dmxlive.core.music.TimeHelper;
-import com.kevinisabelle.dmxlive.core.music.TimeInfo;
-import com.kevinisabelle.dmxlive.core.scripting.CommandParameters;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -59,7 +46,7 @@ import java.util.Map;
  * 
  * @author kisabelle
  */
-public class ChauvetDerbyX extends AbstractFixture {
+public class ChauvetDerbyX extends DMXFixture {
 
 	private static final int CHANNEL_SPOT_1 = 1;
 	private static final int CHANNEL_SPOT_2 = 2;

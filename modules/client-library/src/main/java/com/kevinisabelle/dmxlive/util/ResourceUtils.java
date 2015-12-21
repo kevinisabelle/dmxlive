@@ -1,4 +1,4 @@
-package com.kevinisabelle.dmxlive.api.general;
+package com.kevinisabelle.dmxlive.util;
 
 import java.io.File;
 import java.util.regex.Pattern;

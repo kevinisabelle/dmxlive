@@ -1,6 +1,7 @@
 package com.kevinisabelle.dmxlive.api.output;
 
 import com.kevinisabelle.dmxlive.api.Driver;
+import java.util.List;
 
 /**
  * A Fixture exists as an instance of a physical device
@@ -16,4 +17,6 @@ public abstract class Fixture<T extends Driver> {
     }
     
     public abstract String getName();
+    
+    public abstract List<TimedEvent> processCommandToTimedEvents(Command command);
 }

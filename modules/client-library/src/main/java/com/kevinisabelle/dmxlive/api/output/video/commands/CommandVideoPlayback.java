@@ -12,7 +12,7 @@ public class CommandVideoPlayback extends AbstractVideoCommand {
 
     @Override
     protected void fromScript(String scriptItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }

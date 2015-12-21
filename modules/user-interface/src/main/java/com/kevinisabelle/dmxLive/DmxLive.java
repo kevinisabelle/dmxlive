@@ -1,21 +1,22 @@
 package com.kevinisabelle.dmxLive;
 
-import com.kevinisabelle.dmxlive.core.Constants;
-import com.kevinisabelle.dmxlive.core.dmx.DmxManager;
-import com.kevinisabelle.dmxlive.core.music.TimeHelper;
 import com.kevinisabelle.dmxLive.objects.Configuration;
-import com.kevinisabelle.dmxlive.core.scripting.Script;
-import com.kevinisabelle.dmxlive.core.music.Song;
-import com.kevinisabelle.dmxlive.core.music.TimeInfo;
-import com.kevinisabelle.dmxlive.core.music.TimeSignature;
-import com.kevinisabelle.dmxlive.core.dmx.TimedDmxValue;
-import com.kevinisabelle.dmxlive.dmxengine.processes.DmxRunnable;
-import com.kevinisabelle.dmxlive.dmxengine.processes.DmxRunnableObserver;
+import com.kevinisabelle.dmxlive.core.Constants;
+
 import com.kevinisabelle.dmxLive.ui.components.ConfigurationWindow;
 import com.kevinisabelle.dmxLive.ui.DmxLiveEditorWindow;
 import com.kevinisabelle.dmxLive.ui.DmxLiveFunctionsTesterWindow;
 import com.kevinisabelle.dmxLive.ui.DmxLivePlaylistWindow;
 import com.kevinisabelle.dmxLive.ui.components.HelpDialog;
+import com.kevinisabelle.dmxlive.api.driver.DmxDriver;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
+import com.kevinisabelle.dmxlive.core.engine.processes.DmxRunnable;
+import com.kevinisabelle.dmxlive.core.engine.processes.DmxRunnableObserver;
+import com.kevinisabelle.dmxlive.core.scripting.Script;
+import com.kevinisabelle.dmxlive.core.scripting.Song;
+import com.kevinisabelle.dmxlive.music.TimeHelper;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
+import com.kevinisabelle.dmxlive.music.TimeSignature;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -43,7 +44,7 @@ import org.apache.log4j.PropertyConfigurator;
  */
 public class DmxLive {
 
-	private static DmxManager dmxManager;
+	private static DmxDriver dmxManager;
 	private static DmxRunnable dmxExecution = null;
 	private static DmxRunnable dmxExecutionStandalone = null;
 	private static Song currentPlayedSong = null;
@@ -105,7 +106,7 @@ public class DmxLive {
 		logger.info("Starting app: " + windowToShow);
 
 		logger.info("Initializing dmx manager...");
-		dmxManager = new DmxManager();
+		dmxManager = null;//new DmxDriver();
 		logger.info("done.");
 
 		logger.info("Opening main window...");
@@ -240,7 +241,7 @@ public class DmxLive {
 
 			observer.logMessage("Converting to DMX events...", -1);
 
-			List<TimedDmxValue> valuesFromScript = song.getScript().getTimedDmxValues(new TimeInfo("0:0:0"), song.getSignature(), song.getBpm(), null);
+			List<TimedDmxEvent> valuesFromScript = song.getScript().getTimedDmxEvents(new TimeInfo("0:0:0"), song.getSignature(), song.getBpm(), null);
 
 			observer.logMessage("Converted " + valuesFromScript.size() + " dmx values in " + (System.currentTimeMillis() - startTimeLoadScript) + " ms", -1);
 
@@ -415,7 +416,7 @@ public class DmxLive {
 
 		logger.info("Start scene: " + signature + "@" + bpm + ", " + script.getScriptText());
 
-		List<TimedDmxValue> valuesFromScript = script.getTimedDmxValues(new TimeInfo("0:0:0"), signature, bpm, null);
+		List<TimedDmxEvent> valuesFromScript = script.getTimedDmxEvents(new TimeInfo("0:0:0"), signature, bpm, null);
 
 
 

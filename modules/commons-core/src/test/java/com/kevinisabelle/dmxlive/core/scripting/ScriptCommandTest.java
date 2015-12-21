@@ -1,12 +1,9 @@
 package com.kevinisabelle.dmxlive.core.scripting;
 
-import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxValue;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.music.TimeSignature;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 import java.util.List;
-import junit.framework.TestCase;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -33,7 +30,7 @@ public class ScriptCommandTest {
 		
 		Script script = new Script(strScript);
 		
-		List<TimedDmxValue> values = script.getTimedDmxValues(new TimeInfo("0:0:0"), new TimeSignature(4, 4), 120, null);
+		List<TimedDmxEvent> values = script.getTimedDmxEvents(new TimeInfo("0:0:0"), new TimeSignature(4, 4), 120, null);
 	
 		System.out.println(values);
 	}
@@ -50,7 +47,7 @@ public class ScriptCommandTest {
 		
 		Script script = new Script(strScript);
 		
-		List<TimedDmxValue> values = script.getTimedDmxValues(new TimeInfo("0:0:0"), new TimeSignature(4, 4), 120, null);
+		List<TimedDmxEvent> values = script.getTimedDmxEvents(new TimeInfo("0:0:0"), new TimeSignature(4, 4), 120, null);
 	
 		System.out.println(values);
 	}

@@ -1,6 +1,7 @@
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
 
+import com.kevinisabelle.dmxlive.api.driver.DmxDriver;
 import com.kevinisabelle.dmxlive.core.Constants;
 
 import java.util.ArrayList;
@@ -12,15 +13,14 @@ import javax.sound.sampled.Clip;
 
 import org.apache.log4j.Logger;
 
-import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxValue;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.core.scripting.Song;
-import com.kevinisabelle.dmxlive.driver.dmx.EntecOpenDMX;
 import com.kevinisabelle.dmxlive.music.TimeHelper;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 import com.kevinisabelle.dmxlive.music.TimeSignature;
 
 /**
- * This runnable will send the TimedDmxValues when the time arrive based on the
+ * This runnable will send the TimedDmxEvents when the time arrive based on the
  * playedSongAudio clip's reference as absolute position. This runnable also
  * provide an observer mechanism to publish messages and current position.
  *
@@ -30,11 +30,11 @@ public class DmxRunnable extends TimedExecution {
 
 	private boolean isRunning = true;
 
-	private List<TimedDmxValue> dmxProgram;
-	private Iterator<TimedDmxValue> dmxProgramIterator = null;
-	private TimedDmxValue lastValue = null;
+	private List<TimedDmxEvent> dmxProgram;
+	private Iterator<TimedDmxEvent> dmxProgramIterator = null;
+	private TimedDmxEvent lastValue = null;
 	private boolean logDMXEvents = false;
-	private EntecOpenDMX dmxManager;
+	private DmxDriver dmxManager;
 
 	private List<Long> executionTimes = new LinkedList<Long>();
 	private MetronomePlayerRunnable metronomeRunnable;
@@ -58,8 +58,8 @@ public class DmxRunnable extends TimedExecution {
 	 * @param metronomeSoundLow Wav sound to use to play metronome low beats.
 	 */
 
-	public DmxRunnable(TimeSignature signature, int bpm, List<TimedDmxValue> dmxProgram,
-			EntecOpenDMX manager, Clip playedSongAudio, TimeInfo startTime,
+	public DmxRunnable(TimeSignature signature, int bpm, List<TimedDmxEvent> dmxProgram,
+			DmxDriver manager, Clip playedSongAudio, TimeInfo startTime,
 			DmxRunnableObserver observer, boolean cleanEventsBeforeStarTtime,
 			Song.MetronomeMode metronomeMode, String metronomeSoundHi, String metronomeSoundLow) {
 
@@ -75,9 +75,9 @@ public class DmxRunnable extends TimedExecution {
 			synchronized (this) {
 
 				long startTimeMillis = TimeHelper.getMilliseconds(startTime, signature, bpm);
-				List<TimedDmxValue> toRemove = new ArrayList<TimedDmxValue>();
+				List<TimedDmxEvent> toRemove = new ArrayList<TimedDmxEvent>();
 
-				for (TimedDmxValue value : dmxProgram) {
+				for (TimedDmxEvent value : dmxProgram) {
 					if (value.getMillis() < startTimeMillis) {
 						toRemove.add(value);
 					}
@@ -190,7 +190,7 @@ public class DmxRunnable extends TimedExecution {
 			dmxProgramIterator = dmxProgram.iterator();
 		}
 
-		TimedDmxValue value = null;
+		TimedDmxEvent value = null;
 
 		while (dmxProgramIterator.hasNext()) {
 
@@ -207,7 +207,7 @@ public class DmxRunnable extends TimedExecution {
 					observer.logMessage("DMX: " + value, absolutePosition);
 				}
 				try {
-					dmxManager.sendSignal(value.getChannel() - 1, value.getValue());
+					dmxManager.transmit(value.getChannel() - 1, value.getValue());
 				} catch (Exception ex) {
 					logger.error("Cannot send dmx signal: " + ex.getMessage());
 				}

@@ -1,7 +1,6 @@
 package com.kevinisabelle.dmxlive.core.scripting;
 
-import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxValue;
-
+import com.kevinisabelle.dmxlive.api.output.Fixture;
 import com.kevinisabelle.dmxlive.core.engine.factory.FixtureFactory;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 import com.kevinisabelle.dmxlive.music.TimeSignature;
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.kevinisabelle.dmxlive.api.output.AbstractFixture;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 
 /**
  *
@@ -36,7 +35,7 @@ public class ScriptCommand {
 
   private String[] parameters;
 
-  private List<AbstractFixture> fixtures;
+  private List<Fixture> fixtures;
 
   private String actionParameters;
 
@@ -70,15 +69,15 @@ public class ScriptCommand {
       if(params[1].contains(TIME_DELIMITER)) {
 
         String[] fixtureNames = params[1].split(TIME_DELIMITER);
-        fixtures = new ArrayList<AbstractFixture>();
+        fixtures = new ArrayList<Fixture>();
 
         for(String fixtureName : fixtureNames) {
-          fixtures.add(getAbstractFixture(fixtureName));
+          fixtures.add(getFixture(fixtureName));
         }
 
       }
       else {
-        fixtures = Arrays.asList(getAbstractFixture(params[1]));
+        fixtures = Arrays.asList(getFixture(params[1]));
       }
     }
 
@@ -90,13 +89,13 @@ public class ScriptCommand {
     }
   }
 
-  public ScriptCommand(String scriptName, List<AbstractFixture> fixtures, String actionParameter) {
+  public ScriptCommand(String scriptName, List<Fixture> fixtures, String actionParameter) {
     this.scriptName = scriptName;
     this.fixtures = fixtures;
     this.actionParameters = actionParameter;
   }
 
-  private AbstractFixture getAbstractFixture(String fixtureParam) {
+  private Fixture getFixture(String fixtureParam) {
 
     String fixture = fixtureParam;
 
@@ -104,10 +103,10 @@ public class ScriptCommand {
       fixture = caller.getMasterScriptReference().getVariables().get(fixtureParam);
     }
 
-    return FixtureFactory.getFixture(fixture);
+    return null;//FixtureFactory.getFixture(fixture);
   }
 
-  public List<TimedDmxValue> getTimedDmxValues(TimeInfo timeOffset, TimeSignature signature, int bpm, String[] parameters) {
+  public List<TimedDmxEvent> getTimedDmxValues(TimeInfo timeOffset, TimeSignature signature, int bpm, String[] parameters) {
 
     ArrayList list = new ArrayList();
 
@@ -130,7 +129,7 @@ public class ScriptCommand {
 
           scriptName = scriptName.replaceAll(" ", "");
 
-          list.addAll(caller.getMasterScriptReference().getNamedScripts().get(scriptName).getTimedDmxValues(currentTime, signature, bpm, this.parameters));
+          list.addAll(caller.getMasterScriptReference().getNamedScripts().get(scriptName).getTimedDmxEvents(currentTime, signature, bpm, this.parameters));
 
           currentTime = currentTime.add(duration, signature);
         }
@@ -158,7 +157,7 @@ public class ScriptCommand {
         }
       }
 
-      for(AbstractFixture fixture : fixtures) {
+      for(Fixture fixture : fixtures) {
         //list.addAll(fixture.convertToDmx(time.add(timeOffset, signature), signature, bpm, scriptParametersReplaced));
       }
 
@@ -184,14 +183,14 @@ public class ScriptCommand {
   /**
    * @return the fixture
    */
-  public List<AbstractFixture> getAbstractFixtures() {
+  public List<Fixture> getFixtures() {
     return fixtures;
   }
 
   /**
    * @param fixture the fixture to set
    */
-  public void setAbstractFixtures(List<AbstractFixture> fixtures) {
+  public void setFixtures(List<Fixture> fixtures) {
     this.fixtures = fixtures;
   }
 

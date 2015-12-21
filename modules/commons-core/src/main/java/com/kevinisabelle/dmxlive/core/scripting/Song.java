@@ -46,7 +46,7 @@ public class Song {
 		}
 
 		// Get this out of the song.
-		DMXLiveScriptParser.parseSongFile(builder.toString(), new File(filename).getParent());
+		ScriptCompiler.parseSongFile(builder.toString(), new File(filename).getParent());
 	}
 
 	public Song() {

@@ -1,7 +1,8 @@
 package com.kevinisabelle.dmxLive.helper;
 
-import com.kevinisabelle.dmxlive.core.music.Playlist;
-import com.kevinisabelle.dmxlive.core.music.Song;
+
+import com.kevinisabelle.dmxlive.core.scripting.Playlist;
+import com.kevinisabelle.dmxlive.core.scripting.Song;
 import com.lowagie.text.DocumentException;
 import java.io.*;
 

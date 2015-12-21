@@ -1,6 +1,6 @@
 package com.kevinisabelle.dmxlive.core.scripting;
 
-import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxValue;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 import com.kevinisabelle.dmxlive.music.TimeSignature;
 import java.util.List;
@@ -131,7 +131,7 @@ public class Script {
 		}
 	}
 
-	public List<TimedDmxValue> getTimedDmxValues(TimeInfo timeOffset, TimeSignature signature, int bpm, String[] parameters) {
+	public List<TimedDmxEvent> getTimedDmxEvents(TimeInfo timeOffset, TimeSignature signature, int bpm, String[] parameters) {
 
 		ArrayList list = new ArrayList();
 

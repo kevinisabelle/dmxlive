@@ -1,6 +1,6 @@
 package com.kevinisabelle.dmxlive.core.engine.factory;
 
-import com.kevinisabelle.dmxlive.api.output.AbstractFixture;
+import com.kevinisabelle.dmxlive.api.output.Fixture;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +12,7 @@ public class FixtureFactory {
 	
 	public static Map<String, Class> fixtureClasses = new HashMap<String, Class>();
 	
-	private static Map<String, AbstractFixture> loadedFixtureInstances = new HashMap<String, AbstractFixture>();
+	private static Map<String, Fixture> loadedFixtureInstances = new HashMap<String, Fixture>();
 		
 	protected FixtureFactory(){
 		
@@ -24,7 +24,7 @@ public class FixtureFactory {
 		
 	}
 	
-	public static AbstractFixture getFixture(String fixtureName){
+	public static Fixture getFixture(String fixtureName){
 		
 		if (loadedFixtureInstances.get(fixtureName) != null){
 			return loadedFixtureInstances.get(fixtureName);
@@ -33,10 +33,10 @@ public class FixtureFactory {
 		String[] nameAndChannel = fixtureName.split("_");
 		Class classz = fixtureClasses.get(nameAndChannel[0]);
 		
-		AbstractFixture fixture = null;
+		Fixture fixture = null;
 		try {
 			
-			fixture = (AbstractFixture)classz.newInstance();
+			fixture = (Fixture)classz.newInstance();
 			//fixture.setChannel(Integer.parseInt(nameAndChannel[1]));
 			
 		} catch (InstantiationException ex) {

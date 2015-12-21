@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  *
  * @author kisabelle
  */
-public class DMXLiveScriptParser {
+public class ScriptCompiler {
 
 	public static final String FIELD_SONG_NAME = "//Song Name:";
 	public static final String FIELD_BPM = "//BPM:";
