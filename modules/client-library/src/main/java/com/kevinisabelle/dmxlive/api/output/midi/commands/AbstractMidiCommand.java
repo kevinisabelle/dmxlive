@@ -16,5 +16,4 @@ public abstract class AbstractMidiCommand extends Command<MidiFixture> {
         super(scriptItem);
     }
 
-    public abstract List<MidiEvent> computeCommand();
 }

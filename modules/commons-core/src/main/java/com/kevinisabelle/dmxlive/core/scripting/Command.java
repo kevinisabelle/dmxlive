@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.kevinisabelle.dmxlive.core.model;
+package com.kevinisabelle.dmxlive.core.scripting;
 
 import com.kevinisabelle.dmxlive.core.scripting.CommandParameters;
 

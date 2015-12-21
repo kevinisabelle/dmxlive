@@ -1,6 +1,6 @@
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
-import com.kevinisabelle.dmxlive.core.model.Command;
+import com.kevinisabelle.dmxlive.core.scripting.Command;
 import java.util.List;
 
 /**

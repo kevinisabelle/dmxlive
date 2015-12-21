@@ -1,7 +1,7 @@
 package com.kevinisabelle.dmxlive.core.scripting;
 
-import com.kevinisabelle.dmxlive.api.general.ResourceUtils;
 import com.kevinisabelle.dmxlive.music.TimeSignature;
+import com.kevinisabelle.dmxlive.util.ResourceUtils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;

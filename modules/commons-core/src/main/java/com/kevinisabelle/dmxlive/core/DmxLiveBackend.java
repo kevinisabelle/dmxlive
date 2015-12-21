@@ -1,9 +1,11 @@
 package com.kevinisabelle.dmxlive.core;
 
 import com.kevinisabelle.dmxlive.core.engine.ExecutionEngine;
+import com.kevinisabelle.dmxlive.core.model.Project;
 
 public class DmxLiveBackend {
 
+	private Project currentProject;
 	private Configuration configuration;
 	private ExecutionEngine executionEngine;
 

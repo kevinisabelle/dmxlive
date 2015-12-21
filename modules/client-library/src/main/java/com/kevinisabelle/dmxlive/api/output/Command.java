@@ -27,8 +27,8 @@ public abstract class Command<T extends Fixture> {
     /**
      * @return the fixtureRef
      */
-    public Fixture getFixtureRef() {
-        return fixtureRef;
+    public List<T> getFixturesRef() {
+        return fixturesRef;
     }
 
     /**

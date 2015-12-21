@@ -1,6 +1,6 @@
 package com.kevinisabelle.dmxlive.core.scripting;
 
-import com.kevinisabelle.dmxlive.api.general.ResourceUtils;
+import com.kevinisabelle.dmxlive.util.ResourceUtils;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;

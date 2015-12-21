@@ -1,6 +1,5 @@
 package com.kevinisabelle.dmxlive.core;
 
-import com.kevinisabelle.dmxlive.api.input.midi.MidiControl;
 import com.kevinisabelle.dmxlive.api.driver.AudioDriver;
 import com.kevinisabelle.dmxlive.api.driver.DmxDriver;
 import com.kevinisabelle.dmxlive.api.driver.MidiDriver;

@@ -5,6 +5,9 @@
  */
 package com.kevinisabelle.dmxlive.api.output.audio.commands;
 
+import com.kevinisabelle.dmxlive.api.output.TimedEvent;
+import java.util.List;
+
 /**
  *
  * @author Kevin
@@ -24,5 +27,12 @@ public class StartAudioClipCommand extends AbstractAudioCommand {
     protected String toScript() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<TimedEvent> compute() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
     
 }

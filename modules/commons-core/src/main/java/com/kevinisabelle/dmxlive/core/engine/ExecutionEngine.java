@@ -1,6 +1,6 @@
 package com.kevinisabelle.dmxlive.core.engine;
 
-import com.kevinisabelle.dmxlive.core.model.Command;
+import com.kevinisabelle.dmxlive.core.scripting.Command;
 import com.kevinisabelle.dmxlive.core.engine.processes.MasterClock;
 import com.kevinisabelle.dmxlive.core.Configuration;
 import com.kevinisabelle.dmxlive.core.scripting.Song;

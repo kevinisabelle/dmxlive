@@ -1,5 +1,6 @@
 package com.kevinisabelle.dmxlive.api.output.dmx.commands;
 
+import com.kevinisabelle.dmxlive.api.output.TimedEvent;
 import com.kevinisabelle.dmxlive.api.output.dmx.Color;
 import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
 import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
@@ -19,10 +20,6 @@ public class CommandDim extends AbstractDMXCommand {
         super(scriptItem);
     }
 
-    @Override
-    public List<TimedDmxEvent> computeCommand(DMXFixture fixture) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     protected void fromScript(String scriptItem) {
@@ -31,6 +28,11 @@ public class CommandDim extends AbstractDMXCommand {
 
     @Override
     protected String toScript() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<TimedEvent> compute() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
