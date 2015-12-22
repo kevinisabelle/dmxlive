@@ -6,13 +6,15 @@
 
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
+import com.kevinisabelle.dmxlive.core.engine.MasterClock;
+
 /**
  *
  * @author kisabelle
  */
-public class ExectorDmxCommand extends AbstractCommandExecutor {
+public class ExecutorDmxCommand extends AbstractCommandExecutor {
 
-	public ExectorDmxCommand(MasterClock clock){
+	public ExecutorDmxCommand(MasterClock clock){
 		super(clock);
 	}
 

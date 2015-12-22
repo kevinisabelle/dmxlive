@@ -24,11 +24,7 @@ import org.apache.log4j.Logger;
  */
 public class ConfigurationOld {
 
-	private static final String P_DMX_RATE = "DMX_RATE";
-	private static final String P_DMXRUN_CHECK_RESOLUTION = "DMX_RUNNABLE_CHECK_RESOLUTION";
-	private static final String P_DMXRUN_OFFSET = "DMX_RUNNALE_OFFSET";
-	private static final String P_DRUMMER_MIXER = "DRUMMER_MIXER";
-	private static final String P_SAMPLES_MIXER = "SAMPLES_MIXER";
+	
 	
 	public static AudioFormat audioFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 44100, 16, 2, 4, 44100, false);
 	Clip.Info sourceDataLineInfo = new Clip.Info(Clip.class, audioFormat);
@@ -76,18 +72,18 @@ public class ConfigurationOld {
 
 	private void updateObjectFromProperties() {
 
-		setDmxRate(props.getProperty(P_DMX_RATE) == null ? Constants.DMX_RATE : Integer.parseInt(props.getProperty(P_DMX_RATE)));
-		setDmxRunnableCheckResolution(props.getProperty(P_DMXRUN_CHECK_RESOLUTION) == null ? Constants.CHECK_RESOLUTION : Integer.parseInt(props.getProperty(P_DMXRUN_CHECK_RESOLUTION)));
-		setDmxRunnableOffset(props.getProperty(P_DMXRUN_OFFSET) == null ? Constants.DMXRUNNABLE_OFFSET : Integer.parseInt(props.getProperty(P_DMXRUN_OFFSET)));
+		setDmxRate(props.getProperty(Constants.P_DMX_RATE) == null ? Constants.DMX_RATE : Integer.parseInt(props.getProperty(Constants.P_DMX_RATE)));
+		setDmxRunnableCheckResolution(props.getProperty(Constants.P_DMXRUN_CHECK_RESOLUTION) == null ? Constants.CHECK_RESOLUTION : Integer.parseInt(props.getProperty(Constants.P_DMXRUN_CHECK_RESOLUTION)));
+		setDmxRunnableOffset(props.getProperty(Constants.P_DMXRUN_OFFSET) == null ? Constants.DMXRUNNABLE_OFFSET : Integer.parseInt(props.getProperty(Constants.P_DMXRUN_OFFSET)));
 
 		for (Mixer.Info mixerInfo : AudioSystem.getMixerInfo()) {
 
-			if (mixerInfo.toString().equals(props.getProperty(P_DRUMMER_MIXER))) {
+			if (mixerInfo.toString().equals(props.getProperty(Constants.P_DRUMMER_MIXER))) {
 
 				setDrummerMixer(AudioSystem.getMixer(mixerInfo));
 			}
 
-			if (mixerInfo.toString().equals(props.getProperty(P_SAMPLES_MIXER))) {
+			if (mixerInfo.toString().equals(props.getProperty(Constants.P_SAMPLES_MIXER))) {
 
 				setSamplesMixer(AudioSystem.getMixer(mixerInfo));
 			}
@@ -104,11 +100,11 @@ public class ConfigurationOld {
 
 	private void updatePropertiesFromObject() {
 
-		props.setProperty(P_DMXRUN_CHECK_RESOLUTION, Integer.valueOf(getDmxRunnableCheckResolution()).toString());
-		props.setProperty(P_DMXRUN_OFFSET, Integer.valueOf(getDmxRunnableOffset()).toString());
-		props.setProperty(P_DMX_RATE, Integer.valueOf(getDmxRate()).toString());
-		props.setProperty(P_DRUMMER_MIXER, drummerMixer.getMixerInfo().toString());
-		props.setProperty(P_SAMPLES_MIXER, samplesMixer.getMixerInfo().toString());
+		props.setProperty(Constants.P_DMXRUN_CHECK_RESOLUTION, Integer.valueOf(getDmxRunnableCheckResolution()).toString());
+		props.setProperty(Constants.P_DMXRUN_OFFSET, Integer.valueOf(getDmxRunnableOffset()).toString());
+		props.setProperty(Constants.P_DMX_RATE, Integer.valueOf(getDmxRate()).toString());
+		props.setProperty(Constants.P_DRUMMER_MIXER, drummerMixer.getMixerInfo().toString());
+		props.setProperty(Constants.P_SAMPLES_MIXER, samplesMixer.getMixerInfo().toString());
 
 	}
 

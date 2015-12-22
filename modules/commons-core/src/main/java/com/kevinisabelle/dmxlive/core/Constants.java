@@ -30,6 +30,13 @@ public class Constants {
 	public static final String PROPERTIES_LOCATION = "conf/dmxlive.properties";
 	public static final String LOGO_LOCATION = "conf/DMX-LIVE-logo-small.png";
 	public static final String LOG4J_CONFIG = "conf/log4j.properties";
+	
+	public static final String P_DMX_RATE = "DMX_RATE";
+	public static final String P_DMXRUN_CHECK_RESOLUTION = "DMX_RUNNABLE_CHECK_RESOLUTION";
+	public static final String P_DMXRUN_OFFSET = "DMX_RUNNALE_OFFSET";
+	public static final String P_DRUMMER_MIXER = "DRUMMER_MIXER";
+	public static final String P_SAMPLES_MIXER = "SAMPLES_MIXER";
+	
 	/**
 	 * Theme skin *
 	 */

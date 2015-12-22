@@ -1,5 +1,7 @@
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
+import com.kevinisabelle.dmxlive.core.engine.MasterClock;
+
 /**
  *
  * @author kisabelle

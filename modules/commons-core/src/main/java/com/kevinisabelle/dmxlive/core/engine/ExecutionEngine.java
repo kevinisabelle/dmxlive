@@ -1,11 +1,13 @@
 package com.kevinisabelle.dmxlive.core.engine;
 
 import com.kevinisabelle.dmxlive.core.scripting.Command;
-import com.kevinisabelle.dmxlive.core.engine.processes.MasterClock;
 import com.kevinisabelle.dmxlive.core.Configuration;
-import com.kevinisabelle.dmxlive.core.scripting.Song;
+import com.kevinisabelle.dmxlive.core.engine.processes.AbstractCommandExecutor;
+import com.kevinisabelle.dmxlive.music.TempoMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
+import javax.sound.sampled.Clip;
 
 /**
  *
@@ -15,16 +17,21 @@ public class ExecutionEngine {
 
 	Configuration config;
 	ThreadPoolExecutor executor;
+	List<AbstractCommandExecutor> processes;
 	MasterClock clock;
 
 	public ExecutionEngine(){
 
-		clock = new MasterClock();
+		
 	}
 
-	public void init(Configuration configuration){
+	public void init(Configuration configuration, TempoMap tempoMap, Clip audioReference){
 
 		this.config = configuration;
+		this.clock = new MasterClock(tempoMap, audioReference);
+		
+		
+		
 	}
 
 	public void start(){
@@ -32,16 +39,14 @@ public class ExecutionEngine {
 	}
 
 	public void stop(){
-
+		
 	}
 
 	public void pause(){
-
+		clock.pause();
 	}
 
-
-
-	public void execute(List<Command> commands, long offset) {
+	public void executeQueued(List<Command> commands, long offset) {
 
 		// Create an executor
 
@@ -49,6 +54,10 @@ public class ExecutionEngine {
 
 
 
+	}
+	
+	public void executeNow(List<Command> commands){
+		
 	}
 
 }
