@@ -18,9 +18,35 @@ public class TempoMap {
         TimeInfo atTime;
         TimeSignature signature;
         float bpm;
+        
+        public Item(TimeInfo atTime, TimeSignature signature, float bpm){
+            this.atTime = atTime;
+            this.signature = signature;
+            this.bpm = bpm;
+        }
     }
     
     private List<Item> map;
     
+    public void Add(Item item){
+        map.add(item);
+    }
+    
+    public void fromScript(String scriptItem){
+        
+    }
+    
+    public String toScript(){
+        return "";
+    }
+    
+    public TimeInfo getTimeInfoAt(long absoluteTime){
+        return new TimeInfo(1, 1, 0);
+    } 
+    
+    public long getAbsoluteTimeAt(TimeInfo time){
+        return 0l;
+    }
+   
     
 }

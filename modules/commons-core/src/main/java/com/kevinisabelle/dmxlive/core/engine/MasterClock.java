@@ -92,7 +92,7 @@ public class MasterClock implements Runnable {
 	}
 	
 	public TimeInfo getAbsoluteTimeMusical(){
-		return new TimeInfo(tempoMap, currentAbsolutePositionMillis);
+		return tempoMap.getTimeInfoAt(currentAbsolutePositionMillis);
 	}
 
 }
