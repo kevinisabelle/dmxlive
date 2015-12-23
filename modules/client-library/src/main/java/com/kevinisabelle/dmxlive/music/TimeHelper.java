@@ -28,8 +28,8 @@ public class TimeHelper {
    * @param bpm
    * @return
    */
-  public static double getQuarterMilliseconds(int bpm) {
-    return (60000.0) / Integer.valueOf(bpm).doubleValue();
+  public static double getQuarterMilliseconds(Float bpm) {
+    return (60000.0) / bpm.doubleValue();
   }
 
   /**
@@ -61,18 +61,18 @@ public class TimeHelper {
    * @param bpm
    * @return
    */
-  public static long getMilliseconds(TimeInfo timeInfo, TimeSignature signature, int bpm) {
+  public static long getMilliseconds(TimeInfo timeInfo, TimeSignature signature, Float bpm) {
 
     double quarters = getTimeInQuarters(timeInfo, signature);
     return Double.valueOf(quarters * getQuarterMilliseconds(bpm)).longValue();
 
   }
 
-  public static long getFrequency(TimeSignature signature, int bpm, double beatUnit) {
+  public static long getFrequency(TimeSignature signature, Float bpm, double beatUnit) {
     return Double.valueOf(TimeHelper.getQuarterMilliseconds(bpm) / (beatUnit / 4)).longValue();
   }
 
-  public static long getOnTime(TimeSignature signature, int bpm, double percentBeatOn) {
+  public static long getOnTime(TimeSignature signature, Float bpm, double percentBeatOn) {
     return Double.valueOf(TimeHelper.getQuarterMilliseconds(bpm) / (signature.getBeatUnit() / 4.0) * (percentBeatOn)).longValue();
   }
 }

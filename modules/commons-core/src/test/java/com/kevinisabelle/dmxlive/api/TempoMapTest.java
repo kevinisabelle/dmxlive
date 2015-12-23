@@ -1,18 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.kevinisabelle.dmxlive.api;
 
+import com.kevinisabelle.dmxlive.music.Tempo;
 import com.kevinisabelle.dmxlive.music.TempoMap;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
+import com.kevinisabelle.dmxlive.music.TimeSignature;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -44,7 +41,22 @@ public class TempoMapTest {
 		
 		TempoMap map = new TempoMap();
 		
-		map.Add(new TempoMap.Item(new TimeInfo, null, bpm));
+		/**
+		 * 1:1:0|T:4/4@128
+		 * 14:1:0|T:12/4@68
+		 * ...
+		 * 
+		 */
+		
+		map.Add(new Tempo(new TimeInfo(1,1,0), new TimeSignature("4/4"), 128));
+		map.Add(new Tempo(new TimeInfo(14,1,0), new TimeSignature("12/8"), 68));
+		map.Add(new Tempo(new TimeInfo(28,1,0), new TimeSignature("5/4"), 128));
+		map.Add(new Tempo(new TimeInfo(32,1,0), new TimeSignature("2/4"), 128));
+		map.Add(new Tempo(new TimeInfo(33,1,0), new TimeSignature("4/4"), 128));
+		
+		long millis = map.getAbsoluteTimeAt(new TimeInfo(32,1,0));
+		
+		TimeInfo info = map.getTimeInfoAt(millis);
 	}
 	
 }

@@ -7,6 +7,8 @@ import com.kevinisabelle.dmxlive.api.driver.TextDriver;
 import com.kevinisabelle.dmxlive.api.driver.VideoDriver;
 import com.kevinisabelle.dmxlive.api.input.ControlFixture;
 import com.kevinisabelle.dmxlive.api.output.Fixture;
+import com.kevinisabelle.dmxlive.core.engine.factory.DriverFactory;
+import com.kevinisabelle.dmxlive.core.engine.factory.FixtureFactory;
 import java.util.Map;
 
 /**
@@ -14,6 +16,9 @@ import java.util.Map;
  * @author kevin
  */
 public class Configuration {
+	
+	private DriverFactory driversFactory;
+	private FixtureFactory fixtureFactory;
 	
 	private Map<String, DmxDriver> dmxDrivers;
 	private Map<String, MidiDriver> midiDrivers;

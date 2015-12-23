@@ -57,7 +57,7 @@ public class TimeInfo implements Comparable<TimeInfo> {
     this.subBeat = subBeat;
   }
 
-  public TimeInfo(TimeSignature signature, int bpm, long millis) {
+  public TimeInfo(TimeSignature signature, Float bpm, long millis) {
 
     double beatTime = TimeHelper.getQuarterMilliseconds(bpm);
 

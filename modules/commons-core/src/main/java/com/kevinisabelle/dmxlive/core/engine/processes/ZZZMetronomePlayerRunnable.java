@@ -22,7 +22,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  *
  * @author kisabelle
  */
-public class MetronomePlayerRunnable extends TimedExecution {
+public class ZZZMetronomePlayerRunnable extends ZZZTimedExecution {
 
 	private Clip metronomeHiClip = null;
 	private Clip metronomeLowClip = null;
@@ -40,7 +40,7 @@ public class MetronomePlayerRunnable extends TimedExecution {
 
 	private boolean isFirstBeatPlayed = false;
 
-	public MetronomePlayerRunnable(long refreshTimeout, Song.MetronomeMode mode, String metronomeSoundHi, String metronomeSoundLow, int bpm, TimeSignature signature, DmxRunnableObserver observer, Clip playedAuClip) {
+	public ZZZMetronomePlayerRunnable(long refreshTimeout, Song.MetronomeMode mode, String metronomeSoundHi, String metronomeSoundLow, int bpm, TimeSignature signature, IExecutoObserver observer, Clip playedAuClip) {
 
 		super(playedAuClip, signature, observer, bpm);
 

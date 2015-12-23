@@ -8,14 +8,14 @@ import javax.sound.sampled.Clip;
  * A thread that can run in parallel of a song or dmx process
  * @author kevin
  */
-public abstract class TimedExecution implements Runnable {
+public abstract class ZZZTimedExecution implements Runnable {
 
 	protected Clip playedSongAudio;
 	protected TimeSignature signature;
-	protected DmxRunnableObserver observer;
+	protected IExecutoObserver observer;
 	protected int bpm = 120;
 
-	public TimedExecution(Clip plClip, TimeSignature timeSignature, DmxRunnableObserver observer, int bpm){
+	public ZZZTimedExecution(Clip plClip, TimeSignature timeSignature, IExecutoObserver observer, int bpm){
 		this.playedSongAudio = plClip;
 		this.signature = timeSignature;
 		this.observer = observer;

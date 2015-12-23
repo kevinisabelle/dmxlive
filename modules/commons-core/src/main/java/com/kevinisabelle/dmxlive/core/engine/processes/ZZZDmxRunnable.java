@@ -26,7 +26,7 @@ import com.kevinisabelle.dmxlive.music.TimeSignature;
  *
  * @author kevin
  */
-public class DmxRunnable extends TimedExecution {
+public class ZZZDmxRunnable extends ZZZTimedExecution {
 
 	private boolean isRunning = true;
 
@@ -37,9 +37,9 @@ public class DmxRunnable extends TimedExecution {
 	private DmxDriver dmxManager;
 
 	private List<Long> executionTimes = new LinkedList<Long>();
-	private MetronomePlayerRunnable metronomeRunnable;
+	private ZZZMetronomePlayerRunnable metronomeRunnable;
 
-	private static Logger logger = Logger.getLogger(DmxRunnable.class);
+	private static Logger logger = Logger.getLogger(ZZZDmxRunnable.class);
 
 	private boolean isRunOnSong = false;
 
@@ -58,9 +58,9 @@ public class DmxRunnable extends TimedExecution {
 	 * @param metronomeSoundLow Wav sound to use to play metronome low beats.
 	 */
 
-	public DmxRunnable(TimeSignature signature, int bpm, List<TimedDmxEvent> dmxProgram,
+	public ZZZDmxRunnable(TimeSignature signature, int bpm, List<TimedDmxEvent> dmxProgram,
 			DmxDriver manager, Clip playedSongAudio, TimeInfo startTime,
-			DmxRunnableObserver observer, boolean cleanEventsBeforeStarTtime,
+			IExecutoObserver observer, boolean cleanEventsBeforeStarTtime,
 			Song.MetronomeMode metronomeMode, String metronomeSoundHi, String metronomeSoundLow) {
 
 		super(playedSongAudio, signature, observer, bpm);
@@ -90,7 +90,7 @@ public class DmxRunnable extends TimedExecution {
 		logger.debug("dmx signal to execute: " + dmxProgram.size());
 
 		if (metronomeMode != null && metronomeMode != metronomeMode.OFF && metronomeSoundHi != null){
-			metronomeRunnable = new MetronomePlayerRunnable(Constants.METRONOME_REFRESH_TIMEOUT, metronomeMode, metronomeSoundHi, metronomeSoundLow, bpm, signature, observer, playedSongAudio);
+			metronomeRunnable = new ZZZMetronomePlayerRunnable(Constants.METRONOME_REFRESH_TIMEOUT, metronomeMode, metronomeSoundHi, metronomeSoundLow, bpm, signature, observer, playedSongAudio);
 		}
 	}
 
