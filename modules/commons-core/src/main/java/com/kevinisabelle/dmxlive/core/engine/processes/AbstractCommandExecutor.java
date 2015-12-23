@@ -4,8 +4,6 @@ import com.kevinisabelle.dmxlive.api.output.Command;
 import com.kevinisabelle.dmxlive.api.output.TimedEvent;
 import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.core.engine.MasterClock;
-import com.kevinisabelle.dmxlive.music.TimeHelper;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;

@@ -60,7 +60,7 @@ public class ZZZDmxRunnable extends ZZZTimedExecution {
 
 	public ZZZDmxRunnable(TimeSignature signature, int bpm, List<TimedDmxEvent> dmxProgram,
 			DmxDriver manager, Clip playedSongAudio, TimeInfo startTime,
-			IExecutoObserver observer, boolean cleanEventsBeforeStarTtime,
+			IExecutorObserver observer, boolean cleanEventsBeforeStarTtime,
 			Song.MetronomeMode metronomeMode, String metronomeSoundHi, String metronomeSoundLow) {
 
 		super(playedSongAudio, signature, observer, bpm);

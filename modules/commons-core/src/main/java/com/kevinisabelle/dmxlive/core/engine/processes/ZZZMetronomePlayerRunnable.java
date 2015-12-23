@@ -40,7 +40,7 @@ public class ZZZMetronomePlayerRunnable extends ZZZTimedExecution {
 
 	private boolean isFirstBeatPlayed = false;
 
-	public ZZZMetronomePlayerRunnable(long refreshTimeout, Song.MetronomeMode mode, String metronomeSoundHi, String metronomeSoundLow, int bpm, TimeSignature signature, IExecutoObserver observer, Clip playedAuClip) {
+	public ZZZMetronomePlayerRunnable(long refreshTimeout, Song.MetronomeMode mode, String metronomeSoundHi, String metronomeSoundLow, int bpm, TimeSignature signature, IExecutorObserver observer, Clip playedAuClip) {
 
 		super(playedAuClip, signature, observer, bpm);
 

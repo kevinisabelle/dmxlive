@@ -12,10 +12,10 @@ public abstract class ZZZTimedExecution implements Runnable {
 
 	protected Clip playedSongAudio;
 	protected TimeSignature signature;
-	protected IExecutoObserver observer;
+	protected IExecutorObserver observer;
 	protected int bpm = 120;
 
-	public ZZZTimedExecution(Clip plClip, TimeSignature timeSignature, IExecutoObserver observer, int bpm){
+	public ZZZTimedExecution(Clip plClip, TimeSignature timeSignature, IExecutorObserver observer, int bpm){
 		this.playedSongAudio = plClip;
 		this.signature = timeSignature;
 		this.observer = observer;
