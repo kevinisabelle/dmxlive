@@ -1,9 +1,8 @@
-//---------------------------------------------------------------------------
 
 #include <windows.h>
+#include <stdio.h>
 #include <process.h>
 #include <STDDEF.H>
-#include <vcl.h>
 #include "com_juanjo_openDmx_OpenDmx.h"
 #include "ftd2xx.h"
 
@@ -60,8 +59,10 @@ BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fwdreason, LPVOID lpvReserved)
 JNIEXPORT jboolean JNICALL Java_com_juanjo_openDmx_OpenDmx_connect
   (JNIEnv *_enc, jclass _class,jint _mode){
 
-    char buffer[64];
-	long status;
+
+    char buffer[64];
+
+	long status;
 	FTDCB ftDCB;
 	FTTIMEOUTS ftTS;
 	int index;
@@ -165,7 +166,8 @@ JNIEXPORT jboolean JNICALL Java_com_juanjo_openDmx_OpenDmx_connect
 
 	return true;
 }
-
+
+
 //desconectar
 JNIEXPORT jboolean JNICALL Java_com_juanjo_openDmx_OpenDmx_disconnect
   (JNIEnv *_env, jclass _class){
@@ -195,19 +197,26 @@ JNIEXPORT jboolean JNICALL Java_com_juanjo_openDmx_OpenDmx_disconnect
 JNIEXPORT void JNICALL Java_com_juanjo_openDmx_OpenDmx_setValue
   (JNIEnv *_env, jclass _class, jint _channel, jint _value){
 
-    if(_channel<0)_channel=0;
-    if(_channel>511)_channel=511;
-    dmxBuffer[_channel+1]=_value;
-}
-
+
+    if(_channel<0)_channel=0;
+
+    if(_channel>511)_channel=511;
+
+    dmxBuffer[_channel+1]=_value;
+
+}
+
+
 //obtener el valor de un canal
 JNIEXPORT jint JNICALL Java_com_juanjo_openDmx_OpenDmx_getValue
   (JNIEnv *_env, jclass _class, jint _channel){
 
     if(_channel<0)_channel=0;
     if(_channel>511)_channel=511;
-    return (jint)dmxBuffer[_channel+1];
-}
+
+    return (jint)dmxBuffer[_channel+1];
+
+}
 
 //---------------------------------------------------------------------------
 //---------------------------------------------------------------------------

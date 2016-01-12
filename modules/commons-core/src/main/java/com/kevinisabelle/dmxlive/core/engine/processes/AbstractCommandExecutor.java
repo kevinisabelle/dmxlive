@@ -174,7 +174,7 @@ public abstract class AbstractCommandExecutor implements Runnable {
 	 * @param absolutePosition
 	 * @param tolerance
 	 */
-	private void popCurrentValuesFromListAndSendDmx(long absolutePosition, long tolerance) {
+	private void popCurrentValuesFromListAndSend(long absolutePosition, long tolerance) {
 
 		if (dmxProgramIterator == null) {
 			dmxProgramIterator = dmxProgram.iterator();

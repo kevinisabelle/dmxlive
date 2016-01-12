@@ -2,3 +2,4 @@
 /modules/commons-core/target/
 /modules/driver-opendmx/target/
 /modules/user-interface/target/
+modules/driver-opendmx/src/main/jni/OpenDMXDriverCPP/build/Debug/
