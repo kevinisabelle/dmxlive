@@ -151,10 +151,10 @@ JNIEXPORT jboolean JNICALL Java_com_juanjo_openDmx_OpenDmx_connect
     if(timeBeginPeriod(1)==TIMERR_NOCANDO)
 		return false;
 	InitializeCriticalSection(&cs);
-	if(_mode==OPENDMXUSB_MODE_TX)
+	/*if(_mode==OPENDMXUSB_MODE_TX)
 		pThread=_beginthread(DmxTransmit,0,NULL);
 	else
-		pThread=_beginthread(DmxReceive,0,NULL);
+		pThread=_beginthread(DmxReceive,0,NULL);*/
 	if(pThread==-1)
 	{
 		FT_W32_CloseHandle(hDevice);

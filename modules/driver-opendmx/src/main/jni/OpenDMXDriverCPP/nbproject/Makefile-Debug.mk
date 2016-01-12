@@ -35,15 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/1472/opendmxdll.o
+	${OBJECTDIR}/_ext/5c0/opendmxdll.o
 
 
 # C Compiler Flags
-CFLAGS=-m32 -shared -m32
+CFLAGS=-m32
 
 # CC Compiler Flags
-CCFLAGS=-m32 -shared -m32 -pthread
-CXXFLAGS=-m32 -shared -m32 -pthread
+CCFLAGS=-m32
+CXXFLAGS=-m32
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -52,7 +52,7 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-L/cygdrive/C/Program\ Files/Java/jdk1.8.0_40/include
+LDLIBSOPTIONS=
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
@@ -60,12 +60,12 @@ LDLIBSOPTIONS=-L/cygdrive/C/Program\ Files/Java/jdk1.8.0_40/include
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -pthread -mno-cygwin -shared
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
 
-${OBJECTDIR}/_ext/1472/opendmxdll.o: ../opendmxdll.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/1472
+${OBJECTDIR}/_ext/5c0/opendmxdll.o: ../opendmxdll.cpp 
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I../../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include -I../../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include/win32  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/1472/opendmxdll.o ../opendmxdll.cpp
+	$(COMPILE.cc) -g -I\"../../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include\" -I../../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include/win32  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/opendmxdll.o ../opendmxdll.cpp
 
 # Subprojects
 .build-subprojects:

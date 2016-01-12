@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="95">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -39,25 +39,14 @@
       <compileType>
         <cTool>
           <architecture>1</architecture>
-          <incDir>
-            <pElem>"C:/Program Files/Java/jdk1.8.0_40/include"</pElem>
-          </incDir>
-          <commandLine>-shared -m32</commandLine>
         </cTool>
         <ccTool>
           <architecture>1</architecture>
           <incDir>
-            <pElem>../../../../../../../../../Program Files/Java/jdk1.8.0_40/include</pElem>
+            <pElem>"../../../../../../../../../Program Files/Java/jdk1.8.0_40/include"</pElem>
             <pElem>../../../../../../../../../Program Files/Java/jdk1.8.0_40/include/win32</pElem>
           </incDir>
-          <commandLine>-shared -m32 -pthread</commandLine>
         </ccTool>
-        <linkerTool>
-          <linkerAddLib>
-            <pElem>C:/Program Files/Java/jdk1.8.0_40/include</pElem>
-          </linkerAddLib>
-          <commandLine>-pthread</commandLine>
-        </linkerTool>
       </compileType>
       <item path="../com_juanjo_openDmx_OpenDmx.h" ex="false" tool="3" flavor2="0">
       </item>
