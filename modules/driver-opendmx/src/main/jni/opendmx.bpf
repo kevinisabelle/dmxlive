@@ -1,6 +1,0 @@
-USEUNIT("opendmxdll.cpp");
-USELIB("FTD2XX.lib");
-//---------------------------------------------------------------------------
-This file is used by the project manager only and should be treated like the project file
-
-DllMain

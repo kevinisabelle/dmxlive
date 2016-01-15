@@ -4,3 +4,6 @@
 /modules/user-interface/target/
 modules/driver-opendmx/src/main/jni/OpenDMXDriverCPP/build/Debug/
 userFiles/waveArr/
+modules/driver-opendmx/src/main/OpenDMX-FTDI64/build/
+modules/driver-opendmx/src/main/OpenDMX-FTDI32/build/
+modules/driver-opendmx/src/main/OpenDMX-FTDI64/dist/

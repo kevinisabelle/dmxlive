@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=libOpenDMXDriverCPP.dll
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/libOpenDMXDriverCPP.dll
+CND_ARTIFACT_NAME_Debug=libOpenDMX-FTDI64.dll
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/libOpenDMX-FTDI64.dll
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=libOpenDMXDriverCPP.dll.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/libOpenDMXDriverCPP.dll.tar
+CND_PACKAGE_NAME_Debug=libOpenDMX-FTDI64.dll.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/libOpenDMX-FTDI64.dll.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=libOpenDMXDriverCPP.dll
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/libOpenDMXDriverCPP.dll
+CND_ARTIFACT_NAME_Release=libOpenDMX-FTDI64.dll
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/libOpenDMX-FTDI64.dll
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=libOpenDMXDriverCPP.dll.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/libOpenDMXDriverCPP.dll.tar
+CND_PACKAGE_NAME_Release=libOpenDMX-FTDI64.dll.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/libOpenDMX-FTDI64.dll.tar
 #
 # include compiler specific variables
 #

@@ -13,9 +13,9 @@ CND_BUILDDIR=build
 CND_DLIB_EXT=dll
 NBTMPDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT}
-OUTPUT_BASENAME=libOpenDMXDriverCPP.${CND_DLIB_EXT}
-PACKAGE_TOP_DIR=libOpenDMXDriverCPP.dll/
+OUTPUT_PATH=${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT}
+OUTPUT_BASENAME=libOpenDMX-FTDI64.${CND_DLIB_EXT}
+PACKAGE_TOP_DIR=libOpenDMX-FTDI64.dll/
 
 # Functions
 function checkReturnCode
@@ -60,15 +60,15 @@ mkdir -p ${NBTMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory "${NBTMPDIR}/libOpenDMXDriverCPP.dll/lib"
+makeDirectory "${NBTMPDIR}/libOpenDMX-FTDI64.dll/lib"
 copyFileToTmpDir "${OUTPUT_PATH}" "${NBTMPDIR}/${PACKAGE_TOP_DIR}lib/${OUTPUT_BASENAME}" 0644
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libOpenDMXDriverCPP.dll.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libOpenDMX-FTDI64.dll.tar
 cd ${NBTMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libOpenDMXDriverCPP.dll.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/package/libOpenDMX-FTDI64.dll.tar *
 checkReturnCode
 
 # Cleanup

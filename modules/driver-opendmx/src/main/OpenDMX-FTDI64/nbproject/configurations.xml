@@ -4,8 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>../com_juanjo_openDmx_OpenDmx.h</itemPath>
-      <itemPath>../ftd2xx.h</itemPath>
+      <itemPath>src/com_juanjo_openDmx_OpenDmx.h</itemPath>
+      <itemPath>src/ftd2xx.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,7 +14,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../opendmxdll.cpp</itemPath>
+      <itemPath>src/opendmxdll.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -32,30 +32,38 @@
   <confs>
     <conf name="Debug" type="2">
       <toolsSet>
-        <compilerSet>default</compilerSet>
+        <compilerSet>Cygwin|Cygwin</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
       <compileType>
         <cTool>
-          <architecture>1</architecture>
+          <architecture>2</architecture>
         </cTool>
         <ccTool>
-          <architecture>1</architecture>
+          <architecture>2</architecture>
+          <commandlineTool>g++</commandlineTool>
           <incDir>
-            <pElem>"../../../../../../../../../Program Files/Java/jdk1.8.0_40/include"</pElem>
-            <pElem>../../../../../../../../../Program Files/Java/jdk1.8.0_40/include/win32</pElem>
+            <pElem>src</pElem>
+            <pElem>../../../../../../../../Program Files/Java/jdk1.8.0_40/include</pElem>
+            <pElem>../../../../../../../../Program Files/Java/jdk1.8.0_40/include/win32</pElem>
           </incDir>
         </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>src</pElem>
+          </linkerAddLib>
+          <linkerLibItems>
+            <linkerLibLibItem>ftd2xx64</linkerLibLibItem>
+            <linkerOptionItem>-lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid</linkerOptionItem>
+          </linkerLibItems>
+        </linkerTool>
       </compileType>
-      <item path="../com_juanjo_openDmx_OpenDmx.h" ex="false" tool="3" flavor2="0">
+      <item path="src/com_juanjo_openDmx_OpenDmx.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../ftd2xx.h" ex="false" tool="3" flavor2="0">
+      <item path="src/ftd2xx.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../opendmxdll.cpp" ex="false" tool="1" flavor2="0">
-        <ccTool>
-          <additionalDep></additionalDep>
-        </ccTool>
+      <item path="src/opendmxdll.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -78,11 +86,11 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
-      <item path="../com_juanjo_openDmx_OpenDmx.h" ex="false" tool="3" flavor2="0">
+      <item path="src/com_juanjo_openDmx_OpenDmx.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../ftd2xx.h" ex="false" tool="3" flavor2="0">
+      <item path="src/ftd2xx.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../opendmxdll.cpp" ex="false" tool="1" flavor2="0">
+      <item path="src/opendmxdll.cpp" ex="false" tool="1" flavor2="0">
       </item>
     </conf>
   </confs>

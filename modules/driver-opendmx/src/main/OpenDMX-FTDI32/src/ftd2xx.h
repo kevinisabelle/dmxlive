@@ -1,6 +1,6 @@
 /*++
 
-Copyright (c) 2001-2003  Future Technology Devices International Ltd.
+Copyright (c) 2001-2005  Future Technology Devices International Ltd.
 
 Module Name:
 
@@ -23,6 +23,12 @@ Revision History:
 	12/06/03	awm		Added FT_StopInTask and FT_RestartInTask.
 	18/09/03	awm		Added FT_SetResetPipeRetryCount.
 	10/10/03	awm		Added FT_ResetPort.
+	23/01/04	awm		Added support for open-by-location.
+	16/03/04	awm		Added support for FT2232C.
+	23/09/04	awm		Added support for FT232R.
+	20/10/04	awm		Added FT_CyclePort.
+	18/01/05	awm		Added FT_DEVICE_LIST_INFO_NODE type.
+	11/02/05	awm		Added LocId to FT_DEVICE_LIST_INFO_NODE.
 
 	
 --*/
@@ -84,6 +90,7 @@ enum {
 
 #define FT_OPEN_BY_SERIAL_NUMBER    1
 #define FT_OPEN_BY_DESCRIPTION      2
+#define FT_OPEN_BY_LOCATION			4
 
 //
 // FT_ListDevices Flags (used in conjunction with FT_OpenEx Flags
@@ -182,7 +189,8 @@ enum {
     FT_DEVICE_BM,
     FT_DEVICE_AM,
     FT_DEVICE_100AX,
-    FT_DEVICE_UNKNOWN
+    FT_DEVICE_UNKNOWN,
+    FT_DEVICE_2232C
 };
 
 
@@ -397,6 +405,13 @@ FT_STATUS WINAPI FT_EraseEE(
 // structure to hold program data for FT_Program function
 //
 typedef struct ft_program_data {
+
+	DWORD Signature1;			// Header - must be 0x00000000 
+	DWORD Signature2;			// Header - must be 0xffffffff
+	DWORD Version;				// Header - FT_PROGRAM_DATA version
+								//          0 = original
+	                            //          1 = FT2232C extensions
+
 	WORD VendorId;				// 0x0403
 	WORD ProductId;				// 0x6001
 	char *Manufacturer;			// "FTDI"
@@ -417,6 +432,28 @@ typedef struct ft_program_data {
 	UCHAR SerNumEnable;			// non-zero if serial number to be used
 	UCHAR USBVersionEnable;		// non-zero if chip uses USBVersion
 	WORD USBVersion;			// BCD (0x0200 => USB2)
+	//
+	// FT2232C extensions
+	//
+	UCHAR Rev5;					// non-zero if Rev5 chip, zero otherwise
+	UCHAR IsoInA;				// non-zero if in endpoint is isochronous
+	UCHAR IsoInB;				// non-zero if in endpoint is isochronous
+	UCHAR IsoOutA;				// non-zero if out endpoint is isochronous
+	UCHAR IsoOutB;				// non-zero if out endpoint is isochronous
+	UCHAR PullDownEnable5;		// non-zero if pull down enabled
+	UCHAR SerNumEnable5;		// non-zero if serial number to be used
+	UCHAR USBVersionEnable5;	// non-zero if chip uses USBVersion
+	WORD USBVersion5;			// BCD (0x0200 => USB2)
+	UCHAR AIsHighCurrent;		// non-zero if interface is high current
+	UCHAR BIsHighCurrent;		// non-zero if interface is high current
+	UCHAR IFAIsFifo;			// non-zero if interface is 245 FIFO
+	UCHAR IFAIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
+	UCHAR IFAIsFastSer;			// non-zero if interface is Fast serial
+	UCHAR AIsVCP;				// non-zero if interface is to use VCP drivers
+	UCHAR IFBIsFifo;			// non-zero if interface is 245 FIFO
+	UCHAR IFBIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
+	UCHAR IFBIsFastSer;			// non-zero if interface is Fast serial
+	UCHAR BIsVCP;				// non-zero if interface is to use VCP drivers
 } FT_PROGRAM_DATA, *PFT_PROGRAM_DATA;
 
 FTD2XX_API
@@ -426,9 +463,29 @@ FT_STATUS WINAPI FT_EE_Program(
 	);
 
 FTD2XX_API
+FT_STATUS WINAPI FT_EE_ProgramEx(
+    FT_HANDLE ftHandle,
+	PFT_PROGRAM_DATA pData,
+	char *Manufacturer,
+	char *ManufacturerId,
+	char *Description,
+	char *SerialNumber
+	);
+
+FTD2XX_API
 FT_STATUS WINAPI FT_EE_Read(
     FT_HANDLE ftHandle,
 	PFT_PROGRAM_DATA pData
+	);
+
+FTD2XX_API
+FT_STATUS WINAPI FT_EE_ReadEx(
+    FT_HANDLE ftHandle,
+	PFT_PROGRAM_DATA pData,
+	char *Manufacturer,
+	char *ManufacturerId,
+	char *Description,
+	char *SerialNumber
 	);
 
 FTD2XX_API
@@ -512,6 +569,11 @@ FT_STATUS WINAPI FT_SetResetPipeRetryCount(
 
 FTD2XX_API
 FT_STATUS WINAPI FT_ResetPort(
+    FT_HANDLE ftHandle
+    );
+
+FTD2XX_API
+FT_STATUS WINAPI FT_CyclePort(
     FT_HANDLE ftHandle
     );
 
@@ -709,6 +771,44 @@ BOOL WINAPI FT_W32_WaitCommEvent(
     );
 
 
+//
+// Device information
+//
+
+typedef struct _ft_device_list_info_node {
+	ULONG Flags;
+    ULONG Type;
+	ULONG ID;
+	DWORD LocId;
+	char SerialNumber[16];
+	char Description[64];
+	FT_HANDLE ftHandle;
+} FT_DEVICE_LIST_INFO_NODE;
+
+
+FTD2XX_API
+FT_STATUS WINAPI FT_CreateDeviceInfoList(
+	LPDWORD lpdwNumDevs
+	);
+
+FTD2XX_API
+FT_STATUS WINAPI FT_GetDeviceInfoList(
+	FT_DEVICE_LIST_INFO_NODE *pDest,
+	LPDWORD lpdwNumDevs
+	);
+
+FTD2XX_API
+FT_STATUS WINAPI FT_GetDeviceInfoDetail(
+	DWORD dwIndex,
+	LPDWORD lpdwFlags,
+	LPDWORD lpdwType,
+	LPDWORD lpdwID,
+	LPDWORD lpdwLocId,
+	LPVOID lpSerialNumber,
+	LPVOID lpDescription,
+	FT_HANDLE *pftHandle
+	);
+
 
 
 #ifdef __cplusplus
@@ -717,4 +817,3 @@ BOOL WINAPI FT_W32_WaitCommEvent(
 
 
 #endif  /* FTD2XX_H */
-

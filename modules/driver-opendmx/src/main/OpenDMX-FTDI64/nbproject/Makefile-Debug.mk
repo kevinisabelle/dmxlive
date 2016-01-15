@@ -35,15 +35,15 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/5c0/opendmxdll.o
+	${OBJECTDIR}/src/opendmxdll.o
 
 
 # C Compiler Flags
-CFLAGS=-m32
+CFLAGS=-m64
 
 # CC Compiler Flags
-CCFLAGS=-m32
-CXXFLAGS=-m32
+CCFLAGS=-m64
+CXXFLAGS=-m64
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -52,20 +52,20 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-Lsrc -lftd2xx64 -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT}
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT}
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT}: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
 
-${OBJECTDIR}/_ext/5c0/opendmxdll.o: ../opendmxdll.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+${OBJECTDIR}/src/opendmxdll.o: src/opendmxdll.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I\"../../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include\" -I../../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include/win32  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/opendmxdll.o ../opendmxdll.cpp
+	$(COMPILE.cc) -g -Isrc -I../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include -I../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include/win32  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/opendmxdll.o src/opendmxdll.cpp
 
 # Subprojects
 .build-subprojects:
@@ -73,7 +73,7 @@ ${OBJECTDIR}/_ext/5c0/opendmxdll.o: ../opendmxdll.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMXDriverCPP.${CND_DLIB_EXT}
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:
