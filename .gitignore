@@ -7,3 +7,4 @@ userFiles/waveArr/
 modules/driver-opendmx/src/main/OpenDMX-FTDI64/build/
 modules/driver-opendmx/src/main/OpenDMX-FTDI32/build/
 modules/driver-opendmx/src/main/OpenDMX-FTDI64/dist/
+/modules/fixture-Chauvet-FX-DerbyX/target/

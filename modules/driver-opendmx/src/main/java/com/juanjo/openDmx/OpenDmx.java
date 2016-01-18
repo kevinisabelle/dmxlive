@@ -11,10 +11,10 @@ public class OpenDmx {
 
       logger.info("loading libraries...");
 
-      System.loadLibrary("ftd2xx");
-      System.loadLibrary("opendmx");
+      System.loadLibrary("ftd2xx64");
+      System.loadLibrary("libOpenDMX-FTDI64");
 
-      logger.info("ftd2xx and opendmx dynamic library loaded.");
+      logger.info("FTDI and OpenDMX dynamic libraries loaded.");
 
     }
     catch(UnsatisfiedLinkError e) {

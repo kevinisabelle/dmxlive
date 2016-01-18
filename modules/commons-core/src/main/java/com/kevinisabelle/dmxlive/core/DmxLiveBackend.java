@@ -8,6 +8,14 @@ public class DmxLiveBackend {
 	private Project currentProject;
 	private Configuration configuration;
 	private ExecutionEngine executionEngine;
+	
+	public DmxLiveBackend(){
+		
+		currentProject = null;
+		configuration = Configuration.Load();
+		executionEngine = new ExecutionEngine();
+		
+	}
 
 	public void loadProject(){
 

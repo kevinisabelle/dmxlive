@@ -1,5 +1,13 @@
 package com.kevinisabelle.dmxlive.fixture.chauvetderbyx;
 
+import com.kevinisabelle.dmxlive.api.output.TimedEvent;
+import com.kevinisabelle.dmxlive.api.output.dmx.Color;
+import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
+import com.kevinisabelle.dmxlive.api.output.dmx.commands.AbstractDMXCommand;
+import com.kevinisabelle.dmxlive.music.TimeHelper;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
+import com.kevinisabelle.dmxlive.music.TimeSignature;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -125,9 +133,9 @@ public class ChauvetDerbyX extends DMXFixture {
 	}
 		
 	@Override
-	public List<TimedDmxValue> convertToDmx(TimeInfo startTime, TimeSignature signature, int bpm, String params) {
+	public List<TimedDmxEvent> convertToDmx(TimeInfo startTime, TimeSignature signature, int bpm, String params) {
 		
-		List<TimedDmxValue> values = new ArrayList<TimedDmxValue>();
+		List<TimedDmxEvent> values = new ArrayList<TimedDmxEvent>();
 		String[] paramsArr = params.split(":",2);
 		CommandParameters parameters = new CommandParameters(paramsArr[1]);
 
@@ -194,11 +202,11 @@ public class ChauvetDerbyX extends DMXFixture {
 		return values;
 	}
 
-	private List<TimedDmxValue> mode(TimeInfo startTime, TimeSignature signature, int bpm, int mode) {
+	private List<TimedDmxEvent> mode(TimeInfo startTime, TimeSignature signature, int bpm, int mode) {
 		return dim(startTime, signature, bpm, new Color[]{new Color(Color.ColorEnum.BLUE)}, false, 0, mode);
 	}
 
-	private List<TimedDmxValue> dim(TimeInfo time, TimeSignature signature, int bpm, Color[] colors, boolean isStrobe, int strobeSpeed, int mode) {
+	private List<TimedDmxEvent> dim(TimeInfo time, TimeSignature signature, int bpm, Color[] colors, boolean isStrobe, int strobeSpeed, int mode) {
 
 		// Always reset stobe mode when applying dim.
 		
@@ -257,35 +265,35 @@ public class ChauvetDerbyX extends DMXFixture {
 				break;
 		}
 
-		List<TimedDmxValue> values = new ArrayList<TimedDmxValue>();
+		List<TimedDmxEvent> values = new ArrayList<TimedDmxEvent>();
 
 		long timeMillis = TimeHelper.getMilliseconds(time, signature, bpm);
 		
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_MODE, mode));
+		values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_MODE, mode));
 
 		if (isStrobe){
 			
-			values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_STROBE, (STROBE_ON[1] - STROBE_ON[0]) * strobeSpeed / 100 + STROBE_ON[0]));
+			values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_STROBE, (STROBE_ON[1] - STROBE_ON[0]) * strobeSpeed / 100 + STROBE_ON[0]));
 		
 		} else {
 
-			values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_STROBE, STROBE_OFF[0]));
+			values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_STROBE, STROBE_OFF[0]));
 		}
 		
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_SPOT_1, spotValues[0]));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_SPOT_2, spotValues[1]));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_SPOT_3, spotValues[2]));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_SPOT_4, spotValues[3]));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_SPOT_5, spotValues[4]));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + CHANNEL_SPOT_6, spotValues[5]));
+		values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_SPOT_1, spotValues[0]));
+		values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_SPOT_2, spotValues[1]));
+		values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_SPOT_3, spotValues[2]));
+		values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_SPOT_4, spotValues[3]));
+		values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_SPOT_5, spotValues[4]));
+		values.add(new TimedDmxEvent(timeMillis, this.getChannel() + CHANNEL_SPOT_6, spotValues[5]));
 		
 
 		return values;
 	}
 	
-	private List<TimedDmxValue> blink(TimeInfo time, TimeSignature signature, int bpm, Color[] colors, TimeInfo executionTime, Double beatFrequency, Double beatOn) {
+	private List<TimedDmxEvent> blink(TimeInfo time, TimeSignature signature, int bpm, Color[] colors, TimeInfo executionTime, Double beatFrequency, Double beatOn) {
 		
-		List<TimedDmxValue> values = new ArrayList<TimedDmxValue>();
+		List<TimedDmxEvent> values = new ArrayList<TimedDmxEvent>();
 		
 		long frequency = TimeHelper.getFrequency(signature, bpm, beatFrequency);
 		long onTime = TimeHelper.getOnTime(signature, bpm, beatOn);
@@ -305,9 +313,9 @@ public class ChauvetDerbyX extends DMXFixture {
 		
 	}		
 	
-	private List<TimedDmxValue> riff(TimeInfo time, TimeSignature signature, int bpm, Color[] colors, Integer[] dimmerPercent, Double unit, char[] riffStr) {
+	private List<TimedDmxEvent> riff(TimeInfo time, TimeSignature signature, int bpm, Color[] colors, Integer[] dimmerPercent, Double unit, char[] riffStr) {
 		
-		List<TimedDmxValue> values = new ArrayList<TimedDmxValue>();
+		List<TimedDmxEvent> values = new ArrayList<TimedDmxEvent>();
 
 		int currentNote = -1;
 		long currentTime = TimeHelper.getMilliseconds(time, signature, bpm);
@@ -329,6 +337,31 @@ public class ChauvetDerbyX extends DMXFixture {
 		return values;
 		
 	}
+
+  @Override
+  public List<TimedDmxEvent> convertToDmx(TimeInfo ti, TimeSignature ts, int i, String string) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public List<AbstractDMXCommand> getSupportedCommmands() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public String getName() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public List<TimedEvent> processCommandToTimedEvents(AbstractDMXCommand c) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
+
+  @Override
+  public List<AbstractDMXCommand> getSupportedCommands() {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  }
 
 	
 }

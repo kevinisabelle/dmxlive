@@ -21,14 +21,9 @@ public class EntecOpenDMX extends DmxDriver {
     return "Enttec OpenDMX Blue Box";
   }
 
-  public void sendSignal(int channel, int data) throws Exception {
-
-    OpenDmx.setValue(channel, data);
-  }
-
   @Override
   public void transmit(int channel, int value) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    OpenDmx.setValue(channel, value);
   }
 
   @Override
