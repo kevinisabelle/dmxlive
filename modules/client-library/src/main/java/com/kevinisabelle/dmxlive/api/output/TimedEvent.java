@@ -3,6 +3,7 @@ package com.kevinisabelle.dmxlive.api.output;
 public class TimedEvent implements Comparable<TimedEvent> {
 
   protected long millis;
+  protected Fixture fixtureDestination;
 
   public TimedEvent(long millis) {
     this.millis = millis;

@@ -30,6 +30,12 @@ public class MasterClock implements Runnable {
 	
 	protected Clip audioTimeReference = null;
 	protected TempoMap tempoMap;
+	
+	public MasterClock(TempoMap map){
+		this.audioTimeReference = null;
+		this.tempoMap = map;
+		this.absoluteStartTimeMillis = -1;
+	}
 
 	public MasterClock(TempoMap map, Clip pClip){
 		this.audioTimeReference = pClip;

@@ -1,6 +1,7 @@
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
 import com.kevinisabelle.dmxlive.api.output.Command;
+import com.kevinisabelle.dmxlive.api.output.Fixture;
 import com.kevinisabelle.dmxlive.api.output.TimedEvent;
 import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.core.engine.MasterClock;
@@ -37,10 +38,46 @@ public abstract class AbstractCommandExecutor implements Runnable {
 		this.refreshRate = refreshRate;
 	}
 
+	protected abstract void SendEventsToDrivers(List<TimedEvent> events);
+	
+	private void ProcessCommandsToCurrentList(){
+		
+	}
+	
+	private List<TimedEvent> GetReadyTimedEvent(long from, long to){
+		List<TimedEvent> result = new LinkedList<>();
+		
+		return result;
+	}
+	
 	@Override
 	public void run(){
 		
+		long lastPosition = -1;
+		long currentPosition = -1;
+		
 		while (isRunning){
+			
+			lastPosition = currentPosition;
+			
+			//Get position from master clock
+			currentPosition = masterClockRef.getAbsoluteTime();
+			
+			//Transfer commands to current execution if needed
+			ProcessCommandsToCurrentList();
+			
+			//Get timedEvent to send now based on current time
+			List<TimedEvent> events = GetReadyTimedEvent(lastPosition, currentPosition);
+			
+			//Send events to drivers
+			SendEventsToDrivers(events);
+			
+			
+			
+			
+			
+			
+			
 			
 			/*
 			
