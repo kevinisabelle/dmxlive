@@ -11,7 +11,6 @@ public class OpenDmx {
 
       logger.info("loading libraries...");
 
-      System.loadLibrary("cygwin1");
       System.loadLibrary("ftd2xx");
       System.loadLibrary("libOpenDMX-FTDI64");
 

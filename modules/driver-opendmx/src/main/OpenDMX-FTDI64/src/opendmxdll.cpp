@@ -247,7 +247,7 @@ JNIEXPORT jint JNICALL Java_com_juanjo_openDmx_OpenDmx_getValue
 
 void *(DmxTransmit)(void *)
 {
-	unsigned int bytes;
+	long unsigned int bytes;
 	int i;
 	long delay;
 	LARGE_INTEGER t,start,last,target;
@@ -308,8 +308,8 @@ void *(DmxTransmit)(void *)
 
 void *(DmxReceive)(void *)
 {	
-	unsigned int bytesToRead,bytesRead;
-	unsigned int events;
+	long unsigned int bytesToRead,bytesRead;
+	long unsigned int events;
 	DWORD currentErrors;
 	DWORD lastErrors=0;
 	COMSTAT comStat;

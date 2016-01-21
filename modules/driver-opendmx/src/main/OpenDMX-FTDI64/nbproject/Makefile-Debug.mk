@@ -21,7 +21,7 @@ FC=gfortran
 AS=as
 
 # Macros
-CND_PLATFORM=MinGW_64_2-Windows
+CND_PLATFORM=MinGW-Windows
 CND_DLIB_EXT=dll
 CND_CONF=Debug
 CND_DISTDIR=dist
@@ -52,20 +52,22 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=-Lsrc -lftd2xx64 -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -lkernel32
+LDLIBSOPTIONS=-Lsrc -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -lkernel32 -static-libgcc -static-libstdc++ -static -lpthread src/ftd2xx64.dll
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
 	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT}
 
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT}: src/ftd2xx64.dll
+
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
+	g++ -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libOpenDMX-FTDI64.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared
 
 ${OBJECTDIR}/src/opendmxdll.o: src/opendmxdll.cpp 
 	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -Isrc -I../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include -I../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include/win32  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/opendmxdll.o src/opendmxdll.cpp
+	$(COMPILE.cc) -g -s -Isrc -I../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include -I../../../../../../../../Program\ Files/Java/jdk1.8.0_40/include/win32  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/src/opendmxdll.o src/opendmxdll.cpp
 
 # Subprojects
 .build-subprojects:

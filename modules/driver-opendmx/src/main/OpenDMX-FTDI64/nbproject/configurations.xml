@@ -32,7 +32,7 @@
   <confs>
     <conf name="Debug" type="2">
       <toolsSet>
-        <compilerSet>MinGW_64_2|MinGW</compilerSet>
+        <compilerSet>MinGW|MinGW</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -41,6 +41,7 @@
           <architecture>2</architecture>
         </cTool>
         <ccTool>
+          <stripSymbols>true</stripSymbols>
           <architecture>2</architecture>
           <commandlineTool>g++</commandlineTool>
           <incDir>
@@ -54,9 +55,11 @@
           <linkerAddLib>
             <pElem>src</pElem>
           </linkerAddLib>
+          <commandlineTool>g++</commandlineTool>
           <linkerLibItems>
-            <linkerLibLibItem>ftd2xx64</linkerLibLibItem>
             <linkerOptionItem>-lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -lkernel32</linkerOptionItem>
+            <linkerOptionItem>-static-libgcc -static-libstdc++ -static -lpthread</linkerOptionItem>
+            <linkerLibFileItem>src/ftd2xx64.dll</linkerLibFileItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>
@@ -69,7 +72,7 @@
     </conf>
     <conf name="Release" type="2">
       <toolsSet>
-        <compilerSet>Cygwin|Cygwin</compilerSet>
+        <compilerSet>MinGW_64_2|MinGW</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
