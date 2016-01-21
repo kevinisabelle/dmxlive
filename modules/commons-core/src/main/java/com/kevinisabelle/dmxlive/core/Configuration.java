@@ -7,9 +7,12 @@ import com.kevinisabelle.dmxlive.api.driver.TextDriver;
 import com.kevinisabelle.dmxlive.api.driver.VideoDriver;
 import com.kevinisabelle.dmxlive.api.input.ControlFixture;
 import com.kevinisabelle.dmxlive.api.output.Fixture;
-import com.kevinisabelle.dmxlive.core.engine.factory.DriverFactory;
-import com.kevinisabelle.dmxlive.core.engine.factory.FixtureFactory;
+import com.kevinisabelle.dmxlive.core.factory.DriverFactory;
+import com.kevinisabelle.dmxlive.core.factory.FixtureFactory;
+import java.io.IOException;
 import java.util.Map;
+import org.apache.log4j.Logger;
+
 
 /**
  *
@@ -17,8 +20,9 @@ import java.util.Map;
  */
 public class Configuration {
 	
+	private static Logger logger = Logger.getLogger(Configuration.class);
+	
 	private DriverFactory driversFactory;
-	private FixtureFactory fixtureFactory;
 	
 	private Map<String, DmxDriver> dmxDrivers;
 	private Map<String, MidiDriver> midiDrivers;
@@ -28,4 +32,17 @@ public class Configuration {
 	
 	private Map<String, ControlFixture> controllersDefinitions;	
 	private Map<String, Fixture> fixtureDefinitions;
+	
+	protected Configuration(){
+		
+		logger.info("Init configuration...");
+		
+		try {
+			driversFactory = new DriverFactory();
+		} catch (IOException ex) {
+			
+		}
+		
+		logger.info("Done configuration init.");
+	}
 }

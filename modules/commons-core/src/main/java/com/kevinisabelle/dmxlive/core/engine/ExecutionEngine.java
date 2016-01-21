@@ -2,7 +2,7 @@ package com.kevinisabelle.dmxlive.core.engine;
 
 import com.kevinisabelle.dmxlive.core.scripting.Command;
 import com.kevinisabelle.dmxlive.core.Configuration;
-import com.kevinisabelle.dmxlive.core.engine.factory.CommandExectorFactory;
+import com.kevinisabelle.dmxlive.core.factory.CommandExectorFactory;
 import com.kevinisabelle.dmxlive.core.engine.processes.AbstractCommandExecutor;
 import com.kevinisabelle.dmxlive.music.TempoMap;
 import java.util.LinkedList;

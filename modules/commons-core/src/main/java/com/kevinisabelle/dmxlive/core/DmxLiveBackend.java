@@ -12,7 +12,7 @@ public class DmxLiveBackend {
 	public DmxLiveBackend(){
 		
 		currentProject = null;
-		configuration = Configuration.Load();
+		//configuration = Configuration.Load();
 		executionEngine = new ExecutionEngine();
 		
 	}

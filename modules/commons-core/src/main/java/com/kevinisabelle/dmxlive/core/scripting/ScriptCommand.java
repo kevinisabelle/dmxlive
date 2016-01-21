@@ -1,7 +1,7 @@
 package com.kevinisabelle.dmxlive.core.scripting;
 
 import com.kevinisabelle.dmxlive.api.output.Fixture;
-import com.kevinisabelle.dmxlive.core.engine.factory.FixtureFactory;
+import com.kevinisabelle.dmxlive.core.factory.FixtureFactory;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
 import com.kevinisabelle.dmxlive.music.TimeSignature;
 

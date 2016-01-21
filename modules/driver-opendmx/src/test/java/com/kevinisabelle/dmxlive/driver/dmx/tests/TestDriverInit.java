@@ -30,7 +30,7 @@ public class TestDriverInit {
   public static void setUpClass() {
 
     try {
-      System.setProperty("java.library.path", "dll64");
+      System.setProperty("java.library.path", "src/main/resources");
       Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
       fieldSysPath.setAccessible(true);
       try {

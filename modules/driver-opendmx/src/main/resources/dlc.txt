@@ -1,0 +1,3 @@
+Type:Driver|DMX
+Name:Open DMX Blue Box
+DriverClass:com.kevinisabelle.dmxlive.driver.dmx.EntecOpenDMX
