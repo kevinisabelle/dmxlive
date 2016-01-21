@@ -2,6 +2,8 @@ package com.kevinisabelle.dmxlive.api.output.audio.commands;
 
 import com.kevinisabelle.dmxlive.api.output.Command;
 import com.kevinisabelle.dmxlive.api.output.audio.AudioFixture;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
+import java.util.List;
 
 /**
  *
@@ -9,8 +11,8 @@ import com.kevinisabelle.dmxlive.api.output.audio.AudioFixture;
  */
 public abstract class AbstractAudioCommand extends Command<AudioFixture> {
 
-    public AbstractAudioCommand(String scriptItem) {
-        super(scriptItem);
+    public AbstractAudioCommand(TimeInfo startOffset,  List<AudioFixture> fixtures, int absoluteScriptLineNumber, String scriptLine) {
+        super(startOffset, fixtures, absoluteScriptLineNumber, scriptLine);
     }
 
 }

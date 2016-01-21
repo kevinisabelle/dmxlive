@@ -5,7 +5,8 @@
  */
 package com.kevinisabelle.dmxlive.api.output.audio.commands;
 
-import com.kevinisabelle.dmxlive.api.output.TimedEvent;
+import com.kevinisabelle.dmxlive.api.output.audio.AudioFixture;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
 import java.util.List;
 
 /**
@@ -14,25 +15,9 @@ import java.util.List;
  */
 public class StartAudioClipCommand extends AbstractAudioCommand {
 
-    public StartAudioClipCommand(String scriptItem) {
-        super(scriptItem);
+    public StartAudioClipCommand(TimeInfo startOffset, List<AudioFixture> fixtures, int absoluteScriptLineNumber, String scriptLine) {
+        super(startOffset, fixtures, absoluteScriptLineNumber, scriptLine);
     }
 
-    @Override
-    protected void fromScript(String scriptItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected String toScript() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<TimedEvent> compute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-  
     
 }

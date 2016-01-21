@@ -32,7 +32,7 @@
   <confs>
     <conf name="Debug" type="2">
       <toolsSet>
-        <compilerSet>Cygwin|Cygwin</compilerSet>
+        <compilerSet>MinGW_64_2|MinGW</compilerSet>
         <dependencyChecking>true</dependencyChecking>
         <rebuildPropChanged>false</rebuildPropChanged>
       </toolsSet>
@@ -48,6 +48,7 @@
             <pElem>../../../../../../../../Program Files/Java/jdk1.8.0_40/include</pElem>
             <pElem>../../../../../../../../Program Files/Java/jdk1.8.0_40/include/win32</pElem>
           </incDir>
+          <useLinkerLibraries>false</useLinkerLibraries>
         </ccTool>
         <linkerTool>
           <linkerAddLib>
@@ -55,7 +56,7 @@
           </linkerAddLib>
           <linkerLibItems>
             <linkerLibLibItem>ftd2xx64</linkerLibLibItem>
-            <linkerOptionItem>-lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid</linkerOptionItem>
+            <linkerOptionItem>-lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -lkernel32</linkerOptionItem>
           </linkerLibItems>
         </linkerTool>
       </compileType>

@@ -1,8 +1,8 @@
 package com.kevinisabelle.dmxlive.api.output.dmx.commands;
 
-import com.kevinisabelle.dmxlive.api.output.TimedEvent;
+import com.kevinisabelle.dmxlive.api.output.dmx.Color;
 import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
-import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
 import java.util.List;
 
 /**
@@ -11,25 +11,9 @@ import java.util.List;
  */
 public class CommandFade extends AbstractDMXCommand {
 
-    public CommandFade(String scriptItem) {
-        super(scriptItem);
-    }
-
-
-
-    @Override
-    protected void fromScript(String scriptItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected String toScript() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<TimedEvent> compute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CommandFade(TimeInfo startOffset, List<DMXFixture> fixtures, int scriptLineRef, String scriptItem, Color color, int dimmer) {
+        
+        super(startOffset, fixtures, scriptLineRef, scriptItem);
     }
 
 }

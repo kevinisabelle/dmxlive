@@ -1,6 +1,7 @@
 package com.kevinisabelle.dmxlive.api.output.text.commands;
 
-import com.kevinisabelle.dmxlive.api.output.TimedEvent;
+import com.kevinisabelle.dmxlive.api.output.text.TextFixture;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
 import java.util.List;
 
 /**
@@ -9,23 +10,8 @@ import java.util.List;
  */
 public class CommandDisplayText extends AbstractTextCommand {
 
-    public CommandDisplayText(String scriptItem) {
-        super(scriptItem);
-    }
-
-    @Override
-    protected void fromScript(String scriptItem) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected String toScript() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<TimedEvent> compute() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public CommandDisplayText(TimeInfo startOffset, List<TextFixture> fixtures, int scriptLineRef, String scriptItem) {
+        super(startOffset, fixtures, scriptLineRef, scriptItem);
     }
 
 }

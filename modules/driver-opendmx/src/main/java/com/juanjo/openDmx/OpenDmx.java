@@ -11,15 +11,17 @@ public class OpenDmx {
 
       logger.info("loading libraries...");
 
-      System.loadLibrary("ftd2xx64");
+      System.loadLibrary("cygwin1");
+      System.loadLibrary("ftd2xx");
       System.loadLibrary("libOpenDMX-FTDI64");
 
       logger.info("FTDI and OpenDMX dynamic libraries loaded.");
 
     }
     catch(UnsatisfiedLinkError e) {
-      logger.fatal("Native code library failed to load.\n" + e);
-      System.exit(1);
+      logger.fatal("Native code library failed to load.", e);
+      throw e;
+      //System.exit(1);
     }
   }
 

@@ -3,6 +3,8 @@ package com.kevinisabelle.dmxlive.api.output.dmx.commands;
 import com.kevinisabelle.dmxlive.api.output.Command;
 
 import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
+import com.kevinisabelle.dmxlive.music.TimeInfo;
+import java.util.List;
 
 /**
  *
@@ -10,8 +12,8 @@ import com.kevinisabelle.dmxlive.api.output.dmx.DMXFixture;
  */
 public abstract class AbstractDMXCommand extends Command<DMXFixture> {
 
-    public AbstractDMXCommand(String scriptItem) {
-        super(scriptItem);
+    public AbstractDMXCommand(TimeInfo startOffset, List<DMXFixture> fixtures, int scriptLineRef, String scriptItem) {
+        super(startOffset, fixtures, scriptLineRef, scriptItem);
     }
 
 }
