@@ -49,22 +49,27 @@ public class TempoMapTests {
         long ms = tempoMap.getAbsoluteTimeAt(new TimeInfo("3:0:0"));
         
         assertEquals(ms, 4000);
+        assertEquals(tempoMap.getTimeInfoAt(ms), new TimeInfo("3:0:0"));
         
         ms = tempoMap.getAbsoluteTimeAt(new TimeInfo("4:0:0"));
         
         assertEquals(ms, 6000);
+        assertEquals(tempoMap.getTimeInfoAt(ms), new TimeInfo("4:0:0"));
         
         ms = tempoMap.getAbsoluteTimeAt(new TimeInfo("4:6:0"));
         
         assertEquals(ms, 7000);
+        assertEquals(tempoMap.getTimeInfoAt(ms), new TimeInfo("4:6:0"));
         
         ms = tempoMap.getAbsoluteTimeAt(new TimeInfo("4:8:0"));
         
         assertEquals(ms, 7333);
+        assertEquals(tempoMap.getTimeInfoAt(ms), new TimeInfo("4:7:0.998"));
         
         ms = tempoMap.getAbsoluteTimeAt(new TimeInfo("5:0:0"));
         
         assertEquals(ms, 8000);
+        assertEquals(tempoMap.getTimeInfoAt(ms), new TimeInfo("5:0:0"));
         
         ms = tempoMap.getAbsoluteTimeAt(new TimeInfo("6:0:1/4"));
         

@@ -1,7 +1,6 @@
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
 import com.kevinisabelle.dmxlive.api.output.Command;
-import com.kevinisabelle.dmxlive.api.output.Fixture;
 import com.kevinisabelle.dmxlive.api.output.TimedEvent;
 import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.core.engine.MasterClock;
@@ -20,13 +19,11 @@ public abstract class AbstractCommandExecutor implements Runnable {
 	protected Integer refreshRate;
 	protected MasterClock masterClockRef;
 	protected List<Command> commandsQueue;
-	protected List<TimedEvent> eventsQueue;
+	protected List<Command> runningCommands;
 	protected boolean loop;
 
 	private Iterator<TimedEvent> programIterator = null;
 	private TimedEvent lastValue = null;
-	private boolean logEvents = false;
-	private boolean logCommands = false;
 
 	private List<Long> executionTimes = new LinkedList<Long>();
 	
