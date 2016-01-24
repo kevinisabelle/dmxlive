@@ -6,9 +6,12 @@
 package com.kevinisabelle.dmxlive.driver.dmx.tests;
 
 import com.kevinisabelle.dmxlive.driver.dmx.EntecOpenDMX;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Field;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -29,6 +32,11 @@ public class TestDriverInit {
   @BeforeClass
   public static void setUpClass() {
 
+    ConsoleAppender ca = new ConsoleAppender();
+    ca.setWriter(new OutputStreamWriter(System.out));
+    ca.setLayout(new PatternLayout("%-5p [%t]: %m%n"));
+    Logger.getRootLogger().addAppender(ca);
+    
     try {
       System.setProperty("java.library.path", "src/main/resources");
       Field fieldSysPath = ClassLoader.class.getDeclaredField("sys_paths");
@@ -36,17 +44,17 @@ public class TestDriverInit {
       try {
         fieldSysPath.set(null, null);
       } catch (IllegalArgumentException ex) {
-        Logger.getLogger(TestDriverInit.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(TestDriverInit.class.getName()).log(Level.FATAL, null, ex);
       } catch (IllegalAccessException ex) {
-        Logger.getLogger(TestDriverInit.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(TestDriverInit.class.getName()).log(Level.FATAL, null, ex);
       }
 
       System.out.println(System.getProperty("user.dir"));
       System.out.println(System.getProperty("java.library.path"));
     } catch (NoSuchFieldException ex) {
-      Logger.getLogger(TestDriverInit.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(TestDriverInit.class.getName()).log(Level.FATAL, null, ex);
     } catch (SecurityException ex) {
-      Logger.getLogger(TestDriverInit.class.getName()).log(Level.SEVERE, null, ex);
+      Logger.getLogger(TestDriverInit.class.getName()).log(Level.FATAL, null, ex);
     }
 
   }
@@ -75,23 +83,29 @@ public class TestDriverInit {
       
       return;
     }
+    
+    driver.transmit(6, 0);
+    driver.transmit(7, 0);
 
-    for (int i = 0; i < 253; i++) {
+    for (int i = 0; i < 255; i=i+10) {
       
-      for (int j = 0; j < 10; j++) {
+      try {
+        Thread.sleep(20);
+      } catch (InterruptedException ex) {
+        Logger.getLogger(TestDriverInit.class.getName()).log(Level.FATAL, null, ex);
+      }
+      
+      
+    
+      
+      for (int j = 3; j <= 255; j++) {
 
-      driver.transmit(j, i);
+      driver.transmit(i, j);
       
       System.out.println("Sent: " + j + ":" + i);
 
-      try {
-        Thread.sleep(2);
-      } catch (InterruptedException ex) {
-        Logger.getLogger(TestDriverInit.class.getName()).log(Level.SEVERE, null, ex);
-      }
       
       }
-
       
     }
 

@@ -24,5 +24,16 @@ public class Tempo {
     public long getTotalDuration(TimeInfo atTime){
         return TimeHelper.getMilliseconds(atTime, signature, bpm);
     }
+    
+    @Override
+    public String toString(){
+        
+        StringBuilder bl = new StringBuilder();
+        bl.append("Tempo: ").append(atTime.toString()).append(" ")
+                .append(signature.toString()).append(" @ ").append(bpm);
+        
+        return bl.toString();
+    }
+    
   
 }

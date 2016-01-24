@@ -1,4 +1,4 @@
-package com.kevinisabelle.dmxlive.core.scripting;
+
 
 import com.kevinisabelle.dmxlive.music.TimeSignature;
 import com.kevinisabelle.dmxlive.music.TimeInfo;
@@ -18,7 +18,7 @@ public class TimeInfoTest {
   @Test
   public void testTimeInfoFromMillis() {
 
-    long millis = 5750l;
+    /*long millis = 5750l;
     TimeSignature signature = new TimeSignature("4/4");
     int bpm = 120;
 
@@ -29,7 +29,7 @@ public class TimeInfoTest {
     assertEquals(0.75, timeInfo3.getSubBeat());
 
     TimeInfo timeInfo2 = new TimeInfo("2:1:0.5");
-    assertEquals(0.5, timeInfo2.getSubBeat());
+    assertEquals(0.5, timeInfo2.getSubBeat());*/
 
   }
 

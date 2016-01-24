@@ -104,6 +104,19 @@ public class TimeInfo implements Comparable<TimeInfo> {
 
     return newtime;
   }
+  
+  public TimeInfo substract(TimeInfo toSubstract, TimeSignature signature){
+      
+    TimeInfo newtime = new TimeInfo(this.measure, this.beat, this.subBeat);
+
+    double totalBeats = this.getInBeats(signature) - toSubstract.getInBeats(signature);
+
+    newtime.setMeasure(Double.valueOf(Math.floor(totalBeats / Double.valueOf(signature.getNumberOfBeats()))).intValue());
+    newtime.setBeat(Double.valueOf(Math.floor(totalBeats)).intValue() - newtime.getMeasure() * signature.getNumberOfBeats());
+    newtime.setSubBeat(totalBeats - Math.floor(totalBeats));
+
+    return newtime;
+  }
 
   @Override
   public String toString() {
@@ -172,6 +185,14 @@ public class TimeInfo implements Comparable<TimeInfo> {
 
     Double beats = getInBeats(new TimeSignature("4/4"));
     Double beatsToCompare = o.getInBeats(new TimeSignature("4/4"));
+
+    return beats.compareTo(beatsToCompare);
+  }
+  
+  public int compareTo(TimeInfo o, TimeSignature signature) {
+
+    Double beats = getInBeats(signature);
+    Double beatsToCompare = o.getInBeats(signature);
 
     return beats.compareTo(beatsToCompare);
   }
