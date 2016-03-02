@@ -43,6 +43,10 @@ public class MasterClock implements Runnable {
 		this.absoluteStartTimeMillis = -1;
 	}
 	
+	public TempoMap getTempoMap(){
+		return tempoMap;
+	}
+	
 	public void start(){
 		absoluteStartTimeMillis = System.currentTimeMillis();
 		state = ClockState.RUNNING;

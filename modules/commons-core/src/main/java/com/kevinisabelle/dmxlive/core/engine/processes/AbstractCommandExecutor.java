@@ -15,24 +15,24 @@ import org.apache.log4j.Logger;
  */
 public abstract class AbstractCommandExecutor implements Runnable {
 
-	protected boolean isRunning = true;
-	protected Integer refreshRate;
+	private static final Logger LOGGER = Logger.getLogger(AbstractCommandExecutor.class);
+	
 	protected MasterClock masterClockRef;
 	protected List<Command> commandsQueue;
 	protected List<Command> runningCommands;
-	protected boolean loop;
+	
+	protected boolean isRunning = true;
+	protected boolean debug = false;
+	protected long dutyCycleTime = 30;
+	protected long resolution = 24;
 
-	private Iterator<TimedEvent> programIterator = null;
+	private final Iterator<TimedEvent> programIterator = null;
 	private TimedEvent lastValue = null;
-
-	private List<Long> executionTimes = new LinkedList<Long>();
 	
-	private static Logger logger = Logger.getLogger(AbstractCommandExecutor.class);
-
-	
-	public AbstractCommandExecutor(MasterClock masterClock, Integer refreshRate){
+	public AbstractCommandExecutor(MasterClock masterClock, long dutyCycleTime, long resolution){
 		this.masterClockRef = masterClock;
-		this.refreshRate = refreshRate;
+		this.dutyCycleTime = dutyCycleTime;
+		this.resolution = resolution;
 	}
 
 	protected abstract void SendEventsToDrivers(List<TimedEvent> events);
@@ -41,8 +41,13 @@ public abstract class AbstractCommandExecutor implements Runnable {
 		
 	}
 	
-	private List<TimedEvent> GetReadyTimedEvent(long from, long to){
+	private List<TimedEvent> GetReadyTimedEvent(long toTime){
+		
 		List<TimedEvent> result = new LinkedList<>();
+		
+		for (Command command : runningCommands){
+			command.getTimedEventAt(0, toTime, masterClockRef.getTempoMap());
+		}
 		
 		return result;
 	}
@@ -50,125 +55,42 @@ public abstract class AbstractCommandExecutor implements Runnable {
 	@Override
 	public void run(){
 		
-		long lastPosition = -1;
-		long currentPosition = -1;
+		long endCycle = -1;
+		long startCycle = -1;
+		long waitTime;
 		
 		while (isRunning){
-			
-			lastPosition = currentPosition;
-			
+
 			//Get position from master clock
-			currentPosition = masterClockRef.getAbsoluteTime();
+			startCycle = masterClockRef.getAbsoluteTime();
 			
 			//Transfer commands to current execution if needed
 			ProcessCommandsToCurrentList();
 			
 			//Get timedEvent to send now based on current time
-			List<TimedEvent> events = GetReadyTimedEvent(lastPosition, currentPosition);
+			List<TimedEvent> events = GetReadyTimedEvent(startCycle);
 			
 			//Send events to drivers
 			SendEventsToDrivers(events);
 			
-			
-			
-			
-			
-			
-			
-			
-			/*
-			
-			long totalFrames = 0;
-
-		long waitTime = Double.valueOf(TimeHelper.getQuarterMilliseconds(bpm)).longValue() / Constants.CHECK_RESOLUTION;
-
-		observer.logMessage("DmxRunnable using: Waittime: " + waitTime, 0);
-		observer.logMessage("Total number of DMX events to play: " + dmxProgram.size(), 0);
-
-		long absoluteStartTime = System.currentTimeMillis();
-
-		// Start the metronome SongParallelRunnable
-		if (metronomeRunnable != null){
-			Thread metronomeThread = new Thread(metronomeRunnable, "MetronomeThread");
-			metronomeThread.start();
-		}
-
-		logger.info("Process started: Wait time: " + waitTime + "ms");
-
-		Long currentAbsoluteTime;
-
-		while (isRunning) {
-
-			totalFrames++;
-
-			long startTime = System.currentTimeMillis();
-
-			currentAbsoluteTime = getCurrentAbsoluteTime(absoluteStartTime);
-
-			popCurrentValuesFromListAndSendDmx(currentAbsoluteTime, Constants.CHECK_RESOLUTION);
-
-			long executionDelay = System.currentTimeMillis() - startTime;
-			if (executionDelay > waitTime) {
-				executionTimes.add(executionDelay);
-			}
-
-			if (playedSongAudio != null && playedSongAudio.getMicrosecondPosition() >= playedSongAudio.getMicrosecondLength()){
-				playedSongAudio = null;
-			}
-
-			if (dmxProgram.isEmpty() && playedSongAudio == null){
-
-				logger.info("Completed execution (end of script + end of song)");
-				isRunning = false;
-
-				//DmxLive.stopSong();
-
-				observer.stopNotify(isRunOnSong);
-			}
-
-			try {
-				if (waitTime - executionDelay <= 0) {
-					continue;
-				}
-				Thread.sleep(waitTime - executionDelay);
-			} catch (Exception e) {
-			}
-		}
-
-		if (metronomeRunnable != null){
-			metronomeRunnable.stop();
-		}
-
-		// Calculate stats
-		Long totalExecutionTimes = 0l;
-		for (Long longValue : executionTimes) {
-			totalExecutionTimes += longValue;
-		}
-
-		if (executionTimes.size() > 0){
-			totalExecutionTimes = totalExecutionTimes / executionTimes.size();
-		}
-
-		Long numberOverTime = Math.round(Integer.valueOf(executionTimes.size()).doubleValue() / Long.valueOf(totalFrames).doubleValue() * 100.0);
-
-		logger.info("Completed execution (thread stopped):");
-		logger.info("Frame execution average (over wait time only): " + totalExecutionTimes + "ms ");
-		logger.info(executionTimes.size() + " / " + totalFrames + " (" + numberOverTime + "%)");
-
-		observer.stopNotify(false);
-			
-			*/
-			
-			try {
-				Thread.sleep(1000 / refreshRate);
-			} catch (InterruptedException ex) {
-				//Logger.getLogger(AbstractCommandExecutor.class.getName()).log(Level.SEVERE, null, ex);
-			}
-			
 			processQueuedCommands();
 			
 			sendTimedEventsToDrivers();
-					
+			
+			endCycle = masterClockRef.getAbsoluteTime();
+			
+			waitTime = dutyCycleTime - (endCycle - startCycle);
+			
+			if (debug && waitTime < 1){
+				LOGGER.debug("lag: " + -waitTime);
+			}
+			
+			try {
+				Thread.sleep(waitTime < 1 ? 1 : waitTime);
+			} catch (InterruptedException ex) {
+				
+			}
+			
 		}
 	}
 	
@@ -233,7 +155,7 @@ public abstract class AbstractCommandExecutor implements Runnable {
 				try {
 					dmxManager.transmit(value.getChannel() - 1, value.getValue());
 				} catch (Exception ex) {
-					logger.error("Cannot send dmx signal: " + ex.getMessage());
+					LOGGER.error("Cannot send dmx signal: " + ex.getMessage());
 				}
 				lastValue = null;
 			} else {
@@ -247,7 +169,7 @@ public abstract class AbstractCommandExecutor implements Runnable {
 	 * Stops the dmx process.
 	 */
 	public void stop() {
-		logger.debug("Stopping dmx execution.");
+		LOGGER.debug("Stopping dmx execution.");
 		isRunning = false;
 		synchronized (this) {
 			dmxProgram.clear();
