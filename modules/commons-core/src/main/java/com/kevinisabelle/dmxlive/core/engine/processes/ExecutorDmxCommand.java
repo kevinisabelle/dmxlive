@@ -6,7 +6,12 @@
 
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
+import com.kevinisabelle.dmxlive.api.driver.DmxDriver;
+import com.kevinisabelle.dmxlive.api.output.TimedEvent;
+import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
 import com.kevinisabelle.dmxlive.core.engine.MasterClock;
+import com.kevinisabelle.dmxlive.core.factory.DriverFactory;
+import java.util.List;
 
 /**
  *
@@ -14,13 +19,25 @@ import com.kevinisabelle.dmxlive.core.engine.MasterClock;
  */
 public class ExecutorDmxCommand extends AbstractCommandExecutor {
 
+	private DmxDriver driver;
+	
 	public ExecutorDmxCommand(MasterClock clock){
-		super(clock);
+		super(clock, 1000l, 24l);
+		
+		driver = 
 	}
 
 	@Override
-	public void run() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	protected void SendEventsToDrivers(List<TimedEvent> events) {
+	
+		for (TimedEvent event : events){
+		
+			TimedDmxEvent dmxEvent  = (TimedDmxEvent)event;
+			
+			driver.transmit(dmxEvent.getChannel(), dmxEvent.getValue());
+			
+		}
 	}
 
+	
 }

@@ -1,5 +1,6 @@
 package com.kevinisabelle.dmxlive.core.engine.processes;
 
+import com.kevinisabelle.dmxlive.api.Driver;
 import com.kevinisabelle.dmxlive.api.output.Command;
 import com.kevinisabelle.dmxlive.api.output.TimedEvent;
 import com.kevinisabelle.dmxlive.api.output.dmx.TimedDmxEvent;
@@ -28,6 +29,8 @@ public abstract class AbstractCommandExecutor implements Runnable {
 
 	private final Iterator<TimedEvent> programIterator = null;
 	private TimedEvent lastValue = null;
+	
+	private Driver outputDriver;
 	
 	public AbstractCommandExecutor(MasterClock masterClock, long dutyCycleTime, long resolution){
 		this.masterClockRef = masterClock;
