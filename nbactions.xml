@@ -17,8 +17,8 @@
             </goals>
             <properties>
                 
-                <exec.args>-Djava.library.path=lib -classpath %classpath com.kevinisabelle.dmxLive.DmxLive</exec.args>
-                <exec.executable>C:\Program Files (x86)\Java\jdk1.7.0_60\bin\java</exec.executable>
+                <exec.args>-Djava.library.path=lib -classpath %classpath com.kevinisabelle.dmxLive.DmxLive playlist</exec.args>
+                <exec.executable>C:\Program Files (x86)\Java\jre1.8.0_77\bin\java</exec.executable>
                 <exec.workingdir>.\target\DmxLive-1.0.3-DmxLive</exec.workingdir>
             </properties>
         </action>

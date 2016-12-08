@@ -116,8 +116,8 @@ public class SongDisplay extends JPanel {
 					
 					sceneButton.setFont(new Font("Helvetica", Font.BOLD, 20));
 					sceneButton.setBackground(Constants.THEME_COLOR_3);
-					sceneButton.setForeground(Constants.THEME_COLOR_2);
-					sceneButton.setBorder(BorderFactory.createLineBorder(Color.white, 5));
+					sceneButton.setForeground(Color.BLACK);
+					sceneButton.setBorder(BorderFactory.createLineBorder(Color.BLUE, 5));
 					sceneButton.addActionListener(new ActionListener() {
 
 						@Override
@@ -129,7 +129,7 @@ public class SongDisplay extends JPanel {
 						}
 					});
 					scenesButtons.add(sceneButton);
-					sceneButton.setPreferredSize(new Dimension(200, 50));
+					sceneButton.setPreferredSize(new Dimension(125, 50));
 				}
 			}
 		}

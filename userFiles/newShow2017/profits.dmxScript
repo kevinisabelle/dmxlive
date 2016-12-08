@@ -1,0 +1,130 @@
+//Song Name:Profits * SC B B B SC
+//BPM:140
+//Time Signature:4/4
+//Audio file path=..\waveArr\Profits-Track.wav
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3
+$[drum]=LEDBar_11
+$[amp]=DerbyX_30
+$[swarm]=Swarm4_40
+
+$riffDerbyIntro
+1:0:0	|amp		|Dim:c=0_1_0_0_1_0
+1:1:0	|amp		|Dim:c=1_0_1_1_0_1
+end$
+
+$intro
+1:0:0	|front	|Pulse:c=red_fire,d=100_100,s=100,u=2,t=3:3:0
+1:0:0	|drum	|Dim:c=fire_red_fire,d=100,s=100
+1:0:0	|$riffDerbyIntro	|8,0:2:0
+end $intro
+
+$riffDrumVerse
+1:0:0	|drum	|Fade:c=white_orange_white_orange_white_orange,t=0:1:0
+1:1:0	|drum	|Fade:c=orange_white_orange_white_orange_white,t=0:1:0
+end$
+
+$verse
+1:0:0	|amp		|Dim:c=0
+1:0:0	|front	|Blink:c=white_orange,u=1,o=0.25,t=7:3:0
+1:0:0	|$riffDrumVerse	|16,0:2:0
+end$
+
+$prechorus
+1:0:0	|amp			|Dim:c=0
+1:0:0	|drum:front	|Strobe:c=fire
+2:0:1/2	|front		|Fade:c=white_white,d=100_10,t=0:0:2/4
+2:1:0	|drum:front	|Strobe:c=fire
+2:2:0	|front		|Fade:c=white_white,d=100_10,t=0:0:2/4
+2:3:0	|front		|Fade:c=white_white,d=100_10,t=0:0:2/4
+3:0:0	|drum:front	|Strobe:c=red
+4:0:1/2	|front		|Fade:c=white_white,d=100_10,t=0:0:2/4
+4:1:0	|drum:front	|Strobe:c=red
+4:2:0	|drum		|Dim:c=0
+4:2:0	|front		|Fade:c=white_white,d=100_0,t=0:1:0
+4:3:0	|front		|Fade:c=white_white,d=100_0,t=0:1:0
+end$
+
+$pulseChorusFront
+1:0:0	|front:drum		|Fade:c=%1_%1,d=100_50,t=0:1:0
+end$
+
+$chorus
+1:0:0	|$pulseChorusFront(white)	|32,0:1:0
+end$
+
+$riffFrontBridge
+1:0:0	|front	|Fade:c=fire_fire,d=100_10,t=0:2:0
+end$
+
+$bridge
+1:0:0	|amp	|Dim:c=0
+1:0:0	|drum	|Dim:c=red
+1:0:0	|$riffFrontBridge	|8,1:0:0
+1:0:0	|swarm	|Dim:c=red_yellow,s=70
+
+9:0:0	|swarm	|Dim:c=red_yellow,s=100
+end$
+
+$derbyBridge
+1:0:0	|amp		|Dim:c=1_0_0_0_0_1
+1:0:1/2	|amp		|Dim:c=0_1_0_0_1_0
+1:1:0	|amp		|Dim:c=0_0_1_1_0_0
+1:1:1/2	|amp		|Dim:c=0_1_0_0_1_0
+end$
+
+$solo
+1:0:0	|swarm	|Dim:c=0,s=50
+1:0:0	|$derbyBridge	|16,0:2:0
+1:0:0	|$pulseChorusFront(yellow)	|32,0:1:0
+end$
+
+$calme
+1:0:0	|front		|Fade:c=red_red,d=100_5,t=1:0:0
+1:0:0	|amp	|Dim:c=red
+1:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+3:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+5:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+7:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+9:0:0	|front	|Fade:c=red_fire,d=5_90,t=0:0:1/2
+9:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+11:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+13:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+15:0:0	|drum	|Fade:c=fire_red,d=100_100,t=0:2:0
+end$
+
+$monteeFinale
+1:0:0	|amp	|Dim:c=0
+1:0:0	|drum	|Dim:c=red,d=100
+1:0:1/8	|drum:front	|Strobe:c=red,d=10,s=50
+1:1:0	|drum:front	|Strobe:c=red,d=20,s=60
+1:2:0	|drum:front	|Strobe:c=red,d=30,s=70
+1:3:0	|drum:front	|Strobe:c=red,d=40,s=80
+2:0:0	|drum:front	|Strobe:c=red,d=50,s=90
+2:1:0	|drum:front	|Strobe:c=red,d=60,s=100
+2:2:0	|drum:front	|Strobe:c=red,d=70,s=100
+2:3:0	|drum:front	|Strobe:c=red,d=100,s=100
+end$
+
+1:0:0	|drum:front:amp:swarm	|Dim:c=black,s=50
+2:2:0	|drum	|Strobe:c=white,s=100
+3:0:0	|$intro	|2,4:0:0
+11:0:0	|$verse
+19:0:0	|$prechorus
+23:0:0	|$chorus
+31:0:0	|$intro
+35:0:0	|$verse
+43:0:0	|$prechorus
+47:0:0	|$chorus
+55:0:0	|$bridge
+71:0:0	|$solo
+79:0:0	|$calme
+97:0:0	|$monteeFinale
+99:0:0	|$chorus	|2,8:0:0
+107:0:0	|$pulseChorusFront(yellow)	|32,0:1:0
+115:0:0	|$intro	|2,4:0:0
+123:0:0	|drum:front	|Dim:c=white
+123:0:0	|amp	|Dim:c=0
+123:1:0	|drum:front	|Dim:c=black
+125:0:0	|front	|Fade:c=0_yellow,t=2:0:0

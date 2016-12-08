@@ -2,8 +2,10 @@ package com.kevinisabelle.dmxLive.objects;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 /**
@@ -26,7 +28,7 @@ public class Script {
 	
     private Map<String, Script> namedScripts;
     private List<ScriptCommand> commandsList;
-	private Map<String, String> variables;
+	private Map<String, List<String>> variables;
 	
 	private String scriptText = "";
 	
@@ -66,7 +68,7 @@ public class Script {
         //process current script (timed commands on fixture, subscript execution
         commandsList = new ArrayList<ScriptCommand>();
 		
-		variables = new HashMap<String, String>();
+		variables = new HashMap<String, List<String>>();
 
         // start parsing script
 		scriptText = scriptText.replaceAll("\r", "");
@@ -90,7 +92,7 @@ public class Script {
                 String name = elements[0];
 				String value = elements[1];
 
-                this.getMasterScriptReference().getVariables().put(name.trim(), value.trim());
+                this.getMasterScriptReference().getVariables().put(name.trim(), Arrays.asList(value.split(";")));
 				
 		   } else if (line.startsWith(SECTION_START)) {
 
@@ -160,7 +162,7 @@ public class Script {
 	/**
 	 * @return the variables
 	 */
-	public Map<String, String> getVariables() {
+	public Map<String, List<String>> getVariables() {
 		return variables;
 	}
     

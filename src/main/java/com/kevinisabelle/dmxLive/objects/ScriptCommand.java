@@ -5,6 +5,7 @@ import com.kevinisabelle.dmxLive.objects.fixtures.Fixture;
 import com.kevinisabelle.dmxLive.objects.fixtures.FixtureFactory;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -57,11 +58,11 @@ public class ScriptCommand {
 				fixtures = new ArrayList<Fixture>();
 				
 				for (String fixtureName : fixtureNames) {					
-					fixtures.add(getFixture(fixtureName));				
+					fixtures.addAll(getFixtures(fixtureName));				
 				}
 				
 			} else {				
-				fixtures = Arrays.asList(getFixture(params[1]));
+				fixtures = getFixtures(params[1]);
 			}
 		}
 
@@ -78,15 +79,25 @@ public class ScriptCommand {
 		this.actionParameters = actionParameter;
 	}
 	
-	private Fixture getFixture(String fixtureParam){
+	private List<Fixture> getFixtures(String fixtureParam){
 		
 		String fixture = fixtureParam;
 		
 		if (caller.getMasterScriptReference().getVariables().containsKey(fixtureParam)){
-			fixture = caller.getMasterScriptReference().getVariables().get(fixtureParam);
+			//fixture = caller.getMasterScriptReference().getVariables().get(fixtureParam);
+			
+			List<String> fixtures = caller.getMasterScriptReference().getVariables().get(fixtureParam);
+			List<Fixture> returnFixtures = new LinkedList<Fixture>();
+			
+			for (String fixtureStr : fixtures){
+				returnFixtures.add(FixtureFactory.getFixture(fixtureStr));
+			}
+			
+			return returnFixtures;
+			
 		}
 		
-		return FixtureFactory.getFixture(fixture);
+		return Arrays.asList(FixtureFactory.getFixture(fixture));
 	}
 
 	public List<TimedDmxValue> getTimedDmxValues(TimeInfo timeOffset, TimeSignature signature, int bpm, String[] parameters) {

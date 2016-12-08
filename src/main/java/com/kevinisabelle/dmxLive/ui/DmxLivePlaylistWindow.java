@@ -153,19 +153,19 @@ public class DmxLivePlaylistWindow extends JFrame implements ActionListener, Dmx
 		playlistList.setForeground(Color.white);
 
 		buttonsAndSongDisplayPanel = new JPanel();
-		buttonsAndSongDisplayPanel.setLayout(new BoxLayout(fileManagementPanel, BoxLayout.Y_AXIS));
+		buttonsAndSongDisplayPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		buttonsAndSongDisplayPanel.setFont(Constants.FONT_BIG);
-		buttonsAndSongDisplayPanel.setBackground(Color.white);
+		buttonsAndSongDisplayPanel.setBackground(Color.BLACK);
 		
-		queuedSongPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-		
+		queuedSongPanel = new JPanel();
+		queuedSongPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 		queuedSongPanel.setBackground(Constants.THEME_COLOR_3);
 		queuedSongPanel.setForeground(Constants.THEME_COLOR_2);
 		queuedSongPanel.setFont(Constants.FONT_BIG);
 		queuedSongPanel.add(queuedSong);	
 		queuedSongPanel.add(loadSongButton);
-		queuedSongPanel.setMinimumSize(new Dimension(400, 35));
-		queuedSongPanel.setPreferredSize(new Dimension(400, 35));
+		queuedSongPanel.setMinimumSize(new Dimension(650, 35));
+		queuedSongPanel.setPreferredSize(new Dimension(650, 35));
 
 		loadSongButton.setBackground(Constants.THEME_COLOR_3);
 		loadSongButton.setForeground(Constants.THEME_COLOR_2);
@@ -177,24 +177,25 @@ public class DmxLivePlaylistWindow extends JFrame implements ActionListener, Dmx
 		songDisplay = new SongDisplay(this);
 		buttonsAndSongDisplayPanel.add(songDisplay);
 		songDisplay.setFont(Constants.FONT_SUPER_BIG);
+		songDisplay.setPreferredSize(new Dimension(600, 350));
 
-		buttonsAndSongDisplayPanel.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 10));
+		//buttonsAndSongDisplayPanel.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 10));
 		buttonsAndSongDisplayPanel.add(bigPlayButton);
-		bigPlayButton.setPreferredSize(new Dimension(100, 70));
+		bigPlayButton.setPreferredSize(new Dimension(500, 70));
 		bigPlayButton.setFont(Constants.FONT_SUPER_BIG);
-		buttonsAndSongDisplayPanel.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 5));
+		//buttonsAndSongDisplayPanel.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 5));
 		buttonsAndSongDisplayPanel.add(stopButton);
-		stopButton.setPreferredSize(new Dimension(100, 40));
+		stopButton.setPreferredSize(new Dimension(500, 40));
 		stopButton.setFont(Constants.FONT_SUPER_BIG);
-		buttonsAndSongDisplayPanel.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 5));
+		//buttonsAndSongDisplayPanel.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 5));
 
-		/*JPanel previousNextPanel = new JPanel(new GridLayout(1, 2));
+		JPanel previousNextPanel = new JPanel(new GridLayout(1, 2));
 
 		previousNextPanel.add(previousButton);
 		previousNextPanel.add(nextButton);
 		previousNextPanel.setFont(buttonsAndSongDisplayPanel.getFont());
 		buttonsAndSongDisplayPanel.add(previousNextPanel);
-		buttonsAndSongDisplayPanel.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 10));*/
+	
 
 		listAndCurrentSong.add(buttonsAndSongDisplayPanel);
 		this.add(listAndCurrentSong);

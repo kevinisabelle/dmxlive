@@ -1,0 +1,169 @@
+//Song Name:Claim Reality * BC SH BH BBB SH
+//BPM:96
+//Time Signature:4/4
+//Audio file path=
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[front]=Par64_3;Par64_40;Par64_46
+$[drum]=LEDBar_9
+$[amp]=DerbyX_22;DerbyX_52
+$[swarm]=Swarm4_60
+
+$intro
+1:0:0	|front		|Dim:c=black
+1:0:0	|drum		|Fade:c=0_0_0_red,d=7_7,t=2:0:0
+3:0:0	|drum		|Fade:c=0_red_0_0,d=7_7,t=1:0:0
+4:0:0	|drum		|Fade:c=0_0_0_red,d=7_7,t=1:0:0
+5:0:0	|drum		|Dim:c=red_red,d=100_50,u=1
+9:0:0	|front		|Fade:c=red_red,d=100_0,t=2:0:0
+11:0:0	|front		|Fade:c=red_red,d=100_0,t=2:0:0
+13:0:0	|front:drum	|Fade:c=white_white,d=100_0,t=2:0:0
+13:0:0	|amp			|Dim:c=red
+15:0:0	|front:drum	|Fade:c=white_white,d=100_0,t=1:3:0
+//15:0:0	|drum		|Fade:c=white_red,d=100_10,t=1:3:0
+
+16:3:0	|amp		|Dim:c=red_0_0_0_0_red
+16:3:1/4	|amp		|Dim:c=0_red_0_0_red_0
+16:3:2/4	|amp		|Dim:c=0_0_red_red_0_0
+16:3:3/4	|amp		|Dim:c=red
+17:0:0	|amp		|Dim:c=0
+16:3:0	|front	|Riff:c=white_0,u=32,r=10101010
+end$
+
+$intro2
+1:0:0	|drum	|Strobe:c=white,s=100
+1:0:0	|front	|Strobe:c=red,s=100
+end$
+
+$derbyVerse
+1:0:0	|amp	|Dim:c=red_0_0_0_0_red
+1:0:1/2	|amp	|Dim:c=0_red_0_0_red_0
+1:1:0	|amp	|Dim:c=0_0_red_red_0_0
+1:1:1/2	|amp	|Dim:c=0_red_0_0_red_0
+end$
+
+$_verse
+1:0:0	|drum		|Dim:c=red
+1:0:0	|$derbyVerse	|8,0:2:0
+1:0:0	|front		|Fade:c=white_white,d=100_10,t=1:0:0
+2:0:0	|front		|Fade:c=white_white,d=100_10,t=1:0:0
+3:0:0	|$intro2
+end$
+
+$prechorus
+1:0:0	|amp		|Dim:c=0
+1:0:0	|drum	|Dim:c=white,d=50
+1:0:0	|front	|Fade:c=red_red,d=100_10,t=0:3:0
+1:3:0	|front	|Fade:c=white_red,d=100_20,t=0:1:0
+2:0:0	|front	|Fade:c=red_red,d=100_10,t=0:3:0
+2:3:0	|front	|Fade:c=white_red,d=100_20,t=0:1:0
+
+3:0:0	|drum	|Riff:c=white_red_white,d=0_100_20,u=32,r=101000102222222210100010222222221010001022222222
+3:0:0	|front	|Riff:c=red_white,d=5_100,u=32,r=000000001111111100000000111111110000000011111111
+3:0:0	|amp		|Riff:c=black_red,d=5_100,u=32,r=000000001111111100000000111111110000000011111111
+
+4:2:0	|amp		|Dim:c=0_0_0_0_0_1
+4:2:1/4	|amp		|Dim:c=0_0_0_0_1_0
+4:2:2/4	|amp		|Dim:c=0_0_0_1_0_0
+4:2:3/4	|amp		|Dim:c=0_0_1_0_0_0
+4:3:0	|amp		|Dim:c=0_1_0_0_0_0
+4:3:1/4	|amp		|Dim:c=1_0_0_0_0_0
+4:3:2/4	|amp		|Dim:c=0_1_0_0_0_0
+4:3:3/4	|amp		|Dim:c=0_0_1_0_0_0
+
+4:2:0	|drum	|Fade:c=red_red,d=100_10,t=0:2:0
+4:2:0	|front	|Fade:c=white_white,d=50_10,t=0:2:0
+end$
+
+$prechorusMontee
+1:0:0	|amp			|Dim:c=0
+1:0:0	|drum:front	|Fade:c=white_red,d=5_0,t=0:1:0
+1:1:0	|drum:front	|Fade:c=white_red,d=40_0,t=0:1:0
+1:2:0	|drum:front	|Fade:c=white_red,d=70_0,t=0:1:0
+1:3:0	|drum:front	|Fade:c=white_red,d=100_0,t=0:1:0
+end$
+
+$chorus
+1:0:0	|drum		|Fade:c=yellow_red,t=1:0:0
+1:0:0	|front		|Fade:c=yellow_red,t=1:0:0
+2:0:0	|drum		|Fade:c=yellow_red,t=1:0:0
+2:0:0	|front		|Fade:c=yellow_red,t=1:0:0
+3:0:0	|drum		|Fade:c=yellow_red,t=0:2:0
+3:0:0	|front		|Fade:c=yellow_red,t=0:2:0
+3:2:0	|drum		|Fade:c=yellow_red,t=0:2:0
+3:2:0	|front		|Fade:c=yellow_red,t=0:2:0
+4:0:0	|drum:front	|Fade:c=red_red,d=100_30,t=0:3:0
+end$
+
+$bridgeClean
+1:0:0	|amp		|Dim:c=0
+//1:0:0	|drum	|Dim:c=magenta
+1:0:0	|front	|Dim:c=blue
+1:0:0	|drum	|Fade:c=magenta_blue,d=100_30,t=1:0:0
+2:0:0	|drum	|Fade:c=magenta_blue,d=100_30,t=1:0:0
+3:0:0	|drum	|Fade:c=magenta_blue,d=100_30,t=1:0:0
+4:0:0	|drum	|Fade:c=magenta_blue,d=100_30,t=1:0:0
+5:0:0	|drum	|Fade:c=magenta_magenta,d=100_30,t=1:0:0
+6:0:0	|drum	|Fade:c=magenta_magenta,d=100_30,t=1:0:0
+7:0:0	|drum	|Fade:c=magenta_magenta,d=100_30,t=1:0:0
+8:0:0	|drum	|Fade:c=magenta_magenta,d=100_30,t=1:0:0
+5:0:0	|amp		|Dim:c=blue
+end$
+
+$bridgeSolo1
+1:0:0	|amp		|Dim:c=red
+1:0:0	|drum	|Dim:c=magenta
+1:0:0	|front	|Fade:c=magenta_red,d=100_30,t=1:0:0
+2:0:0	|front	|Fade:c=magenta_red,d=100_30,t=1:0:0
+3:0:0	|front	|Fade:c=magenta_red,d=100_30,t=1:0:0
+4:0:0	|front	|Fade:c=magenta_red,d=100_30,t=1:0:0
+end$
+
+$derbySolo
+1:0:1/4	|amp	|Dim:c=0_0_0_0_0_1
+1:0:2/4	|amp	|Dim:c=0_0_0_0_1_0
+1:0:3/4	|amp	|Dim:c=0_0_0_1_0_0
+1:0:4/4	|amp	|Dim:c=0_0_1_0_0_0
+1:1:1/4	|amp	|Dim:c=0_1_0_0_0_0
+1:1:2/4	|amp	|Dim:c=1_0_0_0_0_0
+1:1:3/4	|amp	|Dim:c=0_1_0_0_0_0
+1:1:4/4	|amp	|Dim:c=0_0_1_0_0_0
+1:2:0	|amp	|Dim:c=0_0_1_1_0_0
+1:3:0	|amp	|Dim:c=1_1_1_1_1_1
+end$
+
+$bridgeSolo2
+1:0:0	|amp			|Dim:c=0
+1:0:0	|drum		|Riff:c=red_0_white,u=16,r=10101010111122221010101011112222
+1:0:0	|front		|Riff:c=0_red_white,u=16,r=10101010111122221010101011112222
+3:0:0	|front		|Dim:c=red,d=10
+3:3:0	|front		|Fade:c=white_white,d=100_10,t=0:1:0
+3:0:0	|$derbySolo	|2,1:0:0
+4:0:0	|front		|Dim:c=red,d=10
+4:3:0	|front		|Fade:c=white_white,d=100_10,t=0:1:0
+end$
+
+// Program to play
+1:0:0	|amp				|Dim:c=0
+1:0:0	|$intro
+17:0:0	|$intro2
+21:0:0	|$_verse			|2,4:0:0
+29:0:0	|$prechorus		|2,4:0:0
+37:0:0	|$prechorusMontee
+38:0:0	|$chorus			|2,4:0:0
+45:3:0	|drum:front		|Fade:c=white_red,t=0:1:0
+46:0:0	|$intro2
+50:0:0	|$_verse			|2,4:0:0
+58:0:0	|$prechorus		|2,4:0:0
+66:0:0	|$prechorusMontee
+67:0:0	|$chorus			|2,4:0:0
+75:0:0	|$bridgeClean
+83:0:0	|$bridgeSolo1
+87:0:0	|$bridgeSolo2		|2,4:0:0
+95:0:0	|$bridgeSolo1		|2,4:0:0
+103:0:0	|$prechorusMontee
+104:0:0	|$chorus			|2,4:0:0
+111:3:0	|drum:front		|Fade:c=white_red,t=0:1:0
+112:0:0	|$derbyVerse		|8,0:2:0
+112:0:0	|$intro2
+116:0:0	|front:drum:swarm:amp	|Dim:c=0,s=50
