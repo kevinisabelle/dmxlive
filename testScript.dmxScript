@@ -1,0 +1,14 @@
+//Song Name:DLM Test Script
+//BPM:96
+//Time Signature:4/4
+//Audio file path=
+//Samples file path=
+//Metronome=OFF,Beep.wav,Beep.wav
+$[front]=Par64_3;Par64_40;Par64_46
+$[drum]=LEDBar_9
+$[trig]=DLM001_64
+$[amp]=DerbyX_21;DerbyX_51
+$[swarm]=Swarm4_60
+
+1:0:0	|trig		|Dim:c=white_fire,t=4:0:0,u=4
+1:0:0	|trig		|Mode:s=50,a=1,at=3,cu=1

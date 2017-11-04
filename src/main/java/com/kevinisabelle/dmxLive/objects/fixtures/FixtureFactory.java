@@ -17,6 +17,7 @@ public class FixtureFactory {
 		fixtureClasses.put("LEDBar", LumiMKII.class);
 		fixtureClasses.put("Swarm4", ChauvetSwarm4.class);
 		fixtureClasses.put("DerbyX", ChauvetDerbyX.class);
+		fixtureClasses.put("DLM001", ElectroCastleDLM001.class);
 	}
 	
 	private static Map<String, Fixture> loadedFixtureInstances = new HashMap<String, Fixture>();

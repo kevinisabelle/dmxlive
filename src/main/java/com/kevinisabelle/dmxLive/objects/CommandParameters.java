@@ -17,6 +17,9 @@ public class CommandParameters {
 	public static final String ON_TIME = "o=";
 	public static final String RIFF_NOTES = "r=";
 	public static final String MODE = "m=";
+	public static final String ANIMATION = "a=";
+	public static final String CURVE = "cu=";
+	public static final String ANIMATION_TRIGGER = "at=";
 	
 	private Color[] colors = null;
 	private Integer[] dimmers = null;
@@ -26,7 +29,10 @@ public class CommandParameters {
 	private Double onTime = null;
 	private char[] riffNotes = null;
 	private String mode = null;
-
+	private Integer curve = null;
+	private Integer animationTrigger = null;
+	private Integer animation = null;
+	
 	public CommandParameters(String parameterString) throws IllegalArgumentException {
 
 		String[] params = parameterString.split(",");
@@ -64,6 +70,18 @@ public class CommandParameters {
 			} else if (param.startsWith(MODE)) {
 				
 				mode = param.replace(MODE, "");
+				
+			} else if (param.startsWith(ANIMATION)) {
+				
+				animation = Integer.parseInt(param.replace(ANIMATION, ""));
+				
+			} else if (param.startsWith(ANIMATION_TRIGGER)) {
+				
+				animationTrigger = Integer.parseInt(param.replace(ANIMATION_TRIGGER, ""));
+				
+			} else if (param.startsWith(CURVE)) {
+				
+				curve = Integer.parseInt(param.replace(CURVE, ""));
 				
 			} else {
 				
@@ -218,4 +236,27 @@ public class CommandParameters {
 	public String getMode() {
 		return mode;
 	}
+
+	/**
+	 * @return the curve
+	 */
+	public Integer getCurve() {
+		return curve;
+	}
+
+	/**
+	 * @return the animationTrigger
+	 */
+	public Integer getAnimationTrigger() {
+		return animationTrigger;
+	}
+
+	/**
+	 * @return the animation
+	 */
+	public Integer getAnimation() {
+		return animation;
+	}
+	
+	
 }
