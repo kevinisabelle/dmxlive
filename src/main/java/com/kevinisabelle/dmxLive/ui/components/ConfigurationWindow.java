@@ -10,6 +10,9 @@ import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.sound.midi.MidiDevice;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Mixer;
 import javax.swing.BoxLayout;
@@ -33,6 +36,8 @@ public class ConfigurationWindow extends JDialog implements ActionListener {
 	private final JButton cancelButton = new JButton("Cancel");
 	private final JComboBox drummerAudioChannel = new JComboBox(DmxLive.getConfiguration().getMixers().toArray());
 	private final JComboBox samplesAudioChannel = new JComboBox(DmxLive.getConfiguration().getMixers().toArray());
+	private final JComboBox patchChangeMidiDevice = new JComboBox(DmxLive.getConfiguration().getMidiDevices().toArray());
+	
 	private final TextField dmxRate = new TextField();
 	private final TextField dmxRunRefreshRate = new TextField();
 	private final TextField dmxRunOffset = new TextField();
@@ -45,7 +50,7 @@ public class ConfigurationWindow extends JDialog implements ActionListener {
 
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 
-		JPanel optionsPanel = new JPanel(new GridLayout(5, 2));
+		JPanel optionsPanel = new JPanel(new GridLayout(6, 2));
 		optionsPanel.setBorder(new EmptyBorder(10, 10, 10, 10) );
 		
 		optionsPanel.add(new Label("Drummer audio channel: "));
@@ -54,7 +59,13 @@ public class ConfigurationWindow extends JDialog implements ActionListener {
 				
 		optionsPanel.add(new Label("Samples audio channel: "));
 		optionsPanel.add(samplesAudioChannel);
-				
+		
+		
+		optionsPanel.add(new Label("Patch change midi device: "));
+		optionsPanel.add(patchChangeMidiDevice);
+		patchChangeMidiDevice.setMinimumSize(new Dimension(300, 20));
+		
+	
 		optionsPanel.add(new Label("DMX rate (in frames per second): "));
 		optionsPanel.add(dmxRate);
 				
@@ -63,6 +74,8 @@ public class ConfigurationWindow extends JDialog implements ActionListener {
 				
 		optionsPanel.add(new Label("DMX refresh rate (in numbers per beat): "));
 		optionsPanel.add(dmxRunRefreshRate);
+		
+					
 		
 		this.add(optionsPanel);
 		
@@ -77,7 +90,7 @@ public class ConfigurationWindow extends JDialog implements ActionListener {
 		okButton.addActionListener(this);
 		cancelButton.addActionListener(this);
 		
-		this.setPreferredSize(new Dimension(550, 250));
+		this.setPreferredSize(new Dimension(550, 300));
 		
 		updateInterfaceFromConfig();
 		
@@ -101,6 +114,13 @@ public class ConfigurationWindow extends JDialog implements ActionListener {
 		
 		drummerAudioChannel.setSelectedItem(DmxLive.getConfiguration().getDrummerMixer().getMixerInfo());
 		samplesAudioChannel.setSelectedItem(DmxLive.getConfiguration().getSamplesMixer().getMixerInfo());
+		
+		try {
+			patchChangeMidiDevice.setSelectedItem(DmxLive.getConfiguration().getPatchChangeOutput().getDeviceInfo());
+		} catch (Exception e){
+			logger.error(e);
+			
+		}
 	}
 	
 	private void updateConfigFromInterface(){
@@ -111,6 +131,14 @@ public class ConfigurationWindow extends JDialog implements ActionListener {
 		config.setDmxRunnableCheckResolution(Integer.parseInt(dmxRunRefreshRate.getText()));
 		config.setDrummerMixer(AudioSystem.getMixer((Mixer.Info)drummerAudioChannel.getSelectedItem()));
 		config.setSamplesMixer(AudioSystem.getMixer((Mixer.Info)samplesAudioChannel.getSelectedItem()));
+		
+		
+		try {
+			config.setPatchChangeOutput(MidiSystem.getMidiDevice((MidiDevice.Info)patchChangeMidiDevice.getSelectedItem()));
+		} catch (MidiUnavailableException ex) {
+			logger.error(ex);
+			JOptionPane.showMessageDialog(this, "Could not save configuration: " + ex.toString());
+		}
 		
 		try {
 			config.saveConfig();

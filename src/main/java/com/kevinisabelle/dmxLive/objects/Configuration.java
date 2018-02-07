@@ -4,12 +4,18 @@ import com.kevinisabelle.dmxLive.Constants;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Properties;
+import java.util.logging.Level;
+import javax.sound.midi.MidiDevice;
+import javax.sound.midi.MidiSystem;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.Transmitter;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -29,14 +35,17 @@ public class Configuration {
 	private static final String P_DMXRUN_OFFSET = "DMX_RUNNALE_OFFSET";
 	private static final String P_DRUMMER_MIXER = "DRUMMER_MIXER";
 	private static final String P_SAMPLES_MIXER = "SAMPLES_MIXER";
+	private static final String P_MIDI_DEVICE = "MIDI_DEVICE";
 	
 	public static AudioFormat audioFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, 44100, 16, 2, 4, 44100, false);
 	Clip.Info sourceDataLineInfo = new Clip.Info(Clip.class, audioFormat);
 	
 	private List<Mixer.Info> availableMixers = new LinkedList<Mixer.Info>();
+	private List<MidiDevice.Info> availableMidiDevices = new LinkedList<MidiDevice.Info>();
 	
 	private Mixer drummerMixer = null;
 	private Mixer samplesMixer = null;
+	private MidiDevice patchChangeOutput = null;
 	
 	private int dmxRate = Constants.DMX_RATE; // in 1/x of a beat
 	private int dmxRunnableCheckResolution = Constants.CHECK_RESOLUTION; // in 1/x of a beat
@@ -60,6 +69,7 @@ public class Configuration {
 		reader.close();
 
 		initMixers();
+		initMidiDevice();
 
 		updateObjectFromProperties();
 
@@ -93,6 +103,18 @@ public class Configuration {
 			}
 		}
 		
+		for (MidiDevice.Info midiDeviceInfo : MidiSystem.getMidiDeviceInfo()) {
+
+			if (midiDeviceInfo.toString().equals(props.getProperty(P_MIDI_DEVICE))) {
+
+				try {
+					setPatchChangeOutput(MidiSystem.getMidiDevice(midiDeviceInfo));
+				} catch (MidiUnavailableException ex) {
+					logger.error(ex);
+				}
+			}		
+		}
+		
 		if (drummerMixer == null){
 			drummerMixer = AudioSystem.getMixer(AudioSystem.getMixerInfo()[0]);
 		}
@@ -109,7 +131,34 @@ public class Configuration {
 		props.setProperty(P_DMX_RATE, Integer.valueOf(getDmxRate()).toString());
 		props.setProperty(P_DRUMMER_MIXER, drummerMixer.getMixerInfo().toString());
 		props.setProperty(P_SAMPLES_MIXER, samplesMixer.getMixerInfo().toString());
+		props.setProperty(P_MIDI_DEVICE, patchChangeOutput.getDeviceInfo().toString());
 
+	}
+	
+	private void initMidiDevice() {
+		
+		List<MidiDevice.Info> deviceInfos = Arrays.asList(MidiSystem.getMidiDeviceInfo());
+		availableMidiDevices = new LinkedList<MidiDevice.Info>();
+		
+		for (MidiDevice.Info device : deviceInfos){
+			
+			
+			try {
+				MidiDevice deviceObj = MidiSystem.getMidiDevice(device);
+				
+				if (deviceObj.getMaxReceivers() != 0){
+					logger.debug("Midi lines for: " + device.getName() + " - " + device.getDescription() + " - " + device.getVersion());
+					availableMidiDevices.add((device));
+				}
+				
+			} catch (MidiUnavailableException ex) {
+				java.util.logging.Logger.getLogger(Configuration.class.getName()).log(Level.SEVERE, null, ex);
+			}
+		}
+	}
+	
+	public synchronized List<MidiDevice.Info> getMidiDevices() {
+		return availableMidiDevices;
 	}
 
 	private void initMixers() {
@@ -232,5 +281,19 @@ public class Configuration {
 	 */
 	public void setSamplesMixer(Mixer samplesMixer) {
 		this.samplesMixer = samplesMixer;
+	}
+
+	/**
+	 * @return the patchChangeOutput
+	 */
+	public MidiDevice getPatchChangeOutput() {
+		return patchChangeOutput;
+	}
+
+	/**
+	 * @param patchChangeOutput the patchChangeOutput to set
+	 */
+	public void setPatchChangeOutput(MidiDevice patchChangeOutput) {
+		this.patchChangeOutput = patchChangeOutput;
 	}
 }
