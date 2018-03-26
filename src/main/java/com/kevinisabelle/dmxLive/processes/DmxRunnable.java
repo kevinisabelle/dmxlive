@@ -8,10 +8,17 @@ import com.kevinisabelle.dmxLive.objects.Song;
 import com.kevinisabelle.dmxLive.objects.TimeInfo;
 import com.kevinisabelle.dmxLive.objects.TimeSignature;
 import com.kevinisabelle.dmxLive.objects.TimedDmxValue;
+import com.kevinisabelle.dmxLive.objects.TimedMidiValue;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import javax.sound.midi.InvalidMidiDataException;
+import javax.sound.midi.MidiDevice;
+import javax.sound.midi.MidiMessage;
+import javax.sound.midi.MidiUnavailableException;
+import javax.sound.midi.ShortMessage;
 import javax.sound.sampled.Clip;
 import org.apache.log4j.Logger;
 
@@ -31,7 +38,7 @@ public class DmxRunnable extends SongParallelRunnable {
 	private TimedDmxValue lastValue = null;
 	private boolean logDMXEvents = false;
 	private DmxManager dmxManager;
-
+	private MidiDevice midiDevice;
 	private List<Long> executionTimes = new LinkedList<Long>();
 	private MetronomePlayerRunnable metronomeRunnable;
 	
@@ -57,10 +64,10 @@ public class DmxRunnable extends SongParallelRunnable {
 	public DmxRunnable(TimeSignature signature, int bpm, List<TimedDmxValue> dmxProgram, 
 			DmxManager manager, Clip playedSongAudio, TimeInfo startTime, 
 			DmxRunnableObserver observer, boolean cleanEventsBeforeStarTtime,
-			Song.MetronomeMode metronomeMode, String metronomeSoundHi, String metronomeSoundLow) {
+			Song.MetronomeMode metronomeMode, String metronomeSoundHi, String metronomeSoundLow, MidiDevice midiDevie) {
 
 		super(playedSongAudio, signature, observer, bpm);
-		
+		this.midiDevice = midiDevie;
 		this.dmxProgram = dmxProgram;
 		this.dmxManager = manager;
 		
@@ -195,9 +202,25 @@ public class DmxRunnable extends SongParallelRunnable {
 			} else {
 				value = lastValue;
 			}
+			
+			
 
 			if (value.getMillis() <= absolutePosition) {
+				
 				dmxProgramIterator.remove();
+				
+				if (value instanceof TimedMidiValue){
+				
+					try {
+						SendMidiEvent((TimedMidiValue)value);
+						lastValue = null;
+						continue;
+					} catch (InvalidMidiDataException ex) {
+						logger.error(ex);
+					} catch (MidiUnavailableException ex) {
+						logger.error(ex);
+					}
+				}
 				
 				if (logDMXEvents){
 					observer.logMessage("DMX: " + value, absolutePosition);
@@ -215,6 +238,30 @@ public class DmxRunnable extends SongParallelRunnable {
 		}
 	}
 
+	private void SendMidiEvent(TimedMidiValue event) throws InvalidMidiDataException, MidiUnavailableException{
+		
+		MidiMessage message = null;
+		MidiMessage message2 = null;
+		
+		if (event.getBankValue() != -1){
+			observer.logMessage("Midi bank change: " + event.getBankValue(), event.getMillis());
+			message = new ShortMessage(ShortMessage.CONTROL_CHANGE, event.getChannel(), 0, 0);
+			message2 = new ShortMessage(ShortMessage.PROGRAM_CHANGE, event.getChannel(), 0, event.getBankValue());
+		}
+		
+		if (message2 != null){
+			
+			if (!midiDevice.isOpen()){
+				midiDevice.open();
+				
+			}
+			
+			midiDevice.getReceiver().send(message, -1);
+			midiDevice.getReceiver().send(message2, -1);
+		}
+		
+	}
+	
 	/**
 	 * Stops the dmx process.
 	 */

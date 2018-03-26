@@ -1,0 +1,16 @@
+//Song Name:Test Patch Change
+//BPM:110
+//Time Signature:4/4
+//Audio file path=
+//Samples file path=
+//Metronome=ON,Cowbell Hi.wav,Cowbell Low.wav
+$[Gt100Kev]=GT100_1
+$[drum]=LEDBar_11
+$[amp]=DerbyX_30
+$[swarm]=Swarm4_40
+
+1:0:0	|Gt100Kev			|Mode:s=1
+2:0:0	|Gt100Kev			|Mode:s=2
+3:0:0	|Gt100Kev			|Mode:s=3
+4:0:0	|Gt100Kev			|Mode:s=4
+

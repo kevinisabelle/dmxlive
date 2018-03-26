@@ -280,7 +280,8 @@ public class DmxLive {
 						true,
 						song.getMetronomeMode(),
 						song.getMetronomeSoundHi(),
-						song.getMetronomeSoundLow());
+						song.getMetronomeSoundLow(),
+						config.getPatchChangeOutput());
 
 				dmxExecution.enableDMXLogging(enableDMXLogging);
 
@@ -418,7 +419,7 @@ public class DmxLive {
 
 
 
-		dmxExecutionStandalone = new DmxRunnable(signature, bpm, valuesFromScript, dmxManager, null, null, observer, false, null, null, null);
+		dmxExecutionStandalone = new DmxRunnable(signature, bpm, valuesFromScript, dmxManager, null, null, observer, false, null, null, null, config.getPatchChangeOutput());
 		Thread dmxRun = new Thread(dmxExecutionStandalone, "DmxExecutionThread-Scenes");
 
 		dmxExecutionStandalone.enableDMXLogging(enableDMXLogging);
