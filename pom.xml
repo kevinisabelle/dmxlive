@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<name>DmxLive (Root)</name>
 	<modules>
-		<module>./modules/client-library</module>
+		<module>modules/client-library</module>
 		<module>modules/commons-core</module>
 		<module>modules/user-interface</module>
 		<module>modules/fixture-Lumi-LED-PAR64</module>
