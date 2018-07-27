@@ -81,13 +81,13 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
 		
-		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_3, 10));
+		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_3, 2));
 		
 		this.add(Box.createVerticalStrut(3));
 		
 		JPanel fileManagementPanel = new JPanel();
 		fileManagementPanel.setLayout(new BoxLayout(fileManagementPanel, BoxLayout.X_AXIS));
-		fileManagementPanel.setMaximumSize(new Dimension(1200, 30));
+		fileManagementPanel.setMaximumSize(new Dimension(4200, 30));
 		fileManagementPanel.add(new AppButtonsPanel());
 		fileManagementPanel.add(saveButton);
 		fileManagementPanel.add(Box.createHorizontalStrut(5));
@@ -98,6 +98,7 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 		fileManagementPanel.add(newButton);
 		fileManagementPanel.add(Box.createHorizontalStrut(5));
 		
+		
 		saveButton.setPreferredSize(new Dimension(80, 20));
 		saveAsButton.setPreferredSize(new Dimension(90, 20));
 		openButton.setPreferredSize(new Dimension(80, 20));
@@ -105,29 +106,31 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 		this.add(fileManagementPanel);
 		this.add(Box.createVerticalStrut(3));
 		
-		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_3, 10));
+		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_3, 2));
 		
 		this.add(Box.createVerticalStrut(3));
 
 		JPanel songNamePanel = new JPanel();
 		songNamePanel.setLayout(new BoxLayout(songNamePanel, BoxLayout.X_AXIS));
-		songNamePanel.setMaximumSize(new Dimension(1200, 20));
+		songNamePanel.setMaximumSize(new Dimension(4200, 20));
 		Font songNamefont = new Font("Verdana", Font.BOLD, 18);
 		Label songNameLabel = new Label(" Song Name:  ");
+		songNameLabel.setSize(100, 20);
+		songNameLabel.setMaximumSize(new Dimension(100, 20));
 		songNameLabel.setFont(songNamefont);
 		songNamePanel.add(songNameLabel);
 		songNamePanel.add(songName);
 		songName.setFont(songNamefont);
-		songNamePanel.add(Box.createHorizontalStrut(400));
+		//songNamePanel.add(Box.createHorizontalStrut(400));
 		this.add(songNamePanel);
 		
 		this.add(Box.createVerticalStrut(3));
-		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 5));
+		//this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 2));
 		this.add(Box.createVerticalStrut(3));
 
 		JPanel timeInfoPanel = new JPanel();
 		timeInfoPanel.setLayout(new BoxLayout(timeInfoPanel, BoxLayout.X_AXIS));
-		timeInfoPanel.setMaximumSize(new Dimension(1200, 20));
+		timeInfoPanel.setMaximumSize(new Dimension(4200, 20));
 		timeInfoPanel.add(new Label("  BPM: "));
 		timeInfoPanel.add(bpm);
 		timeInfoPanel.add(Box.createHorizontalStrut(20));
@@ -147,13 +150,18 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 		timeInfoPanel.add(metronomeLowSoundCombo);
 		timeInfoPanel.add(Box.createHorizontalStrut(150));
 
-		this.add(timeInfoPanel);
+		
 		this.add(Box.createVerticalStrut(3));
 
 		JPanel audioFilePanel = new JPanel();
 		audioFilePanel.setLayout(new BoxLayout(audioFilePanel, BoxLayout.X_AXIS));
-		audioFilePanel.setMaximumSize(new Dimension(1200, 20));
-		audioFilePanel.add(new Label("  Audio file:            "));
+		audioFilePanel.setMaximumSize(new Dimension(4200, 20));
+		
+		Label audioFileLabel = new Label(" Audio file:");
+		audioFileLabel.setSize(100, 20);
+		audioFileLabel.setMaximumSize(new Dimension(100, 20));
+		
+		audioFilePanel.add(audioFileLabel);
 		audioFilePanel.add(audioFileName);
 		audioFilePanel.add(Box.createHorizontalStrut(10));
 		audioFilePanel.add(browseAudioFileButton);
@@ -164,8 +172,10 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 		
 		JPanel samplesAudioFilePanel = new JPanel();
 		samplesAudioFilePanel.setLayout(new BoxLayout(samplesAudioFilePanel, BoxLayout.X_AXIS));
-		samplesAudioFilePanel.setMaximumSize(new Dimension(1200, 20));
-		Label audioLabel = new Label("  Samples Audio file: ");
+		samplesAudioFilePanel.setMaximumSize(new Dimension(4200, 20));
+		Label audioLabel = new Label(" Samples Audio file: ");
+		audioLabel.setSize(100, 20);
+		audioLabel.setMaximumSize(new Dimension(100, 20));
 		samplesAudioFilePanel.add(audioLabel);
 		samplesAudioFilePanel.add(samplesAudioFileName);
 		samplesAudioFilePanel.add(Box.createHorizontalStrut(10));
@@ -180,11 +190,11 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 		
 		this.add(Box.createVerticalStrut(3));
 
-		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 5));
+		//this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 2));
 		
 		JPanel actionsPanel = new JPanel();
 		actionsPanel.setLayout(new BoxLayout(actionsPanel, BoxLayout.X_AXIS));
-		actionsPanel.setMaximumSize(new Dimension(1200, 30));
+		actionsPanel.setMaximumSize(new Dimension(4200, 30));
 		actionsPanel.add(Box.createHorizontalStrut(10));
 		actionsPanel.add(runButton);
 		actionsPanel.add(Box.createHorizontalStrut(10));
@@ -206,9 +216,12 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 		actionsPanel.add(Box.createHorizontalStrut(150));
 		this.add(actionsPanel);
 		
-		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 5));
+		
+		this.add(UIHelper.createColoredPanel(Constants.THEME_COLOR_1, 2));
 		
 		this.add(Box.createVerticalStrut(3));
+		
+		this.add(timeInfoPanel);
 		
 		JPanel scriptsAndInstructionsPanel = new JPanel();
 		scriptsAndInstructionsPanel.setLayout(new BoxLayout(scriptsAndInstructionsPanel, BoxLayout.X_AXIS));

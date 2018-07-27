@@ -21,7 +21,7 @@ public class UIHelper {
 		panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panel.setBackground(color);
 		panel.setSize(200, height);
-		panel.setMaximumSize(new Dimension(1300, height));
+		panel.setMaximumSize(new Dimension(2300, height));
 		panel.setMinimumSize(new Dimension(200, height));
 		return panel;
 	}

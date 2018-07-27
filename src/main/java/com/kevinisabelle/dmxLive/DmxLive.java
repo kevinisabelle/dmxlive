@@ -140,11 +140,13 @@ public class DmxLive {
 		DmxLiveEditorWindow frame = new DmxLiveEditorWindow();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(1050, 660);
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.setVisible(true);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		
 
 		currentFrame = frame;
-		centerCurrentFrame(currentFrame);
+		//centerCurrentFrame(currentFrame);
 	}
 
 	private static void showPlaylistWindow() {
