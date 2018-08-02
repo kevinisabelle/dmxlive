@@ -94,7 +94,7 @@ public class ElectroCastleDMXRLY001 extends Fixture {
 		values.add(new TimedDmxValue(timeMillis, this.getChannel() + RED1, color[0].getR()));
 		values.add(new TimedDmxValue(timeMillis, this.getChannel() + GREEN1, color[0].getG()));
 		values.add(new TimedDmxValue(timeMillis, this.getChannel() + BLUE1, color[0].getB()));
-		
+		values.add(new TimedDmxValue(timeMillis, this.getChannel() + DIMMER, 255));
 		return values;
 	}
 
@@ -134,7 +134,8 @@ public class ElectroCastleDMXRLY001 extends Fixture {
 			values.add(new TimedDmxValue(currentTime, this.getChannel() + RED1, Long.valueOf(Math.round(currentRed1)).intValue()));
 			values.add(new TimedDmxValue(currentTime, this.getChannel() + GREEN1, Long.valueOf(Math.round(currentGreen1)).intValue()));
 			values.add(new TimedDmxValue(currentTime, this.getChannel() + BLUE1, Long.valueOf(Math.round(currentBlue1)).intValue()));
-
+			values.add(new TimedDmxValue(currentTime, this.getChannel() + DIMMER, 255));
+			
 			currentRed1 += redIncrement1;
 			currentGreen1 += greenIncrement1;
 			currentBlue1 += blueIncrement1;
@@ -161,9 +162,6 @@ public class ElectroCastleDMXRLY001 extends Fixture {
 				currentBlue1 = 0;
 			}
 			
-			
-			
-
 			currentTime += intervalDuration;
 
 		}
