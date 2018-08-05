@@ -31,7 +31,7 @@ public class ScriptCommand {
 
 	public ScriptCommand(String commandTxt, Script caller) {
 
-		String[] params = commandTxt.replaceAll("\t", "").replaceAll(" ", "").split(FIELD_DELIMITER);
+		String[] params = (commandTxt.contains("*L*") ? commandTxt : commandTxt.replaceAll("\t", "").replaceAll(" ", "")).split(FIELD_DELIMITER);
 		time = new TimeInfo(params[0]);
 		time.setMeasure(time.getMeasure()-1);
 		this.caller = caller;

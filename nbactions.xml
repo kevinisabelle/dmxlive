@@ -66,6 +66,7 @@
             <properties>
                 <java.library.path>./src/test/resouces/dll</java.library.path>
                 <test>${packageClassName}</test>
+                <Env.JAVA_HOME>C:\Program Files (x86)\Java\jdk1.7.0_60</Env.JAVA_HOME>
                 
                 
                 

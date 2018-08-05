@@ -8,6 +8,7 @@ import com.kevinisabelle.dmxLive.objects.Song;
 import com.kevinisabelle.dmxLive.objects.TimeInfo;
 import com.kevinisabelle.dmxLive.objects.TimeSignature;
 import com.kevinisabelle.dmxLive.objects.TimedDmxValue;
+import com.kevinisabelle.dmxLive.objects.TimedLyricsValue;
 import com.kevinisabelle.dmxLive.objects.TimedMidiValue;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -202,8 +203,6 @@ public class DmxRunnable extends SongParallelRunnable {
 			} else {
 				value = lastValue;
 			}
-			
-			
 
 			if (value.getMillis() <= absolutePosition) {
 				
@@ -213,24 +212,40 @@ public class DmxRunnable extends SongParallelRunnable {
 				
 					try {
 						SendMidiEvent((TimedMidiValue)value);
+						
 						lastValue = null;
-						continue;
+						
+						if (logDMXEvents){
+							observer.logMessage("Midi patch change: " + (((TimedMidiValue) value)).getBankValue(), absolutePosition);
+						}
+						
 					} catch (InvalidMidiDataException ex) {
 						logger.error(ex);
 					} catch (MidiUnavailableException ex) {
 						logger.error(ex);
 					}
+					
+				} else if (value instanceof TimedLyricsValue){
+				
+						BluetoothServer.SetAvailableText(((TimedLyricsValue)value).getLyricsContent());
+						if (logDMXEvents){
+							observer.logMessage("Lyrics: " + ((TimedLyricsValue)value).getLyricsContent(), absolutePosition);
+						}
+						lastValue = null;
+					
+				} else {
+				
+					if (logDMXEvents){
+						observer.logMessage("DMX: " + value, absolutePosition);
+					}
+					try {
+						dmxManager.sendSignal(value.getChannel() - 1, value.getValue());
+					} catch (Exception ex) {
+						logger.error("Cannot send dmx signal: " + ex.getMessage());
+					}
+					lastValue = null;
 				}
 				
-				if (logDMXEvents){
-					observer.logMessage("DMX: " + value, absolutePosition);
-				}
-				try {
-					dmxManager.sendSignal(value.getChannel() - 1, value.getValue());
-				} catch (Exception ex) {
-					logger.error("Cannot send dmx signal: " + ex.getMessage());
-				}
-				lastValue = null;
 			} else {
 				lastValue = value;
 				break;

@@ -8,6 +8,7 @@ import com.kevinisabelle.dmxLive.objects.Song;
 import com.kevinisabelle.dmxLive.objects.TimeInfo;
 import com.kevinisabelle.dmxLive.objects.TimeSignature;
 import com.kevinisabelle.dmxLive.objects.TimedDmxValue;
+import com.kevinisabelle.dmxLive.processes.BluetoothServer;
 import com.kevinisabelle.dmxLive.processes.DmxRunnable;
 import com.kevinisabelle.dmxLive.processes.DmxRunnableObserver;
 import com.kevinisabelle.dmxLive.ui.components.ConfigurationWindow;
@@ -82,6 +83,8 @@ public class DmxLive {
 				System.exit(1);
 			}
 		}
+		
+		BluetoothServer.StartBluetoothServer();
 
 		try {
 
@@ -123,7 +126,10 @@ public class DmxLive {
 			((DmxRunnableObserver)currentFrame).openFile(fileToOpen);
 		}
 
+		//BluetoothServer.StopBluetoothServer();
 		logger.info("done.");
+		
+		
 
 	}
 

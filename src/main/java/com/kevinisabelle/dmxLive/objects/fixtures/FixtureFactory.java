@@ -19,6 +19,7 @@ public class FixtureFactory {
 		fixtureClasses.put("DerbyX", ChauvetDerbyX.class);
 		fixtureClasses.put("DLM001", ElectroCastleDLM001.class);
 		fixtureClasses.put("DMXRLY001", ElectroCastleDMXRLY001.class);
+		fixtureClasses.put("*L*", BluetoothLyricsFixture.class);
 		fixtureClasses.put("GT100", BossGT100.class);
 	}
 	
@@ -41,7 +42,10 @@ public class FixtureFactory {
 		try {
 			
 			fixture = (Fixture)classz.newInstance();
-			fixture.setChannel(Integer.parseInt(nameAndChannel[1]));
+			
+			if (nameAndChannel.length > 1){
+				fixture.setChannel(Integer.parseInt(nameAndChannel[1]));
+			}
 			
 		} catch (InstantiationException ex) {
 			
