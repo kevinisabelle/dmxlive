@@ -53,7 +53,7 @@ public class LumiLEDPar64 extends Fixture {
 					bpm,
 					parameters.getColors()[0],
 					parameters.getDimmers()[0],
-					parameters.getSpeed()));
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed()));
 
 		} else if (paramsArr[0].equals(OP_FADE)) {
 
@@ -111,7 +111,7 @@ public class LumiLEDPar64 extends Fixture {
 					bpm,
 					parameters.getColors()[0],
 					parameters.getDimmers()[0],
-					parameters.getSpeed(),
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed(),
 					mode));
 
 		} else if (paramsArr[0].equals(OP_RIFF)) {

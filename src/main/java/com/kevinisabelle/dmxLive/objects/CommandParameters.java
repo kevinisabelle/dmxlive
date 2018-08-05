@@ -23,15 +23,15 @@ public class CommandParameters {
 	
 	private Color[] colors = null;
 	private Integer[] dimmers = null;
-	private Integer speed = null;
+	private Integer speed = -1;
 	private TimeInfo duration = null;
 	private Double noteUnit = null;
 	private Double onTime = null;
 	private char[] riffNotes = null;
 	private String mode = null;
-	private Integer curve = null;
-	private Integer animationTrigger = null;
-	private Integer animation = null;
+	private Integer curve = -1;
+	private Integer animationTrigger = -1;
+	private Integer animation = -1;
 	
 	public CommandParameters(String parameterString) throws IllegalArgumentException {
 

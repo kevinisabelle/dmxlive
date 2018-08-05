@@ -127,11 +127,22 @@ public class ElectroCastleDLM001 extends Fixture {
 
 		long timeMillis = TimeHelper.getMilliseconds(time, signature, bpm);
 
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + RELEASE, release * 255 / 100));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + ANIMATION, animation * 255 / 9));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + ANIMATION_TRIGGER, animTrigger * 255 / 7));
-		values.add(new TimedDmxValue(timeMillis, this.getChannel() + RELEASE_CURVE, releaseCurve * 255 / 4));
-
+		if (release != -1){
+			values.add(new TimedDmxValue(timeMillis, this.getChannel() + RELEASE, release * 255 / 100));
+		}
+		
+		if (animation != -1){
+			values.add(new TimedDmxValue(timeMillis, this.getChannel() + ANIMATION, animation * 255 / 9));
+		}
+		
+		if (animTrigger != -1){
+			values.add(new TimedDmxValue(timeMillis, this.getChannel() + ANIMATION_TRIGGER, animTrigger * 255 / 7));
+		}
+		
+		if (releaseCurve != -1){
+			values.add(new TimedDmxValue(timeMillis, this.getChannel() + RELEASE_CURVE, releaseCurve * 255 / 4));
+		}
+		
 		return values;
 	}
 

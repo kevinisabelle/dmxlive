@@ -140,14 +140,14 @@ public class ChauvetDerbyX extends Fixture {
 					bpm,
 					parameters.getColors(),
 					true,
-					parameters.getSpeed(),
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed(),
 					0));
 
 		} else if (paramsArr[0].equals(OP_MODE)) {
 
 			int[] modeGrad = modes.get(parameters.getMode());
 
-			int mode = Double.valueOf((parameters.getSpeed() / 100.0) * Integer.valueOf(modeGrad[1] - modeGrad[0]).doubleValue() + Integer.valueOf(modeGrad[0]).doubleValue()).intValue();
+			int mode = Double.valueOf(((parameters.getSpeed() == -1 ? 100 : parameters.getSpeed()) / 100.0) * Integer.valueOf(modeGrad[1] - modeGrad[0]).doubleValue() + Integer.valueOf(modeGrad[0]).doubleValue()).intValue();
 
 			values.addAll(mode(
 					startTime,

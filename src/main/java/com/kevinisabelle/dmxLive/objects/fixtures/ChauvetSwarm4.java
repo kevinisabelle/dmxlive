@@ -63,7 +63,7 @@ public class ChauvetSwarm4  extends Fixture {
 					bpm,
 					parameters.getColors(),
 					0,
-					parameters.getSpeed()));
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed()));
 
 		} else if (paramsArr[0].equals(OP_STROBE)) {
 
@@ -72,7 +72,7 @@ public class ChauvetSwarm4  extends Fixture {
 					signature,
 					bpm,
 					parameters.getColors(),
-					parameters.getSpeed(),
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed(),
 					parameters.getDimmers()[0]));
 
 		} else if (paramsArr[0].equals(OP_BLINK)) {
@@ -85,7 +85,7 @@ public class ChauvetSwarm4  extends Fixture {
 					parameters.getDuration(),
 					parameters.getNoteUnit(),
 					parameters.getOnTime(),
-					parameters.getSpeed()));
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed()));
 
 		} else if (paramsArr[0].equals(OP_RIFF)) {
 
@@ -94,7 +94,7 @@ public class ChauvetSwarm4  extends Fixture {
 					signature,
 					bpm,
 					parameters.getColors(),
-					parameters.getSpeed(),
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed(),
 					parameters.getNoteUnit(),
 					parameters.getRiffNotes()));
 

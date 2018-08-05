@@ -100,7 +100,7 @@ public class LumiMKII extends Fixture {
 					bpm,
 					parameters.getColors(),
 					parameters.getDimmers()[0],
-					parameters.getSpeed()));
+					parameters.getSpeed() == -1 ? 100 : parameters.getSpeed()));
 
 		} else if (paramsArr[0].equals(OP_FADE)) {
 
@@ -139,7 +139,7 @@ public class LumiMKII extends Fixture {
 			
 			int[] modeGrad = modes.get(parameters.getMode());
 
-			int mode = Double.valueOf((parameters.getSpeed() / 100.0) * Integer.valueOf(modeGrad[1] - modeGrad[0]).doubleValue() + Integer.valueOf(modeGrad[0]).doubleValue()).intValue();
+			int mode = Double.valueOf(((parameters.getSpeed() == -1 ? 100 : parameters.getSpeed()) / 100.0) * Integer.valueOf(modeGrad[1] - modeGrad[0]).doubleValue() + Integer.valueOf(modeGrad[0]).doubleValue()).intValue();
 
 			values.addAll(mode(
 					startTime,
