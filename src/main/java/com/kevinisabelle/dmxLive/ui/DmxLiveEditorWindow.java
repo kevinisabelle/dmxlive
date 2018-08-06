@@ -339,7 +339,7 @@ public class DmxLiveEditorWindow extends JFrame implements ActionListener, DmxRu
 
 		currentSong.setTitle(songName.getText());
 		currentSong.setBpm(Integer.parseInt(bpm.getText()));
-		currentSong.setScript(new Script(scriptText.getText()));
+		currentSong.setScript(new Script(scriptText.getText(), currentSong));
 		currentSong.setSignature(new TimeSignature((String) timeSignature.getSelectedItem()));
 		currentSong.setAudioFilename(audioFileName.getText());
 		currentSong.setSamplesFilename(samplesAudioFileName.getText());

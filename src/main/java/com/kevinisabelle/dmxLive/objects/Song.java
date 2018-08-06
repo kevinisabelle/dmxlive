@@ -32,7 +32,7 @@ public class Song {
 	private File audioFilename;
 	private File samplesAudioFilename = null;
 	
-	private Script script = new Script("");
+	private Script script = new Script("", this);
 	private String filename = null;
 	
 	private String metronomeSoundHi = Constants.metronomeSoundsHi[0];
@@ -105,7 +105,7 @@ public class Song {
 
 		}
 
-		script = new Script(scriptOnlyText.toString());
+		script = new Script(scriptOnlyText.toString(), this);
 	}
 
 	public void save(File file) throws FileNotFoundException {

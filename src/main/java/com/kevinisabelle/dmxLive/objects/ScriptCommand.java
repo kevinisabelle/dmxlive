@@ -55,13 +55,30 @@ public class ScriptCommand {
 			if (params[1].contains(TIME_DELIMITER)) {
 				
 				String[] fixtureNames = params[1].split(TIME_DELIMITER);
+				
+				for (int i =0; i<fixtureNames.length; i++){
+					
+					if (fixtureNames[i].startsWith("%")){
+						
+						fixtureNames[i] = parameters[Integer.parseInt(fixtureNames[i].substring(1))];
+						
+					}
+					
+				}
+				
 				fixtures = new ArrayList<Fixture>();
 				
 				for (String fixtureName : fixtureNames) {					
 					fixtures.addAll(getFixtures(fixtureName));				
 				}
 				
-			} else {				
+			} else {		
+				if (params[1].startsWith("%")){
+						
+						params[1] = parameters[Integer.parseInt(params[1].substring(1))];
+						
+					}
+				
 				fixtures = getFixtures(params[1]);
 			}
 		}

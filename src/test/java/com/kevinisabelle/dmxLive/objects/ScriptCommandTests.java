@@ -35,7 +35,7 @@ public class ScriptCommandTests extends TestCase {
 				+ "\n"
 				+ "1:0:0	|$test";
 		
-		Script script = new Script(strScript);
+		Script script = new Script(strScript, null);
 		
 		List<TimedDmxValue> values = script.getTimedDmxValues(new TimeInfo("0:0:0"), new TimeSignature(4, 4), 120, null);
 	
@@ -50,7 +50,7 @@ public class ScriptCommandTests extends TestCase {
 				+ "\n"
 				+ "1:0:0	|$test(yellow,100)	|4,1:0:0";
 		
-		Script script = new Script(strScript);
+		Script script = new Script(strScript, null);
 		
 		List<TimedDmxValue> values = script.getTimedDmxValues(new TimeInfo("0:0:0"), new TimeSignature(4, 4), 120, null);
 	

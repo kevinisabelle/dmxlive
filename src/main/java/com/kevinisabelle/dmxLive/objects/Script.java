@@ -1,5 +1,8 @@
 package com.kevinisabelle.dmxLive.objects;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,6 +24,7 @@ public class Script {
 	public static final String SECTION_END_V2 = "end$";
 	public static final String SECTION_START = "$";
 	public static final String COMMENTS_START = "//";
+	public static final String INCLUDE_START = "#INCLUDE ";
 	
     public static final int MEASURE_FIELD = 0;
     public static final int FIXTURE_FIELD = 1;
@@ -28,20 +32,21 @@ public class Script {
 	
     private Map<String, Script> namedScripts;
     private List<ScriptCommand> commandsList;
+	private Song song;
 	private Map<String, List<String>> variables;
 	
 	private String scriptText = "";
 	
     private Script masterScriptReference = null;
 
-    public Script(String text){
-		this(text, null);
+    public Script(String text, Song song){
+		this(text, null, song);
 	}
 	
-    public Script(String text, Script masterScript) {
+    public Script(String text, Script masterScript, Song song) {
 		
 		scriptText = text;
-
+		this.song = song;
         this.masterScriptReference = masterScript;
 
         if (this.masterScriptReference == null) {
@@ -76,12 +81,35 @@ public class Script {
 		
         String currentSubScript = null;
         String currentSubScriptLines = "";
-
-        for (String line : lines) {
+		
+		List<String> newLines = new LinkedList<String>();
+		
+		for (String line : lines) {
 			
-			if (line.startsWith(COMMENTS_START)){
+			if (line.startsWith(INCLUDE_START)){
+				
+				try {
+										
+					String includedFile = new File(new File(song.getFilename()).getParent() + File.separator + line.split(INCLUDE_START)[1]).getAbsolutePath();
+					
+					List<String> includedLines = Files.readAllLines(Paths.get(includedFile));
+					newLines.addAll(includedLines);
+					
+				} catch (Exception ex) {
+					
+				} 
+				
+			} else {
+				newLines.add(line);
+			}
+		}
+
+        for (String line : newLines) {
+			
+			if (line.startsWith(COMMENTS_START) || line.startsWith(INCLUDE_START)){
 				continue;
 			}
+			
 
            if (line.startsWith(VARIABLES_START)) {
 
@@ -103,7 +131,7 @@ public class Script {
 
                 // this is the end of a script
 
-                Script script = new Script(currentSubScriptLines, this.masterScriptReference);
+                Script script = new Script(currentSubScriptLines, this.masterScriptReference, song);
                 namedScripts.put(currentSubScript.replaceAll(" ", ""), script);
 
                 currentSubScriptLines = "";

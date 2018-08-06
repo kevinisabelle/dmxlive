@@ -102,6 +102,10 @@ public class DmxScriptTokenMaker extends AbstractTokenMaker {
 						case '$':
 							currentTokenType = TOKEN_SECTION;
 							break;
+							
+						case '#':
+							currentTokenType = Token.ANNOTATION;
+							break;
 
 						case '|':
 
@@ -226,6 +230,14 @@ public class DmxScriptTokenMaker extends AbstractTokenMaker {
 					break;
 
 				case Token.COMMENT_EOL:
+
+					i = end - 1;
+					addToken(text, currentTokenStart, i, currentTokenType, newStartOffset + currentTokenStart);
+					// We need to set token type to null so at the bottom we don't add one more token.
+					currentTokenType = Token.NULL;
+					break;
+					
+				case Token.ANNOTATION:
 
 					i = end - 1;
 					addToken(text, currentTokenStart, i, currentTokenType, newStartOffset + currentTokenStart);

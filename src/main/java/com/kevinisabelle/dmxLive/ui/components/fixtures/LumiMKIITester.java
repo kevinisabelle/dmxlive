@@ -141,7 +141,7 @@ public class LumiMKIITester extends JPanel implements ActionListener {
 	private void executeDim(){
 		
 		String scriptStr = "1:0:0|LEDBar_" + this.fixture.getChannel() + "|Dim:" + dimColorCombo.getSelectedItem() + "," + dimDimmerValue.getText();
-		Script script = new Script(scriptStr);
+		Script script = new Script(scriptStr, null);
 		
 		executeScript(script);
 	}
@@ -149,7 +149,7 @@ public class LumiMKIITester extends JPanel implements ActionListener {
 	private void executeStrobe(){
 		
 		String scriptStr = "1:0:0|LEDBar_" + this.fixture.getChannel() + "|Strobe:" + strobeColorCombo.getSelectedItem() + "," + strobeDimmerValue.getText() + "," + strobeSpeedValue.getText();
-		Script script = new Script(scriptStr);
+		Script script = new Script(scriptStr, null);
 		
 		executeScript(script);
 	}
@@ -157,7 +157,7 @@ public class LumiMKIITester extends JPanel implements ActionListener {
 	private void executeMode(){
 		
 		String scriptStr = "1:0:0|LEDBar_" + this.fixture.getChannel() + "|Mode:" + modeColorCombo.getSelectedItem() + "," + modeDimmerValue.getText() + "," + modeSpeedValue.getText() + "," + modeNameCombo.getSelectedItem();
-		Script script = new Script(scriptStr);
+		Script script = new Script(scriptStr, null);
 		
 		executeScript(script);
 	}
@@ -168,7 +168,7 @@ public class LumiMKIITester extends JPanel implements ActionListener {
 				fadeColor1Combo.getSelectedItem() + "_" + fadeColor2Combo.getSelectedItem() + "," + 
 				fadeDimmerValue1.getText() + "_" + fadeDimmerValue2.getText() + "," + 
 				fadeExecutionTime.getText().replaceAll("\\:", "_");
-		Script script = new Script(scriptStr);
+		Script script = new Script(scriptStr, null);
 		
 		executeScript(script);
 	}

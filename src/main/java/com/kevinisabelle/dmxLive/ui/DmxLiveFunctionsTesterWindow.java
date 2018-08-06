@@ -118,7 +118,7 @@ public class DmxLiveFunctionsTesterWindow extends JFrame implements DmxRunnableO
 	}
 	
 	private void executeMiniscript(String script){
-		DmxLive.startScene(new TimeSignature("4/4"), 120, new Script(script), this);
+		DmxLive.startScene(new TimeSignature("4/4"), 120, new Script(script, null), this);
 	}
 
 	@Override
