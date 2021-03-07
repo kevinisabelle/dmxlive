@@ -20,22 +20,22 @@ import org.junit.Ignore;
  * @author kevin
  */
 public class BluetoothServerTest {
-	
+
 	public BluetoothServerTest() {
 	}
-	
+
 	@BeforeClass
 	public static void setUpClass() {
 	}
-	
+
 	@AfterClass
 	public static void tearDownClass() {
 	}
-	
+
 	@Before
 	public void setUp() {
 	}
-	
+
 	@After
 	public void tearDown() {
 	}
@@ -46,16 +46,15 @@ public class BluetoothServerTest {
 	@Test
 	@Ignore
 	public void testServer() {
-	
+
 		BluetoothServer.StartBluetoothServer();
-		
-		
+
 		try {
 			Thread.sleep(100000);
-			
-			//BluetoothServer.StopBluetoothServer();
+
+			// BluetoothServer.StopBluetoothServer();
 		} catch (InterruptedException ex) {
-			
+
 		}
 	}
 }
